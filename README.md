@@ -52,7 +52,8 @@ Ce cours couvre la totalité du programme de l'agrégation en analyse complexe m
 - théorie analystique des nombres : voir le livre de Tenenbaum, ou Colmez
 - fonctions spéciales. 
 - plus de représentation conforme et ses applications : voir le livre de Lavrentiev et Chabat, éditions Mir, complètement hallucinant sur ce sujet
-- Introduction aux surfaces de Riemann : voir le poly de Demailly plus haut
+- Introduction aux surfaces de Riemann : voir le poly de Demailly plus haut.
+- équations différentielles à variable complexe : sujet passionnant qui va vers la topologie algébrique (groupe fondamental et revêtements), les groupes, les pavages (euclidiens, sphériques ou hyperboliques suivant le type de l'équadiff), et les surfaces de Riemann. Par exemple, l'équation différentielle $2f'(z) =  f(z)/z$ est définie sur $\C^*$, mais ses solutions sont-elles définies sur $\C^*$ ?
 
 
 Analyse complexe et agrégation
