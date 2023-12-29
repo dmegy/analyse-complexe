@@ -8,7 +8,7 @@ Année : printemps 2024
 DM de rentrée et révisions
 --------------------------
 
-Il y a un DM de révisions de L2 et de S5 à rendre lors du premier CM d'analyse complexe, le mercredi 24 janvier à 10h15. (Il y a une séance de TD le mardi 23 janvier, qui précède le premier CM et qui sera consacrée aux séries entières, lors de laquelle vous pourrez poser des questions en cas de grosses difficultés.)
+Il y a un [DM de révisions](DM1/DM1.pdf) de L2 et de S5 à rendre lors du premier CM d'analyse complexe, le mercredi 24 janvier à 10h15. (Il y a une séance de TD le mardi 23 janvier, qui précède le premier CM et qui sera consacrée aux séries entières, lors de laquelle vous pourrez poser des questions en cas de grosses difficultés.)
 
 Le DM porte sur les séries entières, mais il est demandé de réviser également les dérivées partielles, dérivées partielles de composées, changements de variable dans les dérivées partielles etc. Se concentrer principalement sur les calculs concrets (à deux variables). Il est possible d'utiliser la feuille thématique de bibmath [dérivées partielles](https://www.bibmath.net/ressources/index.php?action=affiche&quoi=bde/analyse/calculdiff/deriveepartielle&type=fexo).
 
