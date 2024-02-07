@@ -5,12 +5,12 @@ Page du cours d'analyse complexe à Nancy
 Année : printemps 2024
 
 
-DM de rentrée et révisions
+Interro mercredi prochain
 --------------------------
 
-Il y a un [DM de révisions](DM1/DM1.pdf) de L2 et de S5 à rendre lors du premier CM d'analyse complexe, le mercredi 24 janvier à 10h15. (Il y a une séance de TD le mardi 23 janvier, qui précède le premier CM et qui sera consacrée aux séries entières, lors de laquelle vous pourrez poser des questions en cas de grosses difficultés.)
+Programme : chapitre 1 : fonctions holomorphes, Cauchy-Riemann, notations de Wirtinger. Exos de questions de cours sur les définitions.
 
-Le DM porte sur les séries entières, mais il est demandé de réviser également les dérivées partielles, dérivées partielles de composées, changements de variable dans les dérivées partielles etc. Se concentrer principalement sur les calculs concrets (à deux variables). Il est possible d'utiliser la feuille thématique de bibmath [dérivées partielles](https://www.bibmath.net/ressources/index.php?action=affiche&quoi=bde/analyse/calculdiff/deriveepartielle&type=fexo).
+Si les feuilles de TD ne suffisent pas pour pour remettre à niveau sur le calcul diff, révisez sur des bouquins d'exercices corrigés à la BU, ou sur exo7 ou bibmath :  [dérivées partielles](https://www.bibmath.net/ressources/index.php?action=affiche&quoi=bde/analyse/calculdiff/deriveepartielle&type=fexo).
 
 Évaluations
 ----------
@@ -19,27 +19,21 @@ Le DM porte sur les séries entières, mais il est demandé de réviser égaleme
 - Partiel : 0,3 (épreuve écrite, 2h)
 - Examen : 0,5 (épreuve écrite, 3h)
 
+Feuilles de TD
+---
 
-La première interrogation viendra assez rapidement et portera sur les séries entières (révisions de L2 et nouvelles choses vues en début de semestre), ainsi que sur le début du cours (dérivabilité au sens complexe, calcul diff, condition de Cauchy-Riemann).
-
-Ceci permettra de centrer le partiel sur des choses un peu plus nouvelles et centrales (intégrales curvilignes, formules de Cauchy et ses applications, dont Liouville).
-
-L'examen final, lui, portera vraisemblablement surtout sur les applications des formules de Cauchy, les indices, les résidus, et les choses autour du théorème de Rouché : principe de l'argument etc.
-
+Les feuilles de TD sont dans le dossier [TD](/TD/)
 
 
 Bibliographie pour le cours
 -------------
 
-Le cours suivra principalement cette référence :
-
-Michèle Audin, _Analyse Complexe_, cours et exercices, disponible sur cette page github. (Dossier 'biblio'.)
-
-Autres cours, pour comparer les approches, les preuves etc:
+La référence principale risque d'être le polycopié de cours de Damian Brotbek, même si le cours ne suivra pas forcément ce polycopié pour tous les chapitres.  Les trois premières références sont disponibles sur cette page (dossier biblio).
 
 - Damian Brotbek, _Analyse complexe_, poly d'une ancienne version de ce même cours. 166 pages, cours et exercices. Très nombreuses illustrations facilitant la compréhension.
-- Henri Cartan, _Théorie élémentaire des fonctions analytiques_, disponible à la BU, une référence classique.
+- Michèle Audin, _Analyse Complexe_, cours et exercices, disponible sur cette page github. (Dossier 'biblio'.)
 - Jean-Pierre Demailly, _Variable complexe_. 239 pages. Jean-Pierre Demailly était un spécialiste de géométrie algébrique et analytique complexe et une figure extrêmement appréciée des étudiants et collègues. Il est décédé il y a deux ans. Ce poly est le poly de son cours à Lyon en 2003-2004, que j'ai eu la chance de suivre en L3.
+- Henri Cartan, _Théorie élémentaire des fonctions analytiques_, disponible à la BU, une référence classique.
 
 Bibliographie pour les exercices
 ---------
@@ -71,6 +65,4 @@ Analyse complexe et agrégation
 
 L'analyse complexe tombe assez régulièrement aux écrits de l'agrégation. Parfois ce n'est que pour appliquer les zéros isolés, ou Liouville, mais de temps en temps il y a tout de même des choses plus avancées, comme l'utilisation des résidus (souvent en analyse fonctionnelle, ou pour du calcul fonctionnel holomorphe sur les matrices), ou bien du théorème de Rouché ou ses applications (dans ce cas, le sujet fait souvent redémontrer le théorème). Voici une liste de quelques sujets d'écrits d'agreg où il y a de l'analyse complexe (liste préparées pour les agrégatifs)
 
-- année
-- année
-- année
+[remplir]
