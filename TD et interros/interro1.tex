@@ -1,0 +1,167 @@
+\input{preambule}
+%\usepackage{tasks}
+%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\z}{\overline{z}}
+\DeclareMathOperator{\PR}{\text{Ré}}
+\DeclareMathOperator{\PI}{\text{Im}}
+\DeclareMathOperator{\Log}{\text{Log}}
+\newcommand{\vecteur}[2]{\begin{pmatrix}#1 \\ #2 \end{pmatrix}}
+
+%\pagestyle{empty}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Opensolutionfile{indications}[\jobname_hints]
+\Opensolutionfile{solutions}[\jobname_sol]
+
+
+
+\newpage
+\noindent \textbf{\textsf{Université de Lorraine \hfill Analyse complexe}}
+\smallskip
+\noindent\rule{\textwidth}{2pt}
+\begin{center}
+{\huge \textbf{Interrogation 1}}
+\end{center}
+\noindent\rule{\textwidth}{2pt}
+
+Dans les énoncés, lorsqu'on écrit $z:=x+iy$, il est sous-entendu que $x$ et $y$ sont des réels.
+
+
+\begin{exo}
+Soit $U$ un ouvert de $\C$ et $z_0\in U$.
+\begin{enumerate}
+\item Soit $f : U\to \C$. Définir les assertions \og $f$ est $\C$-dérivable en $z_0$ \fg{} et \og $f$ est holomorphe sur $U$.\fg
+\item Soit $f : U\to \C$ différentiable.  Définir l'assertion \og $f$ vérifie les conditions de Cauchy-Riemann en $z_0$.\fg{}
+%\item Bonus : donner un exemple de fonction $g : \C\to \C$ qui est $\C$-dérivable en l'origine mais qui n'est pas holomorphe sur $\C$.
+\end{enumerate}
+\begin{sol}
+\begin{enumerate}
+\item La fonction $f$ est dérivable au sens complexe en $z_0$ si le taux d'accroissement $\frac{f(z)-f(z_0)}{z-z_0}$ admet une limite (finie) lorsque $z$ tend vers $z_0$ dans $U$. 
+%Si cette limite existe, on l'appelle le nombre dérivé de $f$ en $z_0$ et on le note $f'(z_0)$. 
+La fonction $f$ est holomorphe sur $U$ si elle est dérivable au sens complexe en tout point de $U$.
+\item Notons $u$ et $v$ les parties réelle et imaginaire de $f$.  Alors, $f$ vérifie les conditions de Cauchy-Riemann en $z_0$ si $\partial_x u (z_0) = \partial_y v (z_0)$ et $\partial_y u (z_0) = -\partial_x v(z_0)$. Ceci est équivalent au fait que la matrice jacobienne de $f$ en $z_0$ soit une matrice $\C$-linéaire, c'est-à-dire de la forme $\begin{pmatrix}
+a& -b \\ b & a
+\end{pmatrix}$, où $a$ et $b$ sont réels.
+\end{enumerate}
+\end{sol}
+
+\end{exo}
+
+\begin{exo}
+On considère la fonction $f : \C\setminus \{z\in\C, \PR(z)\PI(z)=0\}\to \C, z\mapsto \dfrac{\overline{z}}{\PR(z)\PI(z)}$.
+\begin{enumerate}
+\item Écrire $f$ comme une fonction d'un ouvert de $\R^2$ dans $\R^2$ et calculer sa matrice jacobienne en tout point.
+\item Déterminer l'ensemble des points du plan où $f$ est $\C$-dérivable.
+\item Existe-t-il des ouverts du plan sur lesquels $f$ est holomorphe et si oui lesquels ?
+\end{enumerate}
+
+\begin{sol}
+\begin{enumerate}
+\item On obtient $f : \R^2 \setminus \{(x,y)\in\R^2\:|\:xy=0\} \to \R^2, \vecteur{x}{y} \mapsto \vecteur{1/y}{-1/x}$,  donc
+$ \operatorname{Jac}(f) = \begin{pmatrix}
+0 & -1/y^2 \\
+1/x^2 & 0
+\end{pmatrix}
+$.
+\item La fonction $f$ étant différentiable, elle est donc dérivable au sens complexe exactement là où les conditions de Cauchy-Riemann sont vérifiées, c'est-à-dire aux points $(x,y) \in U$ pour lesquels $\frac{1}{x^2} = \frac{1}{y^2}$, c'est-à-dire $x^2=y^2$, c'est-à-dire $x=y$ ou $x=-y$. Il s'agit de l'union de deux droites.
+\item Le lieu où $f$ est dérivable au sens complexe est d'intérieur vide. Il n'existe donc pas d'ouvert de $U$ sur lequel la fonction $f$ est holomorphe.
+
+\end{enumerate}
+\end{sol}
+\end{exo}
+
+%\begin{exo}
+%Déterminer une condition nécessaire et suffisante sur $\lambda\in\R$ pour que la fonction
+%\[ f_\lambda : \C\to \C,  x+iy \mapsto e^y(\cos x + i\lambda \sin x)\]
+%soit holomorphe sur $\C$.
+%\begin{sol}
+%\end{sol}
+%\end{exo}
+%
+%\begin{exo}
+%Soit $u : \C\to \R,  x+iy \mapsto e^{x^2-y^2}\sin(2xy)$. 
+%Déterminer toutes les fonctions $v : \C\to \R$ telles que $u+iv$ soit une fonction holomorphe sur $\C$. 
+%(Attention c'est bien un sinus et non pas un cosinus.)
+%\begin{sol}
+%\end{sol}
+%\end{exo}
+
+\begin{exo}
+Soit $u : \C\to \R,  x+iy \mapsto e^y\cos x$. 
+Déterminer toutes les fonctions $v : \C\to \R$ telles que $f:=u+iv$ soit une fonction holomorphe sur $\C$. 
+Écrire alors $f$ en fonction de la variable $z$ en donnant une expression simplifiée.
+\begin{sol}
+Soit $v : \C\to \R$ différentiable et soit $f=u+iv$. 
+Si $f$ est holomorphe sur $U$ , alors $f$ satisfait les conditions de Cauchy-Riemann en tout point.
+Ceci permet d'obtenir les deux dérivées partielles de $v$ grâce à celles de $u$, qui sont connues :
+\[ \partial_x v = -\partial_y u = -e^y\cos(x) \text{ et } \partial_y v = \partial_x u = -e^y\sin(x).\]
+Fixons $x\in \R$.  La fonction partielle $\R\to \R, y\mapsto v(x,y)$ a pour dérivée $y\mapsto \partial_y v = \partial_x u = -e^y\sin(x)$.  On en déduit que la fonction $\R\to\R, y\mapsto  \partial_y v + e^y\sin(x)$ a une dérivée nulle, donc est localement constante sur $\R$ qui est connexe, donc est constante sur $\R$. On note $h(x)$ cette constante, qui dépend du réel $x$ qui a été fixé en début de paragraphe. 
+On a donc $v(x,y) = -e^y\sin(x) +h(x)$.
+
+
+Faisons maintenant varier $x$. Comme $f$ est différentiable, la fonction $x\mapsto h(x)$ est dérivable, en la variable $x$ et en dérivant suivant $x$ on obtient $\partial_xv (x,y) = -e^y\cos(x)+h'(x)$.
+
+Or, d'après les relations de Cauchy-Riemann rappelées plus haut, on sait que $ \partial_x v = -\partial_y u = -e^y\cos(x)$, d'où l'on tire que $h$ a une dérivée nulle, donc est localement constante. Comme $\C$ est connexe, $h$ est constante, égale à un réel $K$.
+
+Finalement,  si $f=u+iv$ est holomorphe, on a prouvé qu'il existe $K\in \R$ tel que $v(x,y)=-e^y\sin(x)+K$.
+
+Réciproquement, si $K$ est un réel et $v(x,y):=-e^y\sin(x)+K$, alors la fonction $f:=u+iv$ est différentiable et vérifie les conditions de Cauchy-Riemann en tout point de $\C$, donc est holomorphe sur $\C$.
+
+Enfin, on voit que $f(z)=e^y(\cos x-i\sin x)+iK = e^ye^{-ix}+iK = e^{y-ix}+iK = e^{-iz}+iK$. 
+Si on ne voit pas directement que $y-ix=-iz$, on utilise la méthodologie de base :
+$y-ix = \dfrac{z-\bar z}{2i} - i \dfrac{z+\bar z}{2} 
+=\dfrac{z-\bar z}{2i} + \dfrac{z+\bar z}{2i}
+=  \dfrac{2z}{2i}= -iz$.
+\end{sol}
+\end{exo}
+
+\begin{exo}
+Rappeler la définition des notations de Wirtinger $\dfrac{\partial}{\partial z}$ et $\dfrac{\partial}{\partial \overline z}$, puis calculer $\dfrac{\partial}{\partial \overline z}\left(\dfrac{z+\bar z}{z\bar z}\right)$.
+\begin{sol}
+D'après le cours, les opérateurs $\dfrac{\partial}{\partial z}$ et $\dfrac{\partial}{\partial \overline z}$ sont définis par 
+$\dfrac{\partial}{\partial z} = \frac12 \left(\frac{\partial}{\partial x}-i\frac{\partial}{\partial y}\right)$ et$\dfrac{\partial}{\partial \overline z} = \frac12 \left(\frac{\partial}{\partial x}+i\frac{\partial}{\partial y}\right)$.
+
+On a  
+\[ 
+\dfrac{\partial}{\partial \overline z}\dfrac{z+\bar z}{z\bar z}
+=\dfrac{\partial}{\partial \overline z}\left(\dfrac{1}{\bar z}\right)+\dfrac{\partial}{\partial \overline z}\left(\dfrac{1}{z}\right)
+= -\dfrac{1}{\bar z^2}+0 
+=-\dfrac{1}{\bar z^2} \]
+Si on veut justifier le calcul de $\dfrac{\partial}{\partial \overline z}\left(\dfrac{1}{\bar z}\right)$, on peut par exemple utiliser la formule du produit appliquée à $1=\bar z \times \dfrac{1}{\bar z}$ ce qui donne $0 = \dfrac{\partial}{\partial \overline z} (1) = \dfrac{\partial}{\partial \overline z} (\overline z) \times \dfrac{1}{\bar z} + \bar z \times \dfrac{\partial}{\partial \overline z} \left(\dfrac{1}{\bar z}\right)$. On peut bien sûr tout écrire en fonction de $x$ et $y$ et revenir à la définition.
+\end{sol}
+\end{exo}
+
+
+%\begin{exo}
+%\begin{enumerate}
+%\item  Donner un exemple de fonction $f : \C\to \C$ qui est $\C$-dérivable en l'origine mais qui n'est pas holomorphe sur $\C$.
+%\item Donner un exemple de fonction $g : \C\to \C$ admettant des dérivées partielles en l'origine, dont les dérivées partielles en l'origine satisfont les conditions de Cauchy-Riemann, mais qui n'est pas dérivable au sens complexe en l'origine.
+%\end{enumerate}
+%\begin{sol}
+%\end{sol}
+%\end{exo}
+
+\Closesolutionfile{indications}
+\Closesolutionfile{solutions}
+
+
+%\newpage
+%\section{Indications pour les exercices}
+
+%\Readsolutionfile{indications}
+
+\newpage
+ %commenter pour ne pas afficher les solutions
+\section*{Correction de l'interrogation 1 (signaler d'éventuelles fautes!)}
+\Readsolutionfile{solutions}
+
+
+\end{document}
