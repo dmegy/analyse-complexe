@@ -5,12 +5,17 @@ Page du cours d'analyse complexe à Nancy
 Année : printemps 2024
 
 
-Interro mercredi prochain
+
+
+Interro 2 à la rentrée (mardi ou mercredi)
 --------------------------
 
-Programme : chapitre 1 : fonctions holomorphes, Cauchy-Riemann, notations de Wirtinger. Exos de questions de cours sur les définitions.
+Programme : tout le cours y compris la dernière séance. Dans le dossier "TD et interros", j'ai mis une [feuille de préparation](TD-complements-interros/interro2entrainement.pdf) à cette interrogation.
 
-Si les feuilles de TD ne suffisent pas pour pour remettre à niveau sur le calcul diff, révisez sur des bouquins d'exercices corrigés à la BU, ou sur exo7 ou bibmath :  [dérivées partielles](https://www.bibmath.net/ressources/index.php?action=affiche&quoi=bde/analyse/calculdiff/deriveepartielle&type=fexo).
+L'interrogation portera surtout sur ce qui a précédé la dernière séance, mais vous devez connaître la preuve de la formule intégrale pour les coefficients d'une série entière, et savoir calculer une intégrale curviligne très simple. La feuille de préparation contient un exercice corrigé là-dessus.
+
+Note : une [feuille de compléments](TD-complements-interros/complements-rep-integrale-coefs.pdf) a été ajoutée : elle contient des exercices sur les séries entières faisables uniquement à l'aide de la formule intégrale pour les $a_n$ démontrée en cours. Ces exercices ne sont pas nécessaires pour l'interrogation, mais ce sont de bons exercices.
+
 
 Évaluations
 ----------
