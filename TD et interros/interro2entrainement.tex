@@ -1,0 +1,98 @@
+\input{preambule}
+%\usepackage{tasks}
+%%%%%%%%%%%%%%%%%%%
+
+
+%\pagestyle{empty}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\Opensolutionfile{solutions}[\jobname_sol]
+
+
+
+\newpage
+\noindent \textbf{\textsf{Université de Lorraine \hfill Analyse complexe}}
+\smallskip
+\noindent\rule{\textwidth}{2pt}
+\begin{center}
+{\huge \textbf{Entraînement pour interro 2}}
+\end{center}
+\noindent\rule{\textwidth}{2pt}
+
+Voici quelques exemples d'exercices pour s'entraîner à la prochaine interrogation ainsi qu'au partiel. Vous pouvez bien sûr retravailler les TD, travailler avec des sites comme bibmath ou exo7, des livres (Tauvel ou autres), et bien sûr regarder les annales des années précédentes.
+
+\begin{exo}[Définitions de cours]
+Il y aura plusieurs définition de cours. Soyez attentifs aux détails.
+\end{exo}
+
+\begin{exo}[Preuves de cours]
+Il y aura cette fois des démonstrations de cours. Pour l'instant il y a (très) peu de cours, profitez-en pour l'apprendre solidement et pour gagner des points là-dessus. Exemples : zéros isolés, prolongement analytique, ou encore démontrer que si $f(z)$ est la somme d'une série entière de rayon  $>r$, alors $\forall n\in\N,  a_n = \dfrac{1}{2\pi r^n}\int_0^{2\pi} f\left(re^{it}\right)e^{-int}dt$.
+\end{exo}
+
+\begin{exo}
+Appliquer $\del$ et $\delbarre$ à $f : \C\to\C, z\mapsto \dfrac{e^{\PR(z)}}{1+|z|^2}$, en utilisant les règles de calcul avec les variables $z$ et $\z$.
+\end{exo}
+
+\begin{exo}
+Soit $U\subset \C$ un ouvert connexe et $f : U\to \C$ une fonction holomorphe.
+On suppose que l'image de $f$ est incluse dans l'hyperbole $\{(x,y)\in \R^2\:|\: xy=1\}$.
+Montrer que $f$ est constante.
+\end{exo}
+
+\begin{exo}[Correction fournie page suivante]
+Soit  $f : \C\to \C, z\mapsto \overline{z}$ et $\gamma : [0,1] \to \C, t\mapsto i+(2+i)t$ .
+Calculer $\int_{\gamma} f(z)dz$.
+\end{exo}
+
+
+\begin{exo}
+Soit $u : \C\to \R,  x+iy \mapsto e^{x^2-y^2}\sin(2xy)$. 
+Déterminer toutes les fonctions $v : \C\to \R$ telles que $u+iv$ soit une fonction holomorphe sur $\C$. 
+(Attention c'est bien un sinus et non pas un cosinus.)
+\begin{sol}
+\end{sol}
+\end{exo}
+
+
+\begin{exo}
+\begin{enumerate}
+\item  Donner un exemple de fonction $f : \C\to \C$ qui est $\C$-dérivable en l'origine mais qui n'est pas holomorphe sur $\C$.
+\item Donner un exemple de fonction $g : \C\to \C$ admettant des dérivées partielles en l'origine, dont les dérivées partielles en l'origine satisfont les conditions de Cauchy-Riemann, mais qui n'est pas dérivable au sens complexe en l'origine.
+\end{enumerate}
+\begin{sol}
+\end{sol}
+\end{exo}
+
+\newpage
+
+
+\paragraph{Correction (deux manières) de l'exercice d'intégration curviligne}
+On suit la méthode  du cours : on calcule $\gamma'(t) = 2+i$ (dans ce cas, le chemin est paramétré à vitesse constante, le vecteur dérivé est donc constant). Ensuite on applique la formule du cours :
+\begin{align*}
+\int_{\gamma} f(z)dz 
+&= \int_0^1 f(\gamma(t))\gamma'(t)dt \\
+&= \int_0^1 \overline{(i+(2+i)t)}(2+i)dt \\
+&= \int_0^1 (2t-i(t+1))(2+i)dt \\
+&= \int_0^1 (5t+1 -2i))dt \\
+&= \left[5t^2/2+t\right]_0^1 -2 i\left[ t\right]_0^1 \\
+&= \frac72-2i
+\end{align*}
+
+
+Deuxième rédaction : on peut aussi repasser en coordonnées réelles : 
+\begin{align*}
+\int_{\gamma} f(z)dz 
+&= \int_{\gamma} (x-iy)(dx+idy) \\
+\end{align*}
+En notant $\gamma(t) = \vecteur{\gamma_1(t)}{\gamma_2(t)} = \vecteur{2t}{1+t}$, on a $\gamma'(t) = \vecteur{\gamma_1'(t)}{\gamma_2'(t)} = \vecteur{2}{1}$,.
+On remplace $x$ par $\gamma_1(t)=2t$ et $y$ par $\gamma_2(t)=1+t$, puis $dx$ par $\gamma_1'(t)dt=2dt$ et $dy$ par $\gamma_2'(t)dt=dt$,  et on retrouve bien $\int_0^1 (2t-i(t+1))(2+i)dt$ comme au calcul précédent.
+
+Il est très recommandé d'utiliser directement la forme $\int_0^1 f(\gamma(t))\gamma'(t)dt$ et de ne pas repasser en coordonnées réelles à chaque fois.
+\end{document}

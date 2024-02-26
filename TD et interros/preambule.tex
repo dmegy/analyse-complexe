@@ -1,0 +1,145 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2cm]{geometry}% gestion des marges etc
+\usepackage[utf8]{inputenc} % caractères utf8 dans le fichier source
+\usepackage[T1]{fontenc} % encodage en sortie
+\usepackage[francais]{babel} % paramètres de langue : guillemets etc
+\usepackage{amssymb,mathtools,amsthm}
+\usepackage{stmaryrd,mathrsfs} % polices et symboles supplémentaires
+\usepackage{mdframed,fancybox,graphicx}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{preuve}{rgb}{0,0.2,0.5}
+
+\usepackage{xypic,multicol,comment,variations,enumerate,enumitem,datetime,tasks}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=[rgb]{0.7,0.2,0.2},          % color of internal links
+    citecolor=[rgb]{0.7,0.2,0.2},        % color of links to bibliography
+    filecolor=[rgb]{0.7,0.2,0.2},      % color of file links
+    urlcolor=[rgb]{0.7,0.2,0.2}           % color of external links
+}
+
+\usepackage{pgf,pgfmath,tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary[patterns]
+\tikzset{every picture/.style={execute at begin picture={
+   \shorthandoff{:;!?};}
+}}
+
+
+
+
+% - - - - - - -
+% Spécifique à ce document :
+%\usepackage{palatino, euler} % police : Palatino, et Euler pour les maths
+\usepackage{fourier} % police de caractères : Adobe Utopia + Fourier math
+\everymath{\displaystyle} % plus lisible mais casse l'homogénéité de la mise en page, tant pis la lisiblité passe en premier
+
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\P}{\mathbb{P}}
+\renewcommand{\S}{\mathbb{S}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\U}{\mathbb{U}}
+
+\DeclareMathOperator{\pgcd}{pgcd}
+\DeclareMathOperator{\ppcm}{ppcm}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Bij}{Bij}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\Card}{Card} % cardinal
+\renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\Re}{\operatorname{Ré}}
+\renewcommand{\mid}{\;\ifnum\currentgrouptype=16 \middle\fi|\;}
+\newcommand\eqdef{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily déf}}}{=}}}
+% égal par définition
+
+
+\newcommand{\z}{\overline{z}}
+\DeclareMathOperator{\PR}{\text{Ré}}
+\DeclareMathOperator{\PI}{\text{Im}}
+\DeclareMathOperator{\Log}{\text{Log}}
+\newcommand{\vecteur}[2]{\begin{pmatrix}#1 \\ #2 \end{pmatrix}}
+\DeclareMathOperator{\del}{\frac{\partial}{\partial z}}
+\DeclareMathOperator{\delbarre}{\frac{\partial}{\partial \z}}
+
+
+
+\newcommand{\ensemble}[2]{\left \{ #1  
+    \ifx&#2&%
+       %
+    \else%
+       \, \middle | \, #2%
+    \fi%
+\right \}}
+
+\newcommand{\modulo}[1]{\:\left(\operatorname{mod}#1\right)}
+
+% Environnements : 
+
+\theoremstyle{definition}
+\newtheorem{theoreme}{Th\'eor\`eme}[section]
+\newtheorem{proposition}[theoreme]{Proposition}
+\newtheorem{corollaire}[theoreme]{Corollaire}
+\newtheorem{lemme}[theoreme]{Lemme}
+\renewenvironment{proof}{\color{preuve}\emph{Démonstration.~}}{\qed}
+\newenvironment{red}{\begin{quote}\color{preuve}\emph{Exemple de rédaction:}\\}{\end{quote}}
+
+\newtheorem{propdef}[theoreme]{Proposition et Définition}
+\newtheorem{axiomedef}[theoreme]{Axiome et Définition}
+\newtheorem{definition}[theoreme]{D\'efinition}
+\newtheorem{vocabulaire}[theoreme]{Vocabulaire}
+\newtheorem{exercice}[theoreme]{Exercice}
+
+\newtheorem{exemple}[theoreme]{Exemple}
+\newtheorem{exemples}[theoreme]{Exemples}
+\newtheorem{attention}[theoreme]{Mise en garde}
+
+
+\newtheorem{ex}{Exercice}
+
+\theoremstyle{plain}
+\newtheorem{remarque}[theoreme]{Remarque}
+\newtheorem{methode}[theoreme]{Méthode}
+
+
+
+
+%%%%%%%%%%
+% MACROS POUR REMPLACER ANSWERS
+
+%\newenvironment{exo}{\begin{ex}}{\end{ex}}
+%\excludecomment{hint} % on n'affiche pas les hints
+%\excludecomment{sol} % on n'affiche pas les solutions
+
+
+
+
+% - - - - - - - - - - - - - -
+% PARAMETRAGE DU PACKAGE ANSWERS 
+% POUR LES INDICATIONS ET CORRECTIONS
+% - - - - - - - - - - - - - - 
+
+\usepackage{answers}
+\Newassociation{sol}{Soln}{solutions}
+% ira dans le fichier d'identifiant 'solutions' et nom de fichier \jobname_sol.tex
+% et écrira les solutions dans un environnement 'Soln'
+
+\newenvironment{exo}{\begin{ex}\label{enonce.\theex} }{\end{ex} }
+
+\renewenvironment{Soln}[1]{\noindent{\bf Correction de l'exercice \ref{enonce.#1}.} }
+% - - - - - - - - - - - - - - 
+% FIN  PARAMETRAGE ANSWERS
+% - - - - - - - - - - - - - - 
+
