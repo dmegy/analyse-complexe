@@ -10,11 +10,11 @@ Année : printemps 2024
 Interro 2 à la rentrée (mardi ou mercredi)
 --------------------------
 
-Programme : tout le cours y compris la dernière séance. Dans le dossier "TD et interros", j'ai mis une [feuille de préparation](TD-complements-interros/interro2entrainement.pdf) à cette interrogation.
+Programme : tout le cours y compris la dernière séance. Dans le dossier "TD et interros", j'ai mis une [feuille de préparation](/TD-complements-interros/interro2blanche.pdf) à cette interrogation.
 
 L'interrogation portera surtout sur ce qui a précédé la dernière séance, mais vous devez connaître la preuve de la formule intégrale pour les coefficients d'une série entière, et savoir calculer une intégrale curviligne très simple. La feuille de préparation contient un exercice corrigé là-dessus.
 
-Note : une [feuille de compléments](TD-complements-interros/complements-rep-integrale-coefs.pdf) a été ajoutée : elle contient des exercices sur les séries entières faisables uniquement à l'aide de la formule intégrale pour les $a_n$ démontrée en cours. Ces exercices ne sont pas nécessaires pour l'interrogation, mais ce sont de bons exercices.
+Note : une [feuille de compléments](/TD-complements-interros/complements-rep-integrale-coefs.pdf) a été ajoutée : elle contient des exercices sur les séries entières faisables uniquement à l'aide de la formule intégrale pour les $a_n$ démontrée en cours. Ces exercices ne sont pas nécessaires pour l'interrogation, mais ce sont de bons exercices.
 
 
 Évaluations
@@ -27,7 +27,7 @@ Note : une [feuille de compléments](TD-complements-interros/complements-rep-int
 Feuilles de TD
 ---
 
-Les feuilles de TD sont dans le dossier [TD](/TD/)
+Les feuilles de TD sont dans le dossier [TD](/TD-complements-interros/)
 
 
 Bibliographie pour le cours
