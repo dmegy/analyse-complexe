@@ -1,0 +1,390 @@
+\documentclass[11pt,a4paper]{book}
+
+\usepackage[margin=2cm]{geometry}% gestion des marges etc
+\usepackage[utf8]{inputenc} % caractères utf8 dans le fichier source
+\usepackage[T1]{fontenc} % encodage en sortie
+\usepackage[francais]{babel} % paramètres de langue : guillemets etc
+\usepackage{amssymb,mathtools,amsthm}
+\usepackage{stmaryrd,mathrsfs} % polices et symboles supplémentaires
+\usepackage{mdframed,fancybox,graphicx}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{preuve}{rgb}{0,0.2,0.5}
+
+\usepackage{xypic,multicol,comment,variations,enumerate,enumitem,datetime,tasks}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=[rgb]{0.7,0.2,0.2},          % color of internal links
+    citecolor=[rgb]{0.7,0.2,0.2},        % color of links to bibliography
+    filecolor=[rgb]{0.7,0.2,0.2},      % color of file links
+    urlcolor=[rgb]{0.7,0.2,0.2}           % color of external links
+}
+
+\usepackage{pgf,pgfmath,tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary[patterns]
+\tikzset{every picture/.style={execute at begin picture={
+   \shorthandoff{:;!?};}
+}}
+
+
+
+
+% - - - - - - -
+% Spécifique à ce document :
+%\usepackage{palatino, euler} % police : Palatino, et Euler pour les maths
+\usepackage{fourier} % police de caractères : Adobe Utopia + Fourier math
+\everymath{\displaystyle} % plus lisible mais casse l'homogénéité de la mise en page, tant pis la lisiblité passe en premier
+
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\P}{\mathbb{P}}
+\renewcommand{\S}{\mathbb{S}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\U}{\mathbb{U}}
+
+
+\DeclareMathOperator{\argsh}{argsh}
+\DeclareMathOperator{\argch}{argch}
+
+\DeclareMathOperator{\pgcd}{pgcd}
+\DeclareMathOperator{\ppcm}{ppcm}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Bij}{Bij}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\Card}{Card} % cardinal
+\renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\Re}{\operatorname{Ré}}
+\newcommand{\z}{\overline{z}}
+\DeclareMathOperator{\PR}{\text{Ré}}
+\DeclareMathOperator{\PI}{\text{Im}}
+\DeclareMathOperator{\Log}{\text{Log}}
+\renewcommand{\mid}{\;\ifnum\currentgrouptype=16 \middle\fi|\;}
+\newcommand\eqdef{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily déf}}}{=}}}
+% égal par définition
+
+\newcommand{\ensemble}[2]{\left \{ #1  
+    \ifx&#2&%
+       %
+    \else%
+       \, \middle | \, #2%
+    \fi%
+\right \}}
+
+\newcommand{\modulo}[1]{\:\left(\operatorname{mod}#1\right)}
+
+% Environnements : 
+
+\theoremstyle{definition}
+\newtheorem{theoreme}{Th\'eor\`eme}[section]
+\newtheorem{proposition}[theoreme]{Proposition}
+\newtheorem{corollaire}[theoreme]{Corollaire}
+\newtheorem{lemme}[theoreme]{Lemme}
+\renewenvironment{proof}{\color{preuve}\emph{Démonstration.~}}{\qed}
+\newenvironment{red}{\begin{quote}\color{preuve}\emph{Exemple de rédaction:}\\}{\end{quote}}
+
+\newtheorem{propdef}[theoreme]{Proposition et Définition}
+\newtheorem{axiomedef}[theoreme]{Axiome et Définition}
+\newtheorem{definition}[theoreme]{D\'efinition}
+\newtheorem{vocabulaire}[theoreme]{Vocabulaire}
+\newtheorem{exercice}[theoreme]{Exercice}
+
+\newtheorem{exemple}[theoreme]{Exemple}
+\newtheorem{exemples}[theoreme]{Exemples}
+\newtheorem{attention}[theoreme]{Mise en garde}
+
+
+\newtheorem{ex}{Exercice}
+
+\theoremstyle{plain}
+\newtheorem{remarque}[theoreme]{Remarque}
+\newtheorem{methode}[theoreme]{Méthode}
+
+
+
+
+%%%%%%%%%%
+% MACROS POUR REMPLACER ANSWERS
+
+%\newenvironment{exo}{\begin{ex}}{\end{ex}}
+%\excludecomment{hint} % on n'affiche pas les hints
+%\excludecomment{sol} % on n'affiche pas les solutions
+
+
+
+
+% - - - - - - - - - - - - - -
+% PARAMETRAGE DU PACKAGE ANSWERS 
+% POUR LES INDICATIONS ET CORRECTIONS
+% - - - - - - - - - - - - - - 
+
+\usepackage{answers}
+\Newassociation{sol}{Soln}{solutions}
+% ira dans le fichier d'identifiant 'solutions'
+% et écrira les solutions dans un environnement 'Soln'
+\newenvironment{exo}{\begin{ex}\label{enonce.\theex} }{\end{ex} }
+
+\renewenvironment{Soln}[1]{\noindent{\bf Correction de l'exercice \ref{enonce.#1}.} }
+% - - - - - - - - - - - - - - 
+% FIN  PARAMETRAGE ANSWERS
+% - - - - - - - - - - - - - - 
+
+
+
+\title{Analyse complexe 2023-2024\\ trame de cours}
+\author{Damien Mégy}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{Holomorphie}
+
+\chapter{Fonctions analytiques}
+
+\begin{theoreme}[Zéros isolés]
+
+\end{theoreme}
+
+\begin{theoreme}[Prolongement analytique]
+
+\end{theoreme}
+
+\chapter{Intégration curviligne}
+
+\section{Chemins}
+
+\section{Formes différentielles}
+
+Cas particulier : formes holomorphes.
+
+\section{Intégrales curvilignes}
+
+Définition pour une forme.
+
+Invariance par reparamétrage, classe d'équivalence, arcs orientés.
+
+Majoration par la norme infini et la longueur d'arc.
+
+\section{Intégration sur le bord d'un compact régulier}
+
+Rappel : bord d'une partie.
+
+\begin{definition}
+Un dit qu'un compact $K \subset \C$ est à bords $\mathcal C^1$ par morceaux si ...
+\end{definition}
+
+Orientation canonique du bord bien définie.
+
+Exemples à faire soi-même : nombre fini de trous. L'angle à un point anguleux ne peut être nul.  
+
+Remarque : il n'y a qu'un nombre fini de points anguleux sur le bord.
+
+\begin{definition}
+Intégration d'une $1$-forme différentielle de classe $\mathcal C^1$ sur le bord d'un compact à bord $C^1$ par morceaux.
+\end{definition}
+
+\section{Primitives}
+
+Attention aux différentes significations du mot \og primitive\fg. 
+
+\begin{definition}[Primitive (holomorphe)]
+On dit que $f : U\subset \C\to \C$ admet une primitive (holomorphe,) ou simplement une primitive, si ...
+\end{definition}
+
+
+
+Attention, certaines fonctions holomorphes n'ont pas de primitive, contrairement à ce qui se passe en analyse réelle où toute fonction continue admet une primitive. 
+Par exemple la fonction $f:\C^*\to \C, z\mapsto 1/z$ n'a pas de primitive sur $\C^*$. 
+
+Le fait d'avoir une primitive dépend de façon cruciale de l'ouvert de définition. Par exemple la fonction $g : \C\setminus \R_- \to \C, z\mapsto 1/z$ possède une primitive, à savoir la détermination principale du log, notée $\operatorname{Log}$ dans ce cours (ou $\operatorname{Log}_0$, aussi).
+
+\begin{proposition}
+Si $f$ admet une primitive holomorphe, l'intégrale curviligne $\int_\gamma f(z)dz$ ne dépend que des extrémités du chemin.
+\end{proposition}
+
+Dans ce qui suit, le mot \og primitive\fg{} a encore un nouveau sens, il s'applique cette fois à des formes différentielles et plus à des fonctions.
+
+Vocabulaire : si $\omega$ est une $1$-forme exacte,  c'est-à-dire qu'il existe $f$ telle que $\omega=df$, alors on dit aussi qu'elle admet une primitive. (La primitive est la fonction $f$.)
+
+Attention dans ce nouveau contexte, la primitive de la forme différentielle n'est pas forcément  une fonction holomorphe, c'est juste une fonction $C^1$.
+
+\begin{proposition}
+Soit $\omega$ une $1$-forme différentielle.
+Si $\omega$ admet une primitive, l'intégrale curvligne  $\int_\gamma \omega$ ne dépend que des extrémités du chemin $\gamma$.
+\end{proposition}
+
+\begin{remarque}
+\end{remarque}
+
+\subsection{Convergence}
+
+Laissé en exercice : 
+
+intégration sur un chemin fixé d'une suite de fonctions qui CVU (ou CVUTC).
+
+Cas plus général : que faire si on n'a pas CVUTC ? dans certaines conditions, écrire explicitement le paramétrage et convergence dominée.
+
+intégration d'une forme donnée sur une suite de chemins qui converge en topologie $C^1$ vers un chemin $\mathcal C^1$ par morceaux.
+
+
+
+
+\chapter{Théorème et formule de Cauchy}
+
+\section{Théorème intégrale de Cauchy}
+
+énoncé. Historique.
+
+Plan de la preuve : 
+\begin{enumerate}
+\item Lemme de Goursat
+\item Triangulation (et calcul des intégrales curvilignes par sommes de Riemann / approximation d'un chemin par un chemin polygonal). Encapsulation du lemme technique ?
+\item Fin de la preuve
+\end{enumerate}
+
+%Évocation des autres versions trouvable dans les livres, avertissements.
+
+Résultats annexes sur les primitives
+
+
+\begin{theoreme}
+Soit $\Omega$ un ouvert et $f \in C^0(\Omega)$.
+Si $f(z)dz$ a une integrale nulle sur tout bord de triangle de $\Omega$, alors $f$ est holomorphe !
+\end{theoreme}
+
+Preuve : on prend un point, un disque autour et on construit une ptimitive locale holomorphe sur ce disque, qui est étoilé en $z_0$.
+
+Attention ne pas dériver en $z_0$ mais en $z$ dans le disque.
+
+Remarque  : version un peu plus générale : si f est continue et d'intégrale curviligne nule sur tout triangle sur un ouvert étoilé, elle a une primitive sur cet ouvert étoilé et doc est holomorphe sur cet ouverte étoilé.
+
+A rapprocher des énoncés : si sur un ouvert connexe l'intégrale ets nulle sur tout lacet, on a une primitive.
+
+
+
+\section{Formule de Cauchy}
+
+Formule de Cauchy en évidant u npetit disque dans le compact.
+
+Culture : formule de Pompeiu si $f$ n'est pas holomorphe.
+
+Formules avec des cercles.
+
+Formule de la moyenne.
+
+Formules d'ordre supérieur avec le bord d'un compact ou avec des cercles.
+
+Inégalités de Cauchy
+
+Analycité complexe tout de suite, sans faire le caractère $C^\infty$.
+
+Louiville, et version polynomiale.
+
+
+
+
+\section{Discussion sur d'autres stratégies de preuve}
+
+
+
+
+
+\chapter{Singularités, fonctions méromorphes et résidus}
+
+
+
+\end{document}
+
+
+Progression Damian : 
+Goursat : holomorphe implique intégrale nulle sur tout triangle.
+Existence de primitives pour les fonctions holomorphes sur un ouvert étoilé.
+Théorème de Cauchy sur un ouvert étoilé.
+Formule de Cauchy sur un disque, en coupant en deux.
+Formules de Cauchy d'ordre un, puis $n$ (admis)
+Morera
+Analycité des fonctions holomorphes, et résultat sur le rayon de convergence
+Variations sur Cauchy : formule de la moyenne, inégalités de Cauchy, Liouville, amélioration polynomiale, théorème fondamental de l'algèbre. (avec... preuve analytique!), théorème de l'image ouverte, principe du maximum
+
+à pousser dans une autre chapitre : convergence de suites de fonctions holomorphes, intégrales à paramètres.
+
+Attention il y a l'extension de Riemann en exo ?? ainsi que le principe de réflexion de Schwarz, et le lemme de Schwarz etc.
+
+Damian a un chapitre 5 Cauchy Généralisé où il met ensuite:
+homotopies, simple connexité, , théorème de Cauchy pour un lacet dans un simplement connexe, Cauchy homotopique, conséquence $\C^*$ n'est pas simplement connexe. ENsuite : indice, formules de Cauchy homotopiques, qui commencent vraiment à ressembler à des formules de résidus. ENsuite : homologie : chaînes, cycles etc. Formule de Cauchy homologique. 
+Logarithmes, logarithme d'une fonction holomorphe non nulle sur un ouvert simplement connexe..
+
+Tout ça sans encore avoir fait les singularités, les séries de Laurent etc etc
+
+
+
+
+
+\section{Progression Audin}
+
+
+\section{Progression Demailly}
+
+(Note historique : Théorème de Cauchy : énoncé par Cauchy en 1825 sans preuve rigoureuse, démontré par Riemann en 1851 dans le cas $\mathcal C^1$, puis démontré par Goursat en ...1900 ! )
+
+Lemme de Goursat
+Théorème de Goursat = théorème de Cauchy sur le bord d'un compact régulier
+Formule de Cauchy pour le bord dun compact inclus dans U.
+Preuve en triangulant.
+
+
+Plus rapide que la progression de Damian, on a presque la version homologique, ou du moins la partie utile de la version homologique.
+
+Ensuite : il se paye de l luxe de faire la formule de Pompeiu, puis : conséquences : infiniment dérivable au sens complexe (en calculant les dérivées partielles en z et \z.
+Morera
+Inégalités de Cauchy et fonctions à croissance polynomiale, Liouville, d'Alembert-Gauss
+Analycité réelle, et holomorphe implique C-analytique.
+Corollaire important sur le rayon de convergence ! (3.3, p.41)
+Conséquences : zéros des fonctions holomorphes 
+zéros isolés (maison a déj) montré ça), ordre d'un zéro, prolongement analytique 'déjà pour fonctions analytiques)
+Prolongement à la frontière !
+Inversion locale holomorphe : une preuve qui utilise l'inversion locale C^\infty, et l'autre, la méthode des séries majorantes (ne pas faire)
+application ouverte
+" inversion globale"  : une fonction holomorphe injective est un biholmorphisme sur son image. Attention à ne pas confondre avec l'inversion globale en calcul diff
+Principe du max, lemme de SChwarz, automorphismes du disque.
+Intégrales dépendant d'un paramètre, fonction Gamma,
+Topologie des espaces de fonctions holomorphes, produits infinis, familles normales, Montel.
+Seulement ensuite, points singuliers, fonctions méromorphes, résidus.
+ENcore ensuite : topo alg : homotopies, lacets, homologie etc. Indice, Rouché, Runge.
+APrès ça part sur les sous-harmoniques
+
+
+\section{Progression Carlier}
+Indice, definition et valeur entière, nulle sur la composante non bornée du complémentaire. Illustration, nombre de tours, non démontré.
+Primitives complexes : définition, admettre une primitive localement, globalement.
+Prop : existence d'une primitive \iff intégrale nulle sur tout lacet
+Prop : U convexe (ou étoilé) : f admet une primitive ssi pour tout triangle inclus dans U, l'intégrale sur le triangle est nulle.
+Lemme de Goursait, lemme de Goursat amélioré
+Cor : f holomorphe (ou sauf en un pt où elle est continue), alors $f$ admet une primitive locale. SI l'ouvert est convexe (remplacer par étoilé), alors prmitive globale.
+Th : holomorphe sur un étoilé => primitive globale
+Formule de Cauchy, pour un lacet à l'intérieur d'un disque sur lequel la fonction est holomorphe, attention, et avec l'indice qui sort. Preuve avec le Goursat amélioré qui donne une primitive locale, donc la nullité d'une intégrale, mais il faut comprendre l'indice et la formule reste relativement locale. Note : on pourrait remplacer le disque par un ouvert étoilé. Ca donne Cauchy avec indice, pour $f$ holomorphe sur un ouvert étoilé. Au fond c'est pareil que Damian. Un peu plus général car indice, mais pas d'interprétation prouvée de l'indice.
+Note : en fait il a le théorème de Cauchy sur un ouvert étoilé, mais il ne l'énonce même pas ? pas vu.
+Forme simplifiée pour un cercle
+conséquence : $\C$-analycité.
+Attention son coef a_n dépend de $r$, il ne justifie/remarque pas que ça ne dépend pas.
+Corollaire : inégalités de Cauchy
+
+
+
+
+
+
+
+
+

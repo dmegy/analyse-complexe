@@ -6,9 +6,37 @@ Année : printemps 2024
 
 
 
+Partiel, mercredi 10 mars 9h-11h (convocation à 8h30 pour pointage)
+---
 
-Interro 2 à la rentrée (mardi ou mercredi)
---------------------------
+Le partiel porte sur tout ce qu'on a fait jusqu'à présent, en cours et TD.
+
+Tout le cours est exigible (énoncés et preuves).
+
+Exception : les démonstrations vues dans le CM du 13 mars ne sont pas exigibles. Mais les *énoncés* vus le 13 mars sont à savoir.
+
+La deuxième interro n'a pas été très réussie. Les points sur le cours ne sont pas pris, or c'est la partie la plus déterministe, il faut prendre ces points. Il y aura des questins de cours (énoncés, et démonstrations).
+
+Il y aura d'autres interros et nous avons prévu de faire sauter l'interro avec la note la plus basse, donc une éventuellemen mauvaise note à l'interro 2 sera rattrapable, pas de panique.
+
+Conseils vu l'interro : 
+- entraînez-vous au calcul sur les opérateurs de Wirtinger, n'inventez pas de formules, essayez de calculer en restant avec $z$ et $\bar z$ sans repasser systématiquement à $x$ et $y$. Si vraiment vous avez un doute, repassez en coordonnées artésiennes, mais le but est d'apprendre à calculer avec les outils efficaces.
+- justifiez vos raisonnements, éventuellement rapidement si c'est facile et déjà fait auparavant. N'intervertissez pas de somme et d'intégrale sans justifier, par exemple.
+- vous devez pouvoir donner des exemples simples de fonctions holomorphes et non holomorphes, en justifiant.
+
+Suggestion de révisions :
+- vous devez en priorité être au point sur les interros 1 et 2, faites ce qu'il faut pour cela : relire le cours et TD, si besoin lire des corrections d'exercices à la BU dans n'importe quel livre d'analyse complexe.
+- Ensuite, il faut travailler le cours, la feuille de compléments sur la représentation intégrale des coefficients (dont je vous ai dit le 29 février qu'elle serait au programme : elle ne nécessite que le cours de L2 et la formule intégrale), et le TD5.
+
+Les annales des années précédentes peuvent aider mais les programmes n'étaient pas forcément les mêmes, le cours n'avait pas forcément couvert les mêmes chapitres etc.
+
+
+J'ai eu pas mal de questions sur la décomposition en éléments simples dans mon groupe. Si vous voulez réviser, prenez des exos corrigés de L1 sur les chapitres "primitives", par exemple https://www.bibmath.net/ressources/index.php?action=affiche&quoi=bde/analyse/integration/integration-calcul&type=fexo. Ne passez pas des heures là-dessus, mais jusqu'aux pôles doubles ça doit être maîtrisé. Attention à ne pas oublier la partie entière, s'il y en a une. Si vous avez de grosses lacunes là-dessus, pas d'inquiétude, ça se rattrape très bien. Il n'y a en effet quasiment pas de cours : http://exo7.emath.fr/cours/livre-algebre-1.pdf,  chapitre "Polynômes > Fractions rationnelles". 
+
+
+
+Interro 2
+---------
 
 Programme : tout le cours y compris la dernière séance. Dans le dossier "TD et interros", j'ai mis une [feuille de préparation](/TD-complements-interros/interro2blanche.pdf) à cette interrogation.
 
