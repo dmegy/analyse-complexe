@@ -152,43 +152,76 @@
 
 \chapter{Fonctions analytiques}
 
-\begin{theoreme}[Zéros isolés]
+\begin{definition}
+Soit $U\subseteq \C$ un ouvert et $f \in \C^U$.
+On dit que $f$ est analytique sur $U$ si elle est développable en série entière au voisinage de tout point de $U$.
+\end{definition}
 
+Proposition : une série entière de rayon $R$ est analytique sur $\D(0,R)$. Preuve : DSE en $z_0\neq 0$ avec le binôme de Newton.
+
+Définition : un zéro d'une fonction $f$ est un élément $\alpha$ tq $f(\alpha)=0$.
+
+
+Une série entière identiquement nulle sur un voisinage de l'origine est identiquement nulle sur son disque ouvert de convergence.
+Ceci est une conséquence du fait que les coefficients $a_n$ se récupèrent avec les dérivées successives en l'origine. 
+
+Le théorème des zéros isolés est une version un peu plus puissante de ce résultat.
+
+\begin{theoreme}[Zéros isolés pour les séries entières]
+Soit $\sum a_nz^n$ une série entière de rayon strictement positif et $f$ sa somme.
+S'il existe une suite $(z_n)_{n\in \N} \in (\C^*)^\N$ convergeant vers zéro et telle que $\forall n\in\N, f(z_n)=0$, alors tous les $a_n$ sont nuls.
 \end{theoreme}
 
-\begin{theoreme}[Prolongement analytique]
 
+
+Définitions : point accumulation d'une partie, point isolé. Partie discrète.
+
+Reformulation du théorème des zéros isolés : si $0$ est un zéro non isolé de $f$, alors $f$ est identiquement nulle.
+
+\begin{theoreme}
+Soit $U\subseteq \C$ un ouvert connexe,  $f:U\to\C$ analytique et $Z:=f^{-1}(\{0\})$ l'ensemble des zéros de $f$.
+Si $Z$ admet un point d'accumulation dans $U$, alors $f$ est constante.
 \end{theoreme}
+
+Preuve 1 : on utilise l'ensemble $A$ des points au voisinage desquels $f$ est identiquement nulle.
+
+Preuve 2 : on utilise l'ensemble $B$ des points où toutes les dérivées de $f$ s'annulent.
 
 \chapter{Intégration curviligne}
 
 \section{Chemins}
 
+Définitions : chemins, lacets, chemin opposé, concaténation de chemins. Chemins $\mathcal C^1$, $\mathcal C^1$ par morceaux.
+
 \section{Formes différentielles}
+
+Formes différentielles réelles et complexes sur un ouvert $U$ de $\C$.
 
 Cas particulier : formes holomorphes.
 
+Opérateur $d : \mathcal C^{\infty}(U,\C) \to \Omega^1(U,\C)$. Image et noyau de cet opérateur. Formes exactes.
+
 \section{Intégrales curvilignes}
 
-Définition pour une forme.
+Définition pour une forme différentielle.
 
 Invariance par reparamétrage, classe d'équivalence, arcs orientés.
 
-Majoration par la norme infini et la longueur d'arc.
+Majoration du module par la norme infinie et la longueur d'arc.
 
 \section{Intégration sur le bord d'un compact régulier}
 
 Rappel : bord d'une partie.
 
 \begin{definition}
-Un dit qu'un compact $K \subset \C$ est à bords $\mathcal C^1$ par morceaux si ...
+Compact à bord $\mathcal C^1$ par morceaux.
 \end{definition}
 
 Orientation canonique du bord bien définie.
 
 Exemples à faire soi-même : nombre fini de trous. L'angle à un point anguleux ne peut être nul.  
 
-Remarque : il n'y a qu'un nombre fini de points anguleux sur le bord.
+Remarque : il n'y a qu'un nombre fini de points anguleux sur le bord. Le bord est paramétrable par un nombre fini d'arcs $\mathcal C^1$.
 
 \begin{definition}
 Intégration d'une $1$-forme différentielle de classe $\mathcal C^1$ sur le bord d'un compact à bord $C^1$ par morceaux.
@@ -198,16 +231,16 @@ Intégration d'une $1$-forme différentielle de classe $\mathcal C^1$ sur le bor
 
 Attention aux différentes significations du mot \og primitive\fg. 
 
-\begin{definition}[Primitive (holomorphe)]
-On dit que $f : U\subset \C\to \C$ admet une primitive (holomorphe,) ou simplement une primitive, si ...
+\begin{definition}[Primitive (holomorphe, d'une fonction)]
+On dit que $f : U\subset \C\to \C$ admet une primitive (holomorphe,) ou simplement une primitive, s'il existe $F \in \mathcal O(U)$ telle que $F'=f$.
 \end{definition}
-
 
 
 Attention, certaines fonctions holomorphes n'ont pas de primitive, contrairement à ce qui se passe en analyse réelle où toute fonction continue admet une primitive. 
 Par exemple la fonction $f:\C^*\to \C, z\mapsto 1/z$ n'a pas de primitive sur $\C^*$. 
 
 Le fait d'avoir une primitive dépend de façon cruciale de l'ouvert de définition. Par exemple la fonction $g : \C\setminus \R_- \to \C, z\mapsto 1/z$ possède une primitive, à savoir la détermination principale du log, notée $\operatorname{Log}$ dans ce cours (ou $\operatorname{Log}_0$, aussi).
+
 
 \begin{proposition}
 Si $f$ admet une primitive holomorphe, l'intégrale curviligne $\int_\gamma f(z)dz$ ne dépend que des extrémités du chemin.
@@ -219,13 +252,13 @@ Vocabulaire : si $\omega$ est une $1$-forme exacte,  c'est-à-dire qu'il existe 
 
 Attention dans ce nouveau contexte, la primitive de la forme différentielle n'est pas forcément  une fonction holomorphe, c'est juste une fonction $C^1$.
 
+Ce sens généralise le sens précédent comme suit: la fonction $f$ possède une primitive holomorphe si la forme différentielle $f(z)dz$ possède une primitive au sens des formes différentielles. (Exercice : il s'agit de montrer que dans ce cas la primitive est automatiquement holomorphe.)
+
 \begin{proposition}
 Soit $\omega$ une $1$-forme différentielle.
-Si $\omega$ admet une primitive, l'intégrale curvligne  $\int_\gamma \omega$ ne dépend que des extrémités du chemin $\gamma$.
+Si $\omega$ admet une primitive, l'intégrale curviligne  $\int_\gamma \omega$ ne dépend que des extrémités du chemin $\gamma$.
 \end{proposition}
 
-\begin{remarque}
-\end{remarque}
 
 \subsection{Convergence}
 
@@ -240,7 +273,7 @@ intégration d'une forme donnée sur une suite de chemins qui converge en topolo
 
 
 
-\chapter{Théorème et formule de Cauchy}
+\chapter{Théorème et formule(s) de Cauchy}
 
 \section{Théorème intégral de Cauchy}
 
@@ -268,39 +301,142 @@ Formule de Cauchy
 
 Cas particulier avec des cercles.
 
-Analycité complexe tout de suite, sans faire le caractère $C^\infty$.
+\begin{theoreme}
+Les fonctions holomorphes sont analytiques.
+De plus, si $f\in \mathcal O(U)$ et $z_0 \in U$, le rayon de convergence du DSE de $f$ en $z_0$ a un rayon supérieur ou égal à $\operatorname{dist}(z_0,U^c)$.
+\end{theoreme}
 
-Formule de la moyenne. 
+Conséquence : 
+\begin{enumerate}
+\item Les fonctions holomorphes sont $\C^\infty$.
+\item Tous les théorèmes vrais pour les fonctions analytiques sont vrais pour les fonctions holomorphes : zéros isolés, prolongement analytique etc.
+\end{enumerate}
 
-Principe du maximum, énoncé. Idée de preuve mais preuve non rédigée, finir.
+Dans le cas particulier de cercles centrés, la formule de Cauchy se spécialise en la formule suivante, appelée formule de la moyenne : 
+\begin{theoreme}[Formule de la moyenne]
+Soit $U\subseteq \C$ un ouvert,  $f \in \mathcal O(U)$ et $z_0\in U$.
+Pour tout $r>0$ tel que $\overline{\D(z_0,r} \subseteq U$, on a :
+\[ f(z_0) = \frac{1}{2\pi}\int_0^{2\pi} f\left(z_0+re^{it}\right)dt\]
+\end{theoreme}
+\emph{(Interprétation : la valeur de $f$ en $z_0$ est la moyenne de ses valeurs sur un cercle centré en $z_0$. 
+Preuve : c'est juste la formule de Cauchy. 
+Erreur de compréhension possible : la formule ne dit PAS que $f(z_0)=\int_{\mathcal C(z_0,r} f(z)dz$.)}
 
 
- \paragraph{Pas encore fait : }
+\section{Formules de Cauchy d'ordre supérieur}
  
- Autres conséquences : zéros isolés, prolongement analytique etc pour les fonctions holomorphes.
+\begin{theoreme}
+Soit $U\subseteq \C$ un ouvert et $f\in \mathcal O(U)$.
+Soit $K\subseteq U$ un compact à bords $C^1$ par morceaux et $z\in K^\circ$.
+Alors, pour tout $n\geq 0$ :
+\[ \frac{f^{(n)}(z)}{n!} = \frac{1}{2i\pi} \int_{\partial K} \frac{f(w)}{(w-z)^{n+1}}dw\]
+\end{theoreme}
+Remarque : pour $n=0$, c'est la formule de Cauchy classique.
+
+ Cas particulier des cercles centrés : on récupère les formules intégrales pour les coefficients des séries entières.
  
- Formule de Pompeiu
+ En prenant les formules de Cauchy et en appliquant l'inégalité triangulaire, on obtient ce qu'on appelle les inégalités de Cauchy.
+ Dans le cas particulier de cercles centrés, on obtient les formules suivantes très souvent utiles :
+ 
+\begin{corollaire}[Inégalités de Cauchy pour cercles centrés]
+Soit $U\subseteq \C$ un ouvert,  $f\in \mathcal O(U)$ et $\overline{\mathbb D(z,r)}$ un disque fermé inclus dans $U$.
+Alors,  pour tout $n\geq 0$ :
+\[ \frac{\left|f^{(n)}(z)\right|}{n!} \leq \frac{1}{r^n} \max_{w\in \mathcal C(z,r)} |f(w)|\]
+\end{corollaire}
+ 
 
-Formules d'ordre supérieur avec le bord d'un compact ou avec des cercles.
+On étudie maintenant les propriétés locales des fonctions holomorphes.
+On commence par une conséquence directe de la formule de la moyenne : une fonction holomorphe admettant un maximum local (en module) en un point est localement constante au voisinage de ce point.
+ 
+\begin{theoreme}[Principe du maximum]
+Soit $U\subseteq \C$ un ouvert et $f \in \mathcal O(U)$.
+Si $|f|$ admet un maximum local en un point $z_0$, alors $f$ est constante sur la composante connexe de de $U$ contenant $z_0$.
+\end{theoreme}
 
-Inégalités de Cauchy
+Variations, voir feuilles de TD:
+\begin{enumerate}
+\item Sur un compact $K\subset U$, le module atteint son max au bord de $K$.
+\item Principe dit \og du minimum\fg.
+\end{enumerate}
+ 
+ \begin{theoreme}[de Liouville]
+ Soit $f$ une fonction holomorphe sur $\C$.
+ Si $f$ est bornée, alors $f$ est constante.
+ \end{theoreme}
+ 
+ Avertissement : il est important que la fonction soit holomorphe sur $\C$ tout entier. 
+ Si vous voulez appliquer Liouville, vous l'appliquez à une fonction holomorphe sur $\C$ (et bornée), rien d'autre.  
+Si vous avez une fonction définie sur un ouvert plus petit que $\C$ et que vous souhaitez montrer qu'elle est constante, alors soit vous montrez préalablement qu'elle peut s'étendre en fonction holomorphe sur $\C$ tout entier (ça n'est pas forcément le cas) et vous appliquez Liouville classique, soit vous faites autrement.
+%\footnote{Il y a eu une question sur l'existence d'une caractérisation possible d'autres ouverts sur lesquels on pourrait avoir un énoncé de type Liouville. Cependant, même pour répondre dans un cas simple, il faut utiliser un théorème que l'on n'a pas encore vu (théorème d'extension de Riemann), et à part les cas simples (plan privé de points isolés, auquel cas on se ramène de toute façon à Liouville normal), ça devient assez vite un peu compliqué (utilisation du théorème d'uniformisation de Riemann, ne sera pas vu en L3), voire \emph{très compliqué}, avec des énoncés que je ne connaissais pas avant de me renseigner suite à la question. Et de toute façon à la fin, ça marche uniquement si on peut étendre à $\C$ tout entier, donc on se retrouve à appliquer le Liouville classique.}
 
 
+ 
+\begin{corollaire}[Théorème de d'Alembert-Gauss]
+\end{corollaire} 
+ 
+
+% Formule de Pompeiu : NON
 
 
-Louiville, et version avec croissance  polynomiale.
+\section{Étude locale}
 
-Les trucs autour de Morera et des primitives, ouverts étoilés etc pas encore fait
-Inversion locale ! 
+\begin{theoreme}[Inversion locale]
+Soit $u\subseteq \C$ un ouvert, $f\in \mathcal O(U)$ et $z_0\in U$ un point tel que $f'(z_0)\neq 0$.
+Alors il existe un ouvert $V$ contenant $z_0$ tel que $W:=f(V)$ soit ouvert et que $f|_V$ soit un biholomorphisme de $V$ sur $W$.
+\end{theoreme}
 
-Application ouverte.
+%Preuve donnée en cours : la différentielle d'une fonction holomorphe est nulle ou inversible.  Vu les hypothèses du théorème, cette différentielle est injective en $z_0$. On applique alors le théorème d'inversion locale vu en calcul différentiel qui donne les ouverts $V$ et $W$ sur lesquels $f$ réalise un $\mathcal C^1$-difféomorphisme. 
+%Enfin, si $v\in V$ et $w:=f(v)$, la différentielle en $w$ de l'application  $\left(f|_W\right)^{-1}$ est l'inverse de $Df_v$.
+%Comme une matrice $\C$-linéaire on nulle admet un inverse $\C$-linéaire, on en déduit que $\left(f|_W\right)^{-1}$ est holomorphe sur $W$.
 
-Résultats annexes sur les primitives
+%Remarque : il y a une preuve directe qui n'utilise pas l'énoncé démontré en calcul différentiel, à l'aide de ce qu'on appelle des \emph{séries majorantes}. Elle est plus longue mais a l'avantage d'être autocontenue et de donner plus d'informations sur les ouverts $V$ et $W$.
 
+Multiplicité d'un zéro, 
+Point critique, multiplicité d'un point critique
+
+Étude aux points critiques : énoncé, pas démontré.
 
 \begin{theoreme}
+Soit $U$ un ouvert connexe et $f\in \mathcal O(U)$ non constante.
+Alors, $f$ est ouverte. 
+(Autrement dit l'image de tout ouvert est ouverte.)
+\end{theoreme}
+
+
+
+Preuve de l'étude au point critique : détermination de racines $n$-èmes et de logarithmes complexes, puis preuve.
+
+Preuve de l'application ouverte.
+
+Application : deuxième preuve du principe du maximum : si $z_0 \in U$ et que $f$ n'est pas localement constante au voisinage de $z_0$, alors $f(U)$ contient un voisinage de $f(z_0)$ et donc $|f|$ n'atteint pas son maximum en $z_0$.
+
+
+\begin{theoreme}[Lemme de Schwarz]
+\end{theoreme}
+
+Attention à la preuve, il se produit quelque chose d'assez surprenant dans la majoration : en majorant sur un ensemble plus grand,  on arrive à obtenir un majorant plus petit. Ceci est un effet du principe du maximum et n'est absolument pas intuitif.
+
+
+
+\begin{theoreme}[Biholomorphismes du disque]
+\end{theoreme}
+
+Remarque de terminologie : comme dans toute discipline mathématique, si le contexte est clair, on utilise les mots \og morphisme\fg, \og isomorphisme\fg, \og automorphisme\fg{} dans leur signification \og locale\fg. Par exemple, on a des isomorphismes d'anneaux, de groupes, d'espaces vectoriels etc, avec le même mot qui recouvre à chaque fois un sens différent.
+
+En analyse complexe, on voit donc souvent \og automorphismes du disque\fg{} au lieu de \og biholomorphismes du disque\fg.
+
+Dans le cadre de ce cours, il est néanmoins conseillé d'utiliser \og biholomorphisme\fg{}.
+
+Intégrales dépendant holomorphiquement d'un paramètre.
+
+TD : fonction Gamma d'Euler
+
+
+\section{Primitives, théorème de Morera (non traité?)}
+
+\begin{theoreme}[Morera]
 Soit $\Omega$ un ouvert et $f \in C^0(\Omega)$.
-Si $f(z)dz$ a une integrale nulle sur tout bord de triangle de $\Omega$, alors $f$ est holomorphe !
+Si $f(z)dz$ a une intégrale nulle sur tout bord de triangle de $\Omega$, alors $f$ est holomorphe.
 \end{theoreme}
 
 Preuve : on prend un point, un disque autour et on construit une ptimitive locale holomorphe sur ce disque, qui est étoilé en $z_0$.
@@ -312,9 +448,49 @@ Remarque  : version un peu plus générale : si f est continue et d'intégrale c
 A rapprocher des énoncés : si sur un ouvert connexe l'intégrale ets nulle sur tout lacet, on a une primitive.
 
 
+\section{Topologie des espaces de fonctions holomorphes}
+
+Non, sauter entièrement, tant pis.
 
 
-\section{Discussion sur d'autres stratégies de preuve}
+\chapter{Séries de Laurent, singularités isolées, résidus}
+
+%Anneau des séries formelles
+
+\section{Séries de Laurent}
+
+Séries de Laurent, exemples.
+Partie régulière, partie principale/polaire. 
+Résidu.
+
+
+Couronnes, notations, couronne de convergence d'une série de Laurent, convergence normale sur sous-couronne fermée de la couronne ouverte de convergence.
+
+Dérivée d'une série de Laurent. % formules avec dérivée et résidu ?
+
+DSL d'une fonction holomorphe sur une couronne. 
+Exemple : exercice du TD : DSL de $\frac{1}{z-1}$ sur la couronne $C(0,2,3)$.
+
+
+\section{Singularités isolées}
+
+
+Définition : singularité isolée.
+
+Classification des singularités isolées.
+
+Singularités effaçables ou éliminables, pôles (ordre du pôle, résidu), ou essentielles.
+
+Théorème d'extension de Riemann
+
+\section{Fonctions méromorphes}
+
+\section{Résidus}
+
+
+
+
+
 
 
 
