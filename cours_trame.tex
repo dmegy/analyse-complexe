@@ -102,6 +102,7 @@
 \newtheorem{exemple}[theoreme]{Exemple}
 \newtheorem{exemples}[theoreme]{Exemples}
 \newtheorem{attention}[theoreme]{Mise en garde}
+\newtheorem{application}[theoreme]{Application}
 
 
 \newtheorem{ex}{Exercice}
@@ -396,10 +397,11 @@ Point critique, multiplicité d'un point critique
 
 Étude aux points critiques : énoncé, pas démontré.
 
+[Rappel de terminologie : une fonction continue est dite ouverte si l'image de tout ouvert est ouverte.]
+
 \begin{theoreme}
 Soit $U$ un ouvert connexe et $f\in \mathcal O(U)$ non constante.
-Alors, $f$ est ouverte. 
-(Autrement dit l'image de tout ouvert est ouverte.)
+Alors, $f$ est ouverte.
 \end{theoreme}
 
 
@@ -408,17 +410,23 @@ Preuve de l'étude au point critique : détermination de racines $n$-èmes et de
 
 Preuve de l'application ouverte.
 
-Application : deuxième preuve du principe du maximum : si $z_0 \in U$ et que $f$ n'est pas localement constante au voisinage de $z_0$, alors $f(U)$ contient un voisinage de $f(z_0)$ et donc $|f|$ n'atteint pas son maximum en $z_0$.
+\begin{application}
+Tous les exos du type \og une fonction holomorphe sur un connexe à valeurs dans $\R$ est constante\fg{} sont maintenant faisables avec l'application ouverte, sans devoir calculer avec Cauchy-Riemann.
+\end{application}
+
+\begin{application}
+Deuxième preuve du principe du maximum : si $z_0 \in U$ et que $f$ n'est pas localement constante au voisinage de $z_0$, alors $f(U)$ contient un voisinage de $f(z_0)$ et donc $|f|$ n'atteint pas son maximum en $z_0$.
+\end{application}
 
 
-\begin{theoreme}[Lemme de Schwarz]
+\begin{theoreme}[Lemme de Schwarz : vu en TD]
 \end{theoreme}
 
 Attention à la preuve, il se produit quelque chose d'assez surprenant dans la majoration : en majorant sur un ensemble plus grand,  on arrive à obtenir un majorant plus petit. Ceci est un effet du principe du maximum et n'est absolument pas intuitif.
 
 
 
-\begin{theoreme}[Biholomorphismes du disque]
+\begin{theoreme}[Biholomorphismes du disque : vu en TD]
 \end{theoreme}
 
 Remarque de terminologie : comme dans toute discipline mathématique, si le contexte est clair, on utilise les mots \og morphisme\fg, \og isomorphisme\fg, \og automorphisme\fg{} dans leur signification \og locale\fg. Par exemple, on a des isomorphismes d'anneaux, de groupes, d'espaces vectoriels etc, avec le même mot qui recouvre à chaque fois un sens différent.
@@ -427,35 +435,40 @@ En analyse complexe, on voit donc souvent \og automorphismes du disque\fg{} au l
 
 Dans le cadre de ce cours, il est néanmoins conseillé d'utiliser \og biholomorphisme\fg{}.
 
+\section{Non traité  en CM : intégrales dépendant holomorphiquement d'un paramètre}
+
 Intégrales dépendant holomorphiquement d'un paramètre.
 
 TD : fonction Gamma d'Euler
 
 
-\section{Primitives, théorème de Morera (non traité?)}
+\section{Non traité en CM : primitives, théorème de Morera}
 
 \begin{theoreme}[Morera]
 Soit $\Omega$ un ouvert et $f \in C^0(\Omega)$.
 Si $f(z)dz$ a une intégrale nulle sur tout bord de triangle de $\Omega$, alors $f$ est holomorphe.
 \end{theoreme}
 
-Preuve : on prend un point, un disque autour et on construit une ptimitive locale holomorphe sur ce disque, qui est étoilé en $z_0$.
+Preuve : on prend un point, un disque autour et on construit une primitive locale holomorphe sur ce disque, qui est étoilé en $z_0$.
 
 Attention ne pas dériver en $z_0$ mais en $z$ dans le disque.
 
-Remarque  : version un peu plus générale : si f est continue et d'intégrale curviligne nule sur tout triangle sur un ouvert étoilé, elle a une primitive sur cet ouvert étoilé et doc est holomorphe sur cet ouverte étoilé.
+Remarque  : version un peu plus générale : si f est continue et d'intégrale curviligne nulle sur tout triangle sur un ouvert étoilé, elle a une primitive sur cet ouvert étoilé et doc est holomorphe sur cet ouverte étoilé.
 
 A rapprocher des énoncés : si sur un ouvert connexe l'intégrale ets nulle sur tout lacet, on a une primitive.
 
 
-\section{Topologie des espaces de fonctions holomorphes}
+%\section{Topologie des espaces de fonctions holomorphes}
 
-Non, sauter entièrement, tant pis.
+%Non, sauter entièrement, tant pis.
+
+% mettre l'exo sur une limite uniforme d'holomorphes
 
 
-\chapter{Séries de Laurent, singularités isolées, résidus}
 
-%Anneau des séries formelles
+
+
+\chapter{Séries de Laurent, singularités isolées, Résidus}
 
 \section{Séries de Laurent}
 
@@ -468,8 +481,11 @@ Couronnes, notations, couronne de convergence d'une série de Laurent, convergen
 
 Dérivée d'une série de Laurent. % formules avec dérivée et résidu ?
 
-DSL d'une fonction holomorphe sur une couronne. 
-Exemple : exercice du TD : DSL de $\frac{1}{z-1}$ sur la couronne $C(0,2,3)$.
+\begin{theoreme}[Développement en série de Laurent des fonctions holomorphes sur une couronne]
+\end{theoreme}
+
+
+Exercice : Développer $\frac{1}{z-1}$ en série de Laurent sur la couronne $C(0,2,3)$. (Revoir le TD.)
 
 
 \section{Singularités isolées}
@@ -477,27 +493,94 @@ Exemple : exercice du TD : DSL de $\frac{1}{z-1}$ sur la couronne $C(0,2,3)$.
 
 Définition : singularité isolée.
 
-Classification des singularités isolées.
+Exemples et contre-exemples.
 
-Singularités effaçables ou éliminables, pôles (ordre du pôle, résidu), ou essentielles.
+\begin{definition}
+Une singularités isolée $z_0$ d'une fonction holomorphe $f$ est dite \emph{effaçable} si $f$ se prolonge holomorphiquement en $z_0$.
+\end{definition}
 
-Théorème d'extension de Riemann
+Rq : on lit aussi \og éliminable\fg{} au lieu d'effaçable dans certains ouvrages. Dans ce cours, on adopte néanmoins la terminologie \og singularité effaçable\fg, qui est assez standard.
+
+\begin{proposition}
+Soit $z_0$ une singularités isolée d'une fonction holomorphe $f$.
+Soit $\sum_{n\in \Z} a_n(z-z_0)^n$ le développement en série de Laurent de $f$ sur un disque épointé $\D(z_0,\epsilon)^*$.
+Alors, $z_0$ est une singularité effaçable ssi $\forall n<0, a_n=0$.
+\end{proposition}
+
+Idée de preuve : pour le sens difficile, si $f$ se prolonge en une fonction holomorphe $\tilde f$, alors on développe $\tilde f$ en série entière, et on invoque l'unicité des coefficients d'un développement en série de Laurent sur le disque épointé.
+
+\begin{theoreme}[Théorème d'extension de Riemann]
+Soit $z_0$ une singularité isolée d'une fonction holomorphe $f$.
+Si $|f|$ est bornée au voisinage de $z_0$, alors la singularité est effaçable, autrement dit $f$ se prolonge holomorphiquement en $z_0$ !
+\end{theoreme}
+
+\begin{remarque}
+Encore un résultat spectaculaire (évoqué lors du tout premier cours), à l'opposé de ce qu'il se passe  en analyse réelle classique.
+Une fonction de $\mathcal C^\infty(\R^*,\R)$ (et même analytique réelle sur $\R^*$), bornée au voisinage de l'origine, n'a en effet aucune raison de se prolonger ne serait-ce que continûment en l'origine. 
+Dans le cadre holomorphe, être localement bornée autour d'une singularité isolée garantit un prolongement holomorphe (en particulier $\mathcal C^\infty$ mais bien plus) !
+\end{remarque}
+
+%\begin{exo}% Liouville sur un plan épointé
+%\end{exo}
+
+\begin{center}
+\emph{(fin du cours du 10 avril)}
+\end{center}
+
+\begin{definition}
+Soit $z_0$ une singularité isolée non effaçable d'une fonction holomorphe $f$.
+Soit $\sum_{n\in \Z}a_n(z-z_0)^n$ le développement en série de Laurent de $f$ sur un disque épointé centré sur $z_0$.
+On dit que $z_0$ est:
+\begin{itemize}
+\item un \emph{pôle} si $\{n<0\:|\: a_n\neq 0\}$ est fini. (Nombre fini de termes dans la partie principale.) Dans ce cas, $m:=\min\{n\in \Z\:|\: a_n\neq 0\}$ est l'ordre du pôle.
+\item une singularité essentielle sinon. (Infinité de termes dans la partie principale.)
+\end{itemize}
+\end{definition}
+
+\begin{exemples}
+L'origine $0$ est un pôle de $1/z^3$, d'ordre $3$. 
+L'origine $0$ est une singularité essentielle de $z\mapsto \exp(1/z)=\sum_{p\geq 0}\frac{(1/z)^p}{p!} = \sum_{n\leq 0} \frac{z^n}{(-n)!}$.
+\end{exemples}
+
+\begin{proposition}[Comportement au voisinage d'un pôle]
+\end{proposition}
+
+\begin{theoreme}[Casoratti-Weiestrass]
+Soit $z_0$ une singularité essentielle d'une fonction holomorphe $f$.
+Alors, ...
+
+\end{theoreme}
 
 \section{Fonctions méromorphes}
 
-\section{Résidus}
+\begin{proposition}
+Équivalence des deux définitions possibles
+\end{proposition}
+
+\begin{definition}
+Soit $U$ un ouvert.
+Une fonction méromorphe sur $U$ est la donnée d'un fermé $Z\subset U$ constitué de points isolés, et d'une fonction holomorphe sur $U\setminus Z$ vérifiant, pour tout $z_0\in Z$, les conditions équivalentes de la proposition précédente.
+\end{definition}
 
 
+Attention, une \og fonction méromorphe sur $U$\fg{} n'est donc PAS une fonction de $U$ dans $\C$. Par exemple, on dit que $z\mapsto \frac{1}{z}$ est méromorphe sur $\C$ tout entier.
+Ca ne veut pas dire que c'est une fonction définie sur $\C$, ça veut juste dire ce qu'il y a dans la définition.
+
+Calculs avec les ordres des zéros et pôles. Résidus. Techniques de calcul de calcul de résidus.
+
+\section{Théorème des résidus}
+
+Attention : si vous travaillez sur d'autres ouvrages, vous croiserez \emph{beaucoup} d'énoncés tous un peu différents sur les résidus. Formules homotopiques, homologiques, avec l'intervention d'indices, des conditions de simple connexité  etc... Nous n'avons pas vu ces notions. 
+
+La forme donnée ici est la plus basique et efficace, elle ne nécessite pas de connaissances en topologie algébrique et s'applique dans un très grand nombre de cas en pratique. 
+(Son désavantage est bien sûr qu'elle n'aborde pas les thématiques topologiques évoquées plus haut, parce qu'elle les évite. C'est dommage, mais cette année nous n'aurons pas le temps de traiter ces thématiques.)
+
+\begin{theoreme}[des résidus]
+
+\end{theoreme}
 
 
-
-
-
-
-
-
-\chapter{Zéros, singularités, fonctions méromorphes et résidus}
-
+Applications : calculs d'intégrales réelles, en particulier dans des cas où l'on ne dispose pas de primitive, voire feuille de TD dédiée.
 
 
 \end{document}
