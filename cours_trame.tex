@@ -149,7 +149,7 @@
 \maketitle
 \tableofcontents
 
-\chapter{Holomorphie}
+\chapter{Holomorphie (VIDE)}
 
 \chapter{Fonctions analytiques}
 
@@ -278,13 +278,25 @@ intégration d'une forme donnée sur une suite de chemins qui converge en topolo
 
 \section{Théorème intégral de Cauchy}
 
-énoncé. Historique.
+\begin{theoreme}
+Soit $U\subset \C$ un ouvert, $f\in \mathcal O(U)$, et $K\subseteq U$ un compact à bords $\mathcal C^1$ par morceaux, dont le bord est muni de son orientation canonique.
+Alors, $\int_{\partial K} f(z)dz = 0$.
+\end{theoreme}
+
+\begin{attention}
+\begin{enumerate}
+\item Le bord n'est pas forcément connexe. Par exemple, le bord d'une couronne fermée est l'union de deux cercles.
+\item Attention à l'orientation du bord, en particulier lorsqu'il n'est pas connexe comme dans l'exemple précédent.
+\end{enumerate}
+\end{attention}
+
+Historique : Cauchy, Riemann, Goursat.
 
 Plan de la preuve : 
 \begin{enumerate}
-\item Lemme de Goursat
-\item Triangulation (et calcul des intégrales curvilignes par sommes de Riemann / approximation d'un chemin par un chemin polygonal). Encapsulation du lemme technique ?
-\item Fin de la preuve
+\item Lemme de Goursat.
+\item Approximation polygonale du compact. Ceci n'a pas été démontré en détail et ne fera pas l'objet de questions de cours.
+\item Fin de la preuve : approximation de l'intégrale curviligne par les intégrales sur les triangulations de plus en plus fines.  Ceci n'a pas été démontré en détail et ne fera pas l'objet de questions de cours.
 \end{enumerate}
 
 %Évocation des autres versions trouvable dans les livres, avertissements.
@@ -301,6 +313,8 @@ Formule de Cauchy
 %(Faire la preuve de Damian plus tard en commentaire. Faire également la preuve de la formule avec l'indice plus tard, une fois les déf de base sur l'indices faites, et qq exos faits.)
 
 Cas particulier avec des cercles.
+
+Conséquence : 
 
 \begin{theoreme}
 Les fonctions holomorphes sont analytiques.
@@ -368,12 +382,15 @@ Variations, voir feuilles de TD:
  Avertissement : il est important que la fonction soit holomorphe sur $\C$ tout entier. 
  Si vous voulez appliquer Liouville, vous l'appliquez à une fonction holomorphe sur $\C$ (et bornée), rien d'autre.  
 Si vous avez une fonction définie sur un ouvert plus petit que $\C$ et que vous souhaitez montrer qu'elle est constante, alors soit vous montrez préalablement qu'elle peut s'étendre en fonction holomorphe sur $\C$ tout entier (ça n'est pas forcément le cas) et vous appliquez Liouville classique, soit vous faites autrement.
-%\footnote{Il y a eu une question sur l'existence d'une caractérisation possible d'autres ouverts sur lesquels on pourrait avoir un énoncé de type Liouville. Cependant, même pour répondre dans un cas simple, il faut utiliser un théorème que l'on n'a pas encore vu (théorème d'extension de Riemann), et à part les cas simples (plan privé de points isolés, auquel cas on se ramène de toute façon à Liouville normal), ça devient assez vite un peu compliqué (utilisation du théorème d'uniformisation de Riemann, ne sera pas vu en L3), voire \emph{très compliqué}, avec des énoncés que je ne connaissais pas avant de me renseigner suite à la question. Et de toute façon à la fin, ça marche uniquement si on peut étendre à $\C$ tout entier, donc on se retrouve à appliquer le Liouville classique.}
+
 
 
  
 \begin{corollaire}[Théorème de d'Alembert-Gauss]
+Tout polynôme complexe non constant admet une racine sur $\C$.
 \end{corollaire} 
+
+Preuve : supposons par l'absurde qu'un polynôme $P$ non constant ne s'annule pas. Alors la fonction $f=1/P$ est entière et bornée, donc constante, contradiction.
  
 
 % Formule de Pompeiu : NON
@@ -426,14 +443,10 @@ Attention à la preuve, il se produit quelque chose d'assez surprenant dans la m
 
 
 
-\begin{theoreme}[Biholomorphismes du disque : vu en TD]
+\begin{theoreme}[Biholomorphismes du disque : compléter la preuve]
 \end{theoreme}
 
-Remarque de terminologie : comme dans toute discipline mathématique, si le contexte est clair, on utilise les mots \og morphisme\fg, \og isomorphisme\fg, \og automorphisme\fg{} dans leur signification \og locale\fg. Par exemple, on a des isomorphismes d'anneaux, de groupes, d'espaces vectoriels etc, avec le même mot qui recouvre à chaque fois un sens différent.
 
-En analyse complexe, on voit donc souvent \og automorphismes du disque\fg{} au lieu de \og biholomorphismes du disque\fg.
-
-Dans le cadre de ce cours, il est néanmoins conseillé d'utiliser \og biholomorphisme\fg{}.
 
 \section{Non traité  en CM : intégrales dépendant holomorphiquement d'un paramètre}
 
@@ -474,14 +487,14 @@ A rapprocher des énoncés : si sur un ouvert connexe l'intégrale ets nulle sur
 
 Séries de Laurent, exemples.
 Partie régulière, partie principale/polaire. 
-Résidu.
 
 
-Couronnes, notations, couronne de convergence d'une série de Laurent, convergence normale sur sous-couronne fermée de la couronne ouverte de convergence.
+Couronnes, notations, couronne ouverte de convergence d'une série de Laurent, convergence normale sur sous-couronne fermée de la couronne ouverte de convergence.
 
-Dérivée d'une série de Laurent. % formules avec dérivée et résidu ?
+Dérivée d'une série de Laurent. 
 
 \begin{theoreme}[Développement en série de Laurent des fonctions holomorphes sur une couronne]
+Une fonction holomorphe sur une couronne est développable en série de Laurent sur cette couronne et $a_n = \cdots$.
 \end{theoreme}
 
 
@@ -493,7 +506,9 @@ Exercice : Développer $\frac{1}{z-1}$ en série de Laurent sur la couronne $C(0
 
 Définition : singularité isolée.
 
-Exemples et contre-exemples.
+Exemples et contre-exemples. L'origine n'est pas une singularité de $\Log_0$, ni de $\sin(1/z)^{-1}$.
+
+\subsection{Singularités effaçables}
 
 \begin{definition}
 Une singularités isolée $z_0$ d'une fonction holomorphe $f$ est dite \emph{effaçable} si $f$ se prolonge holomorphiquement en $z_0$.
@@ -520,12 +535,12 @@ Une fonction de $\mathcal C^\infty(\R^*,\R)$ (et même analytique réelle sur $\
 Dans le cadre holomorphe, être localement bornée autour d'une singularité isolée garantit un prolongement holomorphe (en particulier $\mathcal C^\infty$ mais bien plus) !
 \end{remarque}
 
-%\begin{exo}% Liouville sur un plan épointé
-%\end{exo}
 
 \begin{center}
 \emph{(fin du cours du 10 avril)}
 \end{center}
+
+\subsection{Cas non effaçable : pôles et singularités essentielles}
 
 \begin{definition}
 Soit $z_0$ une singularité isolée non effaçable d'une fonction holomorphe $f$.
@@ -546,15 +561,21 @@ L'origine $0$ est une singularité essentielle de $z\mapsto \exp(1/z)=\sum_{p\ge
 \end{proposition}
 
 \begin{theoreme}[Casoratti-Weiestrass]
-Soit $z_0$ une singularité essentielle d'une fonction holomorphe $f$.
-Alors, ...
-
+Soit $z_0 \in U$ une singularité essentielle d'une fonction holomorphe $f \in \mathcal O(U\setminus \{z_0\})$.
+Alors, pour tout voisinage $W$ de $z_0$ contenu dans $U$, l'image par $f$ de $W\setminus\{z_0\}$ est dense dans $\C$.
 \end{theoreme}
+
+Moralité : le comportement au voisinage d'une singularité essentielle est extrêmement pathologique, bien pire que simplement tendre vers $+\infty$ en module. Un bon exemple est $\exp{1/z}$ qui fait des choses fondamentalement différentes suivant comment on s'approche de l'origine.
 
 \section{Fonctions méromorphes}
 
 \begin{proposition}
-Équivalence des deux définitions possibles
+Soit $U$ un ouvert,  $Z\subset U$ un fermé constitué de points isolés et $f$ fonction holomorphe sur $U\setminus Z$.
+Alors il y a équivalence entre :
+\begin{itemize}
+\item Pour tout $z_0\in Z$, $z_0$ n'est pas une singularité essentielle de $f$.
+\item Au voisinage de tout $z_0\in Z$, $f$ s'écrit comme le quotient $g/h$ de deux fonctions holomorphes (définies sur un voisinage de $z_0$).
+\end{itemize}
 \end{proposition}
 
 \begin{definition}
@@ -562,13 +583,24 @@ Soit $U$ un ouvert.
 Une fonction méromorphe sur $U$ est la donnée d'un fermé $Z\subset U$ constitué de points isolés, et d'une fonction holomorphe sur $U\setminus Z$ vérifiant, pour tout $z_0\in Z$, les conditions équivalentes de la proposition précédente.
 \end{definition}
 
+Rq : la seconde définition se réinterprète en disant que $f$ s'étend en une application  de $U$ vers la droite projective complexe.
+
 
 Attention, une \og fonction méromorphe sur $U$\fg{} n'est donc PAS une fonction de $U$ dans $\C$. Par exemple, on dit que $z\mapsto \frac{1}{z}$ est méromorphe sur $\C$ tout entier.
 Ca ne veut pas dire que c'est une fonction définie sur $\C$, ça veut juste dire ce qu'il y a dans la définition.
 
-Calculs avec les ordres des zéros et pôles. Résidus. Techniques de calcul de calcul de résidus.
+%Calculs avec les ordres des zéros et pôles.
+
 
 \section{Théorème des résidus}
+
+\begin{definition}
+Résidus.
+\end{definition}
+
+Remarque : le résidu est défini même pour une singularité essentielle.
+
+Techniques de calcul de calcul de résidus.
 
 Attention : si vous travaillez sur d'autres ouvrages, vous croiserez \emph{beaucoup} d'énoncés tous un peu différents sur les résidus. Formules homotopiques, homologiques, avec l'intervention d'indices, des conditions de simple connexité  etc... Nous n'avons pas vu ces notions. 
 
@@ -576,7 +608,9 @@ La forme donnée ici est la plus basique et efficace, elle ne nécessite pas de 
 (Son désavantage est bien sûr qu'elle n'aborde pas les thématiques topologiques évoquées plus haut, parce qu'elle les évite. C'est dommage, mais cette année nous n'aurons pas le temps de traiter ces thématiques.)
 
 \begin{theoreme}[des résidus]
-
+Soit $U\subset \C*$ un ouvert, $Z\subset U$ une partie discrète, $K\subset U$ un compact à bords $\mathcal C^1$ par morceaux avec $Z\cap \partial K = \emptyset$, et $f$ une fonction holomorphe sur $U\setminus Z$.
+Alors:
+\[ \int_{\partial K} f(z)dz = 2i\pi \sum_{\alpha \in K\cap Z} \operatorname{Rés}_\alpha(f).\]
 \end{theoreme}
 
 
