@@ -73,6 +73,9 @@
 \newcommand\eqdef{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily déf}}}{=}}}
 % égal par définition
 
+\delimitershortfall-1sp
+\newcommand\abs[1]{\left|#1\right|}
+
 \newcommand{\ensemble}[2]{\left \{ #1  
     \ifx&#2&%
        %
@@ -591,7 +594,6 @@ Rq : la seconde définition se réinterprète en disant que $f$ s'étend en une 
 
 
 Attention, une \og fonction méromorphe sur $U$\fg{} n'est donc PAS une fonction de $U$ dans $\C$. Par exemple, on dit que $z\mapsto \frac{1}{z}$ est méromorphe sur $\C$ tout entier.
-Ca ne veut pas dire que c'est une fonction définie sur $\C$, ça veut juste dire ce qu'il y a dans la définition.
 
 %Calculs avec les ordres des zéros et pôles.
 
@@ -599,7 +601,7 @@ Ca ne veut pas dire que c'est une fonction définie sur $\C$, ça veut juste dir
 \section{Théorème des résidus}
 
 \begin{definition}
-Résidus.
+Résidu en une singularité isolée.
 \end{definition}
 
 Remarque : le résidu est défini même pour une singularité essentielle.
@@ -612,7 +614,7 @@ La forme donnée ici est la plus basique et efficace, elle ne nécessite pas de 
 (Son désavantage est bien sûr qu'elle n'aborde pas les thématiques topologiques évoquées plus haut, parce qu'elle les évite. C'est dommage, mais cette année nous n'aurons pas le temps de traiter ces thématiques.)
 
 \begin{theoreme}[des résidus]
-Soit $U\subset \C*$ un ouvert, $Z\subset U$ une partie discrète, $K\subset U$ un compact à bords $\mathcal C^1$ par morceaux avec $Z\cap \partial K = \emptyset$, et $f$ une fonction holomorphe sur $U\setminus Z$.
+Soit $U\subset \C$ un ouvert, $Z\subset U$ une partie discrète, $K\subset U$ un compact à bords $\mathcal C^1$ par morceaux avec $Z\cap \partial K = \emptyset$, et $f$ une fonction holomorphe sur $U\setminus Z$.
 Alors:
 \[ \int_{\partial K} f(z)dz = 2i\pi \sum_{\alpha \in K\cap Z} \operatorname{Rés}_\alpha(f).\]
 \end{theoreme}
@@ -628,82 +630,153 @@ Feuille de TD8 en ligne, avec quelques exemples corrigés.
 \hrulefill \emph{Fin du cours du 17 avril} \hrulefill
 \end{center}
 
+\section{Principe de l'argument et théorème de Rouché}
+
+\begin{definition}
+Diviseur sur un ouvert.
+\end{definition}
+
+\begin{definition}
+Fonction méromorphe admettant un diviseur.
+\end{definition}
+
+\begin{definition}
+Dérivée logarithmique, propriétés
+\end{definition}
+
+
+\begin{theoreme}[Principe de l'argument]
+
+\end{theoreme}
+
+\begin{theoreme}[Théorème de Rouché]
+\end{theoreme}
+
+
+\paragraph{Application de Rouché à la recherche et à la localisation de racines de polynômes}
+
+\begin{corollaire}[Nouvelle preuve de d'Alembert-Gauss]
+Soit $P = \sum_{k=0}^n a_kz^k$ un polynôme de degré $n\geq 1$.
+Alors $P$ possède $n$ racines, comptées avec multiplicité.
+\end{corollaire}
+\begin{proof}
+Soit $Q=a_nz^n$. Alors, $P-Q$ est un polynôme de degré $\leq n-1$. et donc $P(z)-Q(z) = o(Q(z))$ lorsque $|z|\to +\infty$.
+En particulier, il existe $R>0$ tel que pour tout $z$ de module $R$, on ait  $|P(z)-Q(z)| < |Q(z)|$.
+Par le théorème de Rouché appliqué à $P$ et $Q$ sur le disque $\D(0,R)$, on en déduit que $P$ et $Q$ ont même nombre de racines (c'est-à-dire $n$), comptées avec multiplicités.
+\end{proof}
+
+Remarque : cette preuve ne dit pas encore quel $R$ choisir pour être sûr d'entourer toutes les racines. La version suivante exhibe un rayon explicite qui convient. On traite le cas d'un polynôme unitaire pour simplifier.
+
+\begin{corollaire}[Localisation des racines des polynômes : version effective]
+Soit $P=z^n + a_{n-1}z^{n-1}+\cdots + a_1z + a_0$ un polynôme de degré $n/\geq 1$.
+Soit $R  = 2\max_{0\leq k\leq n-1} |a_k|^{\frac{1}{n-k}}$.
+Alors $P$ admet $n$ racines dans le disque $\D(0,R)$, comptées avec multiplicités.
+\end{corollaire}
+\begin{proof}
+Posons $Q(z)=z^n$ et essayons d'appliquer le théorème de Rouché à $P$ et $Q$ sur le disque de rayon $R$.
+
+Avec cette définition de $R$, on a $|a_k| \leq R^{n-k}2^{k-n}$.
+Pour tout $z\in \mathcal C(0,R)$, on a donc
+\begin{align*}
+\abs{P(z)-Q(z)} 
+=  \abs{\sum_{k=0}^{n-1}a_kz^k}
+\leq \sum_{k=0}^{n-1} \abs{a_k}R^k
+\leq \sum_{k=0}^{n-1} R^{n-k}2^{k-n}R^k
+= R^n \underbrace{\sum_{k=0}^{n-1} 2^{k-n}}_{\frac{1}{2^n}+\cdots +\frac{1}{2} < 1}
+\boxed{<R^n =  \abs{Q(z)} }
+\end{align*}
+Le théorème de Rouché s'applique donc à $P$ et $Q$ sur le disque $\D(0,R)$ et donc $P$ a ses $n$ racines dans $\D(0,R)$, comptées avec multiplicités.
+\end{proof}
+
+\begin{exo} Exercices d'application : localiser toutes les racines de polynômes, ou juste une partie des racines, ou montrer qu'il n'existe pas de racines dans certaines zones.
+\end{exo}
+
+\paragraph{Application de Rouché aux limites de fonctions holomorphes}
+
+Dans toute la suite du paragraphe, $U$ est un ouvert de $\C$, $(f_n)_n$ est une suite de fonctions holomorphes convergeant uniformément sur tout compact vers une fonction $f$ holomorphe\footnote{L'holomorphie résulte automatiquement du théorème de Morera, mais nous n'avons pas vu ce théorème en cours.}.
+
+Pour simplifier l'énoncé des résultats, on suppose de plus $U$ \textbf{connexe}.
+
+\begin{lemme}
+Soit $K \subset U$ un compact. Si $f$ ne s'annule pas sur $\partial K$, alors pour $n$ grand, $f_n$ ne s'annule pas non plus sur $\partial K$ et $f$ et $f_n$ ont même nombre de zéros dans $K^\circ$, comptés avec multiplicités.
+\end{lemme}
+
+\begin{proposition}
+Si les fonctions $f_n$ ne s'annulent pas dans $U$, alors soit $f$ ne s'annule pas sur $U$, soit $f$ est identiquement nulle.
+\end{proposition}
+
+\begin{proposition}
+Si les fonctions $f_n$ sont injectives, alors soit $f$ est injective, soit $f$ est constante.
+\end{proposition}
+
+Preuve : TD.
+
+
+\begin{center}
+\hrulefill \emph{Fin du cours du 15 mai} \hrulefill
+\end{center}
+
+
+
+
+
+\section{Notions non abordées dans le cours en 2023-2024 et ouverture}
+
+Ce cours n'est qu'une introduction à l'analyse complexe et de nombreux thèmes pourraient faire l'objet de TER en M1 (ou de cours complets en M1, dans les université proposant des cours d'analyse complexe en M1). 
+
+\subsection{Homotopies de chemins et lacets, ouverts simplement connexes}
+
+Références : Brotbek puis Demailly, qui fait aussi les revêtements et le groupe fondamental.
+
+\subsection{Indices, homologie, cycles}
+
+Références : Brotbek puis Demailly
+
+\subsection{Familles normales, théorème de Montel}
+
+Référence : Demailly. Interaction avec le théorème d'Ascoli qui sera vu en M1.
+
+\subsection{Fonctions harmoniques}
+
+Référence : Demailly, qui fait ensuite les fonctions sous-harmoniques.
+
+\subsection{Uniformisation}
+
+Référence : Demailly. Utilise les familles normales.
+
+\subsection{Intégrales dépendant holomorphiquement d'un paramètre, applications à la théorie des nombres}
+
+Références : Colmez, Zuily-Queffelec, puis Tenenbaum
+
+\subsection{Calcul fonctionnel holomorphe}
+
+Références pour les algèbres de Banach : Hirsch - Lacombe \emph{Éléments d'analyse fonctionnelle}, Rudin \emph{Functional analysis} , Conway \emph{A Course in Functional Analysis}.
+
+\subsection{Applications en mécanique des fluides et électrostatique}
+
+Références : Chabat - Lavrentiev.
+
+\subsection{Applications à la retouche d'image}
+
+Retouche d'image à coup de fonctions harmoniques et noyau de Poisson. (En pratique, résolution de l'équation de Laplace en décomposant la condition de bord en série de Fourier.)
+
+Références : par exemple Boisgérault, \emph{Poisson Image Editing}, mini-cours de M1 aux Mines de Paris : \url{https://direns.mines-paristech.fr/Sites/Complex-analysis/Poisson%20Image%20Editing/Poisson%20Image%20Editing.pdf} 
+
+\subsection{Niveau plus élevé : surfaces de Riemann}
+
+Références : Demailly pour une introduction.
+
+\subsection{Niveau plus élevé :  analyse complexe à plusieurs variables, puis géométrie complexe}
+
+Références : Cartan, puis premiers chapitres de livres de géométrie complexe, par exemple le livre de Claire Voisin \emph{Géométrie algébrique complexe et théorie de Hodge} (qui est un livre de niveau M2) ou le livre \emph{Complex Analytic and Differential Geometry} de J.-P. Demailly.
+
+De même que le calcul différentiel évolue principalement en géométrie différentielle puis riemanienne (ou autres variantes), l'analyse complexe en plusieurs variables évolue en géométrie complexe, pour laquelle il faut également avoir des bases solides en géométrie différentielle, en topologie algébrique, ainsi qu'en algèbre commutative.
+
+\section{Sujets de TER pour M1}
+
+Beaucoup de possibilités : uniformisation des ouverts simplement connexes, séries entières aléatoires, introduction à la théorie analytique des nombres (par exemple le théorème des nombres premiers), introduction aux courbes elliptiques, interpolation de Riesz-Thorin, marches aléatoires dans $\N\times\N$, analyse complexe et distributions...
+
 \end{document}
-
-
-Progression Damian : 
-Goursat : holomorphe implique intégrale nulle sur tout triangle.
-Existence de primitives pour les fonctions holomorphes sur un ouvert étoilé.
-Théorème de Cauchy sur un ouvert étoilé.
-Formule de Cauchy sur un disque, en coupant en deux.
-Formules de Cauchy d'ordre un, puis $n$ (admis)
-Morera
-Analycité des fonctions holomorphes, et résultat sur le rayon de convergence
-Variations sur Cauchy : formule de la moyenne, inégalités de Cauchy, Liouville, amélioration polynomiale, théorème fondamental de l'algèbre. (avec... preuve analytique!), théorème de l'image ouverte, principe du maximum
-
-à pousser dans une autre chapitre : convergence de suites de fonctions holomorphes, intégrales à paramètres.
-
-Attention il y a l'extension de Riemann en exo ?? ainsi que le principe de réflexion de Schwarz, et le lemme de Schwarz etc.
-
-Damian a un chapitre 5 Cauchy Généralisé où il met ensuite:
-homotopies, simple connexité, , théorème de Cauchy pour un lacet dans un simplement connexe, Cauchy homotopique, conséquence $\C^*$ n'est pas simplement connexe. ENsuite : indice, formules de Cauchy homotopiques, qui commencent vraiment à ressembler à des formules de résidus. ENsuite : homologie : chaînes, cycles etc. Formule de Cauchy homologique. 
-Logarithmes, logarithme d'une fonction holomorphe non nulle sur un ouvert simplement connexe..
-
-Tout ça sans encore avoir fait les singularités, les séries de Laurent etc etc
-
-
-
-
-
-\section{Progression Audin}
-
-
-\section{Progression Demailly}
-
-(Note historique : Théorème de Cauchy : énoncé par Cauchy en 1825 sans preuve rigoureuse, démontré par Riemann en 1851 dans le cas $\mathcal C^1$, puis démontré par Goursat en ...1900 ! )
-
-Lemme de Goursat
-Théorème de Goursat = théorème de Cauchy sur le bord d'un compact régulier
-Formule de Cauchy pour le bord dun compact inclus dans U.
-Preuve en triangulant.
-
-
-Plus rapide que la progression de Damian, on a presque la version homologique, ou du moins la partie utile de la version homologique.
-
-Ensuite : il se paye de l luxe de faire la formule de Pompeiu, puis : conséquences : infiniment dérivable au sens complexe (en calculant les dérivées partielles en z et \z.
-Morera
-Inégalités de Cauchy et fonctions à croissance polynomiale, Liouville, d'Alembert-Gauss
-Analycité réelle, et holomorphe implique C-analytique.
-Corollaire important sur le rayon de convergence ! (3.3, p.41)
-Conséquences : zéros des fonctions holomorphes 
-zéros isolés (maison a déj) montré ça), ordre d'un zéro, prolongement analytique 'déjà pour fonctions analytiques)
-Prolongement à la frontière !
-Inversion locale holomorphe : une preuve qui utilise l'inversion locale C^\infty, et l'autre, la méthode des séries majorantes (ne pas faire)
-application ouverte
-" inversion globale"  : une fonction holomorphe injective est un biholmorphisme sur son image. Attention à ne pas confondre avec l'inversion globale en calcul diff
-Principe du max, lemme de SChwarz, automorphismes du disque.
-Intégrales dépendant d'un paramètre, fonction Gamma,
-Topologie des espaces de fonctions holomorphes, produits infinis, familles normales, Montel.
-Seulement ensuite, points singuliers, fonctions méromorphes, résidus.
-ENcore ensuite : topo alg : homotopies, lacets, homologie etc. Indice, Rouché, Runge.
-APrès ça part sur les sous-harmoniques
-
-
-\section{Progression Carlier}
-Indice, definition et valeur entière, nulle sur la composante non bornée du complémentaire. Illustration, nombre de tours, non démontré.
-Primitives complexes : définition, admettre une primitive localement, globalement.
-Prop : existence d'une primitive \iff intégrale nulle sur tout lacet
-Prop : U convexe (ou étoilé) : f admet une primitive ssi pour tout triangle inclus dans U, l'intégrale sur le triangle est nulle.
-Lemme de Goursait, lemme de Goursat amélioré
-Cor : f holomorphe (ou sauf en un pt où elle est continue), alors $f$ admet une primitive locale. SI l'ouvert est convexe (remplacer par étoilé), alors prmitive globale.
-Th : holomorphe sur un étoilé => primitive globale
-Formule de Cauchy, pour un lacet à l'intérieur d'un disque sur lequel la fonction est holomorphe, attention, et avec l'indice qui sort. Preuve avec le Goursat amélioré qui donne une primitive locale, donc la nullité d'une intégrale, mais il faut comprendre l'indice et la formule reste relativement locale. Note : on pourrait remplacer le disque par un ouvert étoilé. Ca donne Cauchy avec indice, pour $f$ holomorphe sur un ouvert étoilé. Au fond c'est pareil que Damian. Un peu plus général car indice, mais pas d'interprétation prouvée de l'indice.
-Note : en fait il a le théorème de Cauchy sur un ouvert étoilé, mais il ne l'énonce même pas ? pas vu.
-Forme simplifiée pour un cercle
-conséquence : $\C$-analycité.
-Attention son coef a_n dépend de $r$, il ne justifie/remarque pas que ça ne dépend pas.
-Corollaire : inégalités de Cauchy
-
 
 
 
