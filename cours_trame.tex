@@ -633,24 +633,58 @@ Feuille de TD8 en ligne, avec quelques exemples corrigés.
 \section{Principe de l'argument et théorème de Rouché}
 
 \begin{definition}
-Diviseur sur un ouvert.
+Soit $U$ un ouvert de $\C$.
+Un diviseur sur $U$ est une fonction de $U$ dans $\Z$, à support discret dans $U$.
 \end{definition}
+Si $\delta$ est un diviseur sur $U$, le diviseur est noté $\sum_{a\in U} m_a[a]$, où $m_a := \delta(a) \in \Z$. Il s'agit d'une \textbf{notation}.
 
-\begin{definition}
+Remarque : l'ensemble des diviseurs sur $U$ a une structure naturelle de groupe abélien (qui provient de la structure de groupe abélien de $\Z$).
+
+\begin{definition}(-Proposition)
 Fonction méromorphe admettant un diviseur.
 \end{definition}
 
 \begin{definition}
-Dérivée logarithmique, propriétés
+Soit $f$ une fonction méromorphe sur $U$ ayant ses zéros isolés, donc admettant un diviseur. Sa dérivée logarithmique est $\mathcal L(f) := \frac{f'}{f}$.
 \end{definition}
+
+Remarque : la dérivée logarithmique est très utilisée en algèbre, pour des polynômes, contexte dans lequel elle permet d'émuler la dérivée de $\log P$ même sans avoir de logarithme, par exemple sur un corps quelconque, tout en restant dans le monde algébrique, c'est-à-dire en travaillant avec des fractions rationnelles. On la croise dans certains exercices de réduction des endomorphismes par exemple.
+
+\begin{proposition}
+Soient $f$ et $g$  des fonctions méromorphes sur $U$ ayant leurs zéros  isolés. Alors $\mathcal L(fg) = \mathcal L(f) +\mathcal L(g) $.
+\end{proposition}
+
+Question-piège : la dérivée logarithmique est-elle un morphisme ? Mais entre quels groupes, dans ce cas ?
+
+\begin{corollaire}
+$\mathcal L \left(z^n\right) = \frac{n}{z}$, $\mathcal L\left((z-a)^n\right) = \frac{n}{z-a}$ et $\mathcal L \left(\prod (z-a_k)^{m_k}\right) = \sum \frac{m_k}{z-a_k}$. 
+\end{corollaire}
+
+\begin{corollaire}
+Si $f$ est méromorphe et possède un zéro isolé ou pôle en $\alpha$, d'ordre $m\in \Z$, alors $\mathcal L(f)$ possède un pôle simple en $\alpha$ avec résidu $m$.
+\end{corollaire}
 
 
 \begin{theoreme}[Principe de l'argument]
-
+Soit $U\subseteq \C$ un ouvert, $f$ une fonction méromorphe à zéros isolés\footnote{Hypothèse rajoutée pour éviter que $f$ soit identiquement nulle sur une composante connexe de $U$. Demander que les zéros soient isolés permet de dire que $f$ admet un diviseur.} sur $U$ et $D = \sum_a m_a$ son diviseur.
+Si $K\subset U$ est un compact à bord $\mathcal C^1$ par morceaux, dont le bord ne contient aucun zéro ni pôle de $f$, alors :
+\[ \frac{1}{2i\pi} \int_{\partial K} \frac{f'(z)}{f(z)}dz = \sum_{a \in K} m_a.\]
 \end{theoreme}
+
+Idée de preuve : propriétés de la dérivée logarithmique.
 
 \begin{theoreme}[Théorème de Rouché]
+Soit $U\subset \C$ un ouvert, $f, g\in \mathcal O(U)$ et $K\subset U$ un compact.
+Si $|f-g| < |f|$ sur $\partial K$, alors $f$ et $g$ ont même nombre de zéros dans $K$, comptés avec multiplicités.
 \end{theoreme}
+
+Noter que l'hypothèse implique que ni $f$ ni $g$ ne s'annulent sur $\partial K$.
+
+Intérêt du résultat : il suffit de montrer que $f$ et $g$ sont \og proches\fg{} sur $\partial K$, et pas sur $K$ tout entier. 
+
+Contre-exemples sans l'hypothèse d'holomorphie : la fonction $f : \R \to \R, x\mapsto x^2$ est égale à la fonction constante $1$ sur le bord du compact $K=[-1,1]$. Pourtant la première s'annule à l'intérieur de ce compact et la seconde non.  À deux variables réelles, on peut prendre le disque unité fermé pour $K$ et la fonction $f(x,y=x^2+y^2$. 
+
+Idée de preuve : on commence par se ramener à un compact à bords $\mathcal C^1$ par morceaux, puis on applique le principe de l'argument.
 
 
 \paragraph{Application de Rouché à la recherche et à la localisation de racines de polynômes}
@@ -688,8 +722,7 @@ Pour tout $z\in \mathcal C(0,R)$, on a donc
 Le théorème de Rouché s'applique donc à $P$ et $Q$ sur le disque $\D(0,R)$ et donc $P$ a ses $n$ racines dans $\D(0,R)$, comptées avec multiplicités.
 \end{proof}
 
-\begin{exo} Exercices d'application : localiser toutes les racines de polynômes, ou juste une partie des racines, ou montrer qu'il n'existe pas de racines dans certaines zones.
-\end{exo}
+Exercices d'application : localiser toutes les racines de polynômes, ou juste une partie des racines, ou montrer qu'il n'existe pas de racines dans certaines zones. Voir TD9.
 
 \paragraph{Application de Rouché aux limites de fonctions holomorphes}
 
@@ -709,7 +742,7 @@ Si les fonctions $f_n$ ne s'annulent pas dans $U$, alors soit $f$ ne s'annule pa
 Si les fonctions $f_n$ sont injectives, alors soit $f$ est injective, soit $f$ est constante.
 \end{proposition}
 
-Preuve : TD.
+Preuve : voir TD9.
 
 
 \begin{center}
