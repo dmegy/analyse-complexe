@@ -19,7 +19,8 @@ Année : printemps 2025
 Feuilles de TD
 ---
 
-Les feuilles de TD sont dans le dossier "TD". Ce dossier contient également des feuilles de compléments.
+Les feuilles de TD sont dans le dossier "TD". Ce dossier contiendra également des feuilles de compléments.
+Attention, les feuilles de TD ne seront pas forcément identiques à celle de l'année dernière.
 
 
 Bibliographie pour le cours
@@ -56,4 +57,4 @@ Ce cours couvre la totalité du programme de l'agrégation en analyse complexe m
 - fonctions spéciales. 
 - plus de représentation conforme et ses applications : voir le livre de Lavrentiev et Chabat, éditions Mir, exceptionnel sur ce sujet.
 - Introduction aux surfaces de Riemann : voir le poly de Demailly plus haut.
-- équations différentielles à variable complexe : sujet passionnant qui va vers la topologie algébrique (groupe fondamental et revêtements), les groupes, les pavages (euclidiens, sphériques ou hyperboliques suivant le type de l'équadiff), et les surfaces de Riemann. Par exemple, l'équation différentielle $2f'(z) =  f(z)/z$ est définie sur $\mathbb C^{*}$, mais ses solutions sont-elles définies sur $\mathbb C^{*}$ ?
+- équations différentielles à variable complexe : sujet passionnant qui va vers la topologie algébrique (groupe fondamental et revêtements), les groupes, les pavages (euclidiens, sphériques ou hyperboliques suivant le type de l'équadiff), et les surfaces de Riemann. Par exemple, l'équation différentielle $2f'(z) =  f(z)/z$ est définie sur ${\mathbb C}^*$, mais ses solutions sont-elles définies sur ${\mathbb C}^*$ ?
