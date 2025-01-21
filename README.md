@@ -45,7 +45,7 @@ Vous pouvez trouver des exercices supplémentaires (corrigés ou non) sur les si
 
 Web-application de quiz (vrai-faux)
 -----
-Vous pouvez vous entraîner sur l'appli suivante, qui contient des thèmes d'analyse complexe : [https://dmegy.perso.math.cnrs.fr/quiz/](https://www.dojomath.fr)
+Vous pouvez vous entraîner sur l'appli suivante, qui contient des thèmes d'analyse complexe : [www.dojomath.fr](https://www.dojomath.fr/?section=Theme&id=holomorphie)
 
 
 Ouverture
