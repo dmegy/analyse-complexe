@@ -4,6 +4,19 @@
 
 
 
+22 janvier
+----------
+
+- Composée de fonctions holomorphes
+- Rappels de calcul diff, matrices jacobiennes, différentielles de composées
+- Condition de Cauchy-Riemann
+
+Pour la prochaine séance : finir entièrement le TD0 de révisions, commencer le TD1 sur Cauchy-Riemann, travailler le thème d'holomorphie sur [https://dojomath.fr/?section=Theme&id=holomorphie](https://dojomath.fr/?section=Theme&id=holomorphie)
+
+Programme prévisionnel de la prochaine séance : correction de certains exercices du TD 1, début notations de Wirtinger.
+
+
+
 
 21 janvier 2025 (1ère séance)
 ---------------
@@ -18,16 +31,3 @@ Exemples de fonctions non dérivables au sens complexe bien que de classe $\math
 Fonctions holomorphes sur un ouvert, notation $\mathcal O(U)$. Structure de $\mathbb C$-algèbre.
 
 Le quotient d'une fonction holomorphe par une fonction holomorphe jamais nulle est holomorphe.
-
-22 janvier
-----------
-
-Programme prévisionnel : 
-- correction de quelques exos du TD0
-- composée de fonctions holomorphes
-- exponentielle et logarithme*s*
-- rappels de calcul diff
-- Cauchy-Riemann
-- Exercices Cauchy-Riemann (TD1)
-- Notations de Wirtinger ? Ou séance suivante.
-
