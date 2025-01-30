@@ -1,7 +1,28 @@
 # Analyse complexe 24-25 : Cahier de texte
 ==========================================
 
+5 février
+---------
+Interrogation 1
 
+
+4 février
+---------
+Au programme : suite TD1, début TD2, compléments de cours si besoin sur Wirtinger
+
+
+29 janvier
+----------
+- Exponentielle complexe, différentes déterminations de l'argument, notation $Arg_0$ et $Arg_\theta$ en général, exemples de formules donnant l'argument en fonction de $x$ et $y$ sur différents domaines.
+- Déterminations du logarithme complexe. Détermination principale du logarithme complexe, notation $Log_0$ et $Log_\theta$ en général. 
+- Distribution de la feuille TD2. Correction des exercices du TD1, jusqu'à l'exercice 5 presque fini.
+
+28 janvier
+----------
+
+- Rappels sur les matrices C-linéaires et C-antilinéaires, décomposition d'une matrice en deux composantes.
+- Partie C-linéaire et C-antilinéaire de la différentielle d'une application $\mathbbR^2 \to \mathbb R^2$.
+- Opérateurs de Wirtinger.
 
 
 22 janvier
