@@ -4,6 +4,9 @@
 Page du cours d'analyse complexe à Nancy
 Année : printemps 2025
 
+Cahier de texte
+---
+Le déroulement des séances est consigné dans le fichier [cahier de texte 2025.md](cahier de texte 2025.md)
 
 
 Évaluations et calendrier
@@ -35,12 +38,18 @@ Les trois premières références sont disponibles sur cette page (dossier bibli
 - Jean-Pierre Demailly, _Variable complexe_. 239 pages. Jean-Pierre Demailly était un spécialiste de géométrie algébrique et analytique complexe et une figure extrêmement appréciée des étudiants et collègues. Il est décédé il y a deux ans. Ce poly est le poly de son cours à Lyon en 2003-2004, que j'ai eu la chance de suivre en L3.
 - Henri Cartan, _Théorie élémentaire des fonctions analytiques_, disponible à la BU, une référence classique.
 
+
 Bibliographie pour les exercices
 ---------
 
 Des feuilles de TD seront distribuées. Les exercices seront majoritairement pris dans le poly de Michèle Audin, dans le poly de Damian Brotbek, et autres sources classiques. Les exercices et problèmes du Demailly sont sensiblement plus difficiles.
 
 Vous pouvez trouver des exercices supplémentaires (corrigés ou non) sur les sites bibmath ou exo7. Normalement, nous avions en 2021 uploadé la plupart des exercices du poly de D. Brotbek sur le site exo7.
+
+Enfin, il y a des livres avec des exercices corrigés d'analyse complexe, par exemple :
+- Patrice Tauvel, _Exercices d'analyse complexe pour la maîtrise_ , dispoible à la BU. Seule la première moitié du livre est au programme notre L3, le reste est plutôt de niveau M1 et ne sera pas traité. (Il y a aussi un livre de cours+exercices de L3 de P. Tauvel)
+- Amar, Matheron, _Analyse complexe_
+- ...
 
 
 Web-application de quiz (vrai-faux)
@@ -57,4 +66,4 @@ Ce cours couvre la totalité du programme de l'agrégation en analyse complexe m
 - fonctions spéciales. 
 - plus de représentation conforme et ses applications : voir le livre de Lavrentiev et Chabat, éditions Mir, exceptionnel sur ce sujet.
 - Introduction aux surfaces de Riemann : voir le poly de Demailly plus haut.
-- équations différentielles à variable complexe : sujet passionnant qui va vers la topologie algébrique (groupe fondamental et revêtements), les groupes, les pavages (euclidiens, sphériques ou hyperboliques suivant le type de l'équadiff), et les surfaces de Riemann. Par exemple, l'équation différentielle $2f'(z) =  f(z)/z$ est définie sur ${\mathbb C}^*$, mais ses solutions sont-elles définies sur ${\mathbb C}^*$ ?
+- équations différentielles à variable complexe : sujet passionnant qui va vers la topologie algébrique (groupe fondamental et revêtements), les groupes, les pavages (euclidiens, sphériques ou hyperboliques suivant le type de l'équadiff), et les surfaces de Riemann. Par exemple, l'équation différentielle $2f'(z) =  f(z)/z$ est définie sur $\mathbb C \setminus \{0\}$, mais ses solutions sont-elles définies sur $\mathbb C \setminus \{0\}$ ?

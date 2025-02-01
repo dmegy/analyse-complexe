@@ -21,7 +21,7 @@ Au programme : suite TD1, début TD2, compléments de cours si besoin sur Wirtin
 ----------
 
 - Rappels sur les matrices C-linéaires et C-antilinéaires, décomposition d'une matrice en deux composantes.
-- Partie C-linéaire et C-antilinéaire de la différentielle d'une application $\mathbbR^2 \to \mathbb R^2$.
+- Partie C-linéaire et C-antilinéaire de la différentielle d'une application $\mathbb R^2 \to \mathbb R^2$.
 - Opérateurs de Wirtinger.
 
 
