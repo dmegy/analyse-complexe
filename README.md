@@ -6,7 +6,7 @@ Année : printemps 2025
 
 Cahier de texte
 ---
-Le déroulement des séances est consigné dans le fichier [cahier de texte 2025.md](cahier de texte 2025.md)
+Le déroulement des séances est consigné dans le fichier [cahier de texte 2025.md](https://github.com/dmegy/analyse-complexe/blob/main/cahier%20de%20texte%202025.md)
 
 
 Évaluations et calendrier
