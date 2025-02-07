@@ -1,14 +1,44 @@
 # Analyse complexe 24-25 : Cahier de texte
 ==========================================
 
+
+
+12 février
+----------
+
+
+11 février
+----------
+Suite du programme : 
+
+1) Séries formelles.
+
+Notation $k[[T]]$ ou $A[[T]]$, exemples. Structure d'algèbre, extract° de coef, valuation X-adique, séries inversibles, (HP:métrique/topologie adique), puissances, composition, (Faa di Bruno), série réciproque (sur C, Lagrange), dérivées, formules, dérivées successives, formule de Taylor.
+Exemples : $1/(1-X)$, "racine carrée" de $1+X$, $exp(exp(X)-1)$, "logarithme" de $1+X$.
+
+2) Séries entières à coefficients complexes.
+
+Séries formelles complexes convergentes, notation $\mathbb{C}\{z\}$, rayon de concergence.  Formule de Hadamard, disque de convergence, comportement sur le cercle, continuité, rayon de la série dérivée. Convergence d'un produit de Cauchy. Structure d'algèbre. Fonctions entières.
+(Compléments : étude des inversibles : voir exo. Plus difficile à ce stade : si $f$ est entière et jamais nulle, $1/f$ est-elle une fonction entière ?)
+Holomorphie d'une série entière sur son disque de convergence.
+Zéros isolés pour les séries entières, prolongement analytique, applications.
+
+3) Fonctions analytiques
+
+Définition, structure d'algèbre, holomorphie, caractère infiniment C-dérivable, zéros isolés, prolongement analytique.
+
+
 5 février
 ---------
-Interrogation 1
+Interrogation 1, correction
+Début du chapitre II : fonctions analytiques
+Introduction : exemple de fonction réelle non DSE
 
 
 4 février
 ---------
-Au programme : suite TD1, début TD2, compléments de cours si besoin sur Wirtinger
+Suite TD1.
+Dsitribution TD3 : séries entières, fonctions analytiques
 
 
 29 janvier
