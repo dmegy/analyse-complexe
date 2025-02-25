@@ -2,6 +2,37 @@
 ==========================================
 
 
+26 février
+-----------
+
+Preuve du principe du maximum.
+
+Représentation intégrale des coefficients.
+Formule de la moyenne et seconde preuve du principe du max à l'origine.
+Fonctions entières, Liouville.
+Exemple de preuve incomplète du théorème de d'Alembert.
+
+3) Fonctions analytiques
+
+Définition, structure d'algèbre, holomorphie, caractère infiniment C-dérivable, zéros isolés, prolongement analytique.
+
+
+
+25 février
+-----------
+
+Suite : Sous-algèbre des séries formelles convergentes. Critère pour être inversible (exo)
+Lemme : le rayon est $>0$ ssi $\exists C>0, a_n = O(C^n)$
+
+
+Propriétés de la fonction somme d'une SE:
+- DL et équivalents en l'origine, équivalents et dominations au voisinage de l'infini 
+- continuité, 
+- dérivabilité complexe en l'origine puis en tout point du disque ouvert de convergence.
+- zéros isolés à l'origine
+- prolongement analytique
+- principe du maximum à l'origine.
+
 
 12 février
 ----------
@@ -9,7 +40,6 @@
 
 11 février
 ----------
-Suite du programme : 
 
 1) Séries formelles.
 
@@ -18,14 +48,10 @@ Exemples : $1/(1-X)$, "racine carrée" de $1+X$, $exp(exp(X)-1)$, "logarithme" d
 
 2) Séries entières à coefficients complexes.
 
-Séries formelles complexes convergentes, notation $\mathbb{C}\{z\}$, rayon de concergence.  Formule de Hadamard, disque de convergence, comportement sur le cercle, continuité, rayon de la série dérivée. Convergence d'un produit de Cauchy. Structure d'algèbre. Fonctions entières.
-(Compléments : étude des inversibles : voir exo. Plus difficile à ce stade : si $f$ est entière et jamais nulle, $1/f$ est-elle une fonction entière ?)
-Holomorphie d'une série entière sur son disque de convergence.
-Zéros isolés pour les séries entières, prolongement analytique, applications.
+Séries formelles complexes convergentes, notation $\mathbb{C}\{z\}$, rayon de concergence.  Formule de Hadamard, disque de convergence, comportement sur le cercle, continuité, rayon de la série dérivée. 
 
-3) Fonctions analytiques
+Rappels sur les produits de Cauchy de séries ACV.
 
-Définition, structure d'algèbre, holomorphie, caractère infiniment C-dérivable, zéros isolés, prolongement analytique.
 
 
 5 février
