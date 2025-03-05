@@ -1,22 +1,53 @@
 # Analyse complexe 24-25 : Cahier de texte
 ==========================================
 
+À venir
+-------
+
+intégrale curviligne sur le chemin opposé, invariance pae reparamétrage, intégration sur des chemins C^1 par morceaux. Sommes de Riemann.
+Longueur d'un chemin, majoration par inégalité triangulaire dans une intégrale curviligne.
+
+Primitives holomorphes. Existence d'une primitive si certaines ntégrales curviignes sont égales. Existence de primitive sur un ouvert étoilé.
+Théorème de Goursat, de Cauchy, Formule de Cauchy
+
+
+5 mars
+-----------
+
+Exercices de développement en série entière au voisinage de différents points.
+
+Les fonctions analytiques forment une $\mathbb C$-algèbre.
+
+Les fonctions analytiques sont holomorphes. L'inverse n'est toujours pas établi à ce stade ! (Pt important)
+
+Lemme de Schwarz pour les fonctions analytiques du disque dans lui-même.
+
+Début du Chapitre III : intégration curviligne et formules de Cauchy
+
+1) chemins, lacets, vocabulaire, exemples : segments, arcs de cercle.
+2) intégration curviligne, définition, exemples. Dépendance du chemin choisi : cas de $1/z$ avec deux chemins de mêmes extrémités.
+Exo à faire : calculer $\int_{C(0,1)} z^ndz$ pour $n\in \mathbb Z$.
+
+
+4 mars
+------
+
+3) Fonctions analytiques. 
+Une série entière est analytique sur son disque de convergence.
+Zéros isolés. Prolongement analytique. Principe du maximum.
+
 
 26 février
 -----------
 
-Preuve du principe du maximum.
+Preuve du principe du maximum pour les séries entières, à l'origine.
 
 Représentation intégrale des coefficients.
-Formule de la moyenne et seconde preuve du principe du max à l'origine.
+Formule de la moyenne.
 Fonctions entières, Liouville.
 Exemple de preuve incomplète du théorème de d'Alembert.
 
-3) Fonctions analytiques
-
-Définition, structure d'algèbre, holomorphie, caractère infiniment C-dérivable, zéros isolés, prolongement analytique.
-
-
+À ce stade il n'est pas connu que l'inverse d'une fonction entière jamais nulle est développable en série entière avec rayon infini.
 
 25 février
 -----------
