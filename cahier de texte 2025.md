@@ -11,6 +11,26 @@ Primitives holomorphes. Existence d'une primitive si certaines ntégrales curvii
 Théorème de Goursat, de Cauchy, Formule de Cauchy
 
 
+12 mars
+-------
+
+Fin de la preuve du lemme de Goursat.
+Une fonction holomorphe sur un ouvert étoilé admet une primitive holomorphe.
+Théorème intégral de Cauchy (pour le bord d'un compact $C^1$ par morceaux). Preuve par triangulation du compact.
+Formule de Cauchy (pour le bord d'un compact $C^1$ par morceaux.)
+Correction de quelques exercices d'intégrales curvilignes.
+
+
+
+
+11 mars
+--------
+
+Compléments sur les intégrales curvilignes : approximation par lignes polygonales, concaténation de chemins, chemin opposé, reparamétrage de chemins.
+Correction de quelques exercices d'intégrales curvilignes.
+Début de preuve du lemme de Goursat.
+
+
 5 mars
 -----------
 
