@@ -1,0 +1,535 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2cm]{geometry}% gestion des marges etc
+\usepackage[utf8]{inputenc} % caractères utf8 dans le fichier source
+\usepackage[T1]{fontenc} % encodage en sortie
+\usepackage[francais]{babel} % paramètres de langue : guillemets etc
+\usepackage{amssymb,mathtools,amsthm}
+\usepackage{stmaryrd,mathrsfs} % polices et symboles supplémentaires
+\usepackage{mdframed,fancybox,graphicx}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{preuve}{rgb}{0,0.2,0.5}
+
+\usepackage{xypic,multicol,comment,variations,enumerate,enumitem,datetime,tasks}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=[rgb]{0.7,0.2,0.2},          % color of internal links
+    citecolor=[rgb]{0.7,0.2,0.2},        % color of links to bibliography
+    filecolor=[rgb]{0.7,0.2,0.2},      % color of file links
+    urlcolor=[rgb]{0.7,0.2,0.2}           % color of external links
+}
+
+\usepackage{pgf,pgfmath,tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary[patterns]
+\tikzset{every picture/.style={execute at begin picture={
+   \shorthandoff{:;!?};}
+}}
+
+
+
+
+% - - - - - - -
+% Spécifique à ce document :
+%\usepackage{palatino, euler} % police : Palatino, et Euler pour les maths
+\usepackage{fourier} % police de caractères : Adobe Utopia + Fourier math
+\everymath{\displaystyle} % plus lisible mais casse l'homogénéité de la mise en page, tant pis la lisiblité passe en premier
+
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\P}{\mathbb{P}}
+\renewcommand{\S}{\mathbb{S}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\U}{\mathbb{U}}
+
+
+\DeclareMathOperator{\argsh}{argsh}
+\DeclareMathOperator{\argch}{argch}
+
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\pgcd}{pgcd}
+\DeclareMathOperator{\ppcm}{ppcm}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Bij}{Bij}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\Card}{Card} % cardinal
+\renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\Re}{\operatorname{Ré}}
+\newcommand{\z}{\overline{z}}
+\DeclareMathOperator{\PR}{\text{Ré}}
+\DeclareMathOperator{\PI}{\text{Im}}
+\DeclareMathOperator{\Log}{\text{Log}}
+\renewcommand{\mid}{\;\ifnum\currentgrouptype=16 \middle\fi|\;}
+\newcommand\eqdef{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily déf}}}{=}}}
+% égal par définition
+
+\delimitershortfall-1sp
+\newcommand\abs[1]{\left|#1\right|}
+
+\newcommand{\ensemble}[2]{\left \{ #1  
+    \ifx&#2&%
+       %
+    \else%
+       \, \middle | \, #2%
+    \fi%
+\right \}}
+
+\newcommand{\modulo}[1]{\:\left(\operatorname{mod}#1\right)}
+
+% Environnements : 
+
+\theoremstyle{definition}
+\newtheorem{theoreme}{Th\'eor\`eme}[section]
+\newtheorem{proposition}[theoreme]{Proposition}
+\newtheorem{prop}[theoreme]{Proposition}
+\newtheorem{corollaire}[theoreme]{Corollaire}
+\newtheorem{lemme}[theoreme]{Lemme}
+\renewenvironment{proof}{\color{preuve}\emph{Démonstration.~}}{\qed}
+\newenvironment{red}{\begin{quote}\color{preuve}\emph{Exemple de rédaction:}\\}{\end{quote}}
+
+\newtheorem{propdef}[theoreme]{Proposition et Définition}
+\newtheorem{axiomedef}[theoreme]{Axiome et Définition}
+\newtheorem{definition}[theoreme]{D\'efinition}
+\newtheorem{vocabulaire}[theoreme]{Vocabulaire}
+\newtheorem{exercice}[theoreme]{Exercice}
+
+\newtheorem{exemple}[theoreme]{Exemple}
+\newtheorem{exemples}[theoreme]{Exemples}
+\newtheorem{attention}[theoreme]{Mise en garde}
+\newtheorem{application}[theoreme]{Application}
+
+
+\newtheorem{ex}{Exercice}
+
+\theoremstyle{plain}
+\newtheorem{remarque}[theoreme]{Remarque}
+\newtheorem{methode}[theoreme]{Méthode}
+
+
+
+
+%%%%%%%%%%
+% MACROS POUR REMPLACER ANSWERS
+
+%\newenvironment{exo}{\begin{ex}}{\end{ex}}
+%\excludecomment{hint} % on n'affiche pas les hints
+%\excludecomment{sol} % on n'affiche pas les solutions
+
+
+
+
+% - - - - - - - - - - - - - -
+% PARAMETRAGE DU PACKAGE ANSWERS 
+% POUR LES INDICATIONS ET CORRECTIONS
+% - - - - - - - - - - - - - - 
+
+\usepackage{answers}
+\Newassociation{sol}{Soln}{solutions}
+% ira dans le fichier d'identifiant 'solutions'
+% et écrira les solutions dans un environnement 'Soln'
+\newenvironment{exo}{\begin{ex}\label{enonce.\theex} }{\end{ex} }
+
+\renewenvironment{Soln}[1]{\noindent{\bf Correction de l'exercice \ref{enonce.#1}.} }
+% - - - - - - - - - - - - - - 
+% FIN  PARAMETRAGE ANSWERS
+% - - - - - - - - - - - - - - 
+
+
+
+\title{Analyse complexe 2024-2025\\ Aide aux révisions : liste de résultats}
+\author{Damien Mégy}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Holomorphie}
+
+\begin{prop}
+Toute matrice $M\in M_2(\R)$ est la somme d'une matrice $\C$-linéaire et d'une matrice $\C$-antilinéaire et cette décomposition est unique.
+\end{prop}
+
+\begin{prop}
+Une matrice de similitude directe est soit nulle soit inversible, auquel cas son inverse est une similitude directe.
+\end{prop}
+
+\begin{prop}[Conditions de Cauchy-Riemann]
+Une fonction $f:U\to \C$ est $\C$-dérivable en un point $z_0 \in U$ si et seulement si elle est différentiable en $z_0$ et de plus, sa différentielle en $z_0$ est une similitude directe.
+\end{prop}
+
+\begin{prop}
+Toutes les règles de dérivation pour les opérateurs de Wirtinger.
+\end{prop}
+\section{Fonctions analytiques}
+
+\subsection{Séries formelles}
+
+\begin{prop}
+Les inversibles de $k[[t]]$ sont les éléments $\sum a_kT^k$ avec $a_0\neq 0$.
+\end{prop}
+
+\subsection{Séries entières}
+
+
+\begin{prop}
+Soit $\sum a_nz^n$ une série entière.
+Son rayon de convergence est strictement positif  ssi il existe $C>0$ tel que $a_n = O\left(C^n\right)$.
+\end{prop}
+
+\begin{theoreme}[Hadamard-Cauchy]
+Soit $\sum a_nz^n$ une série entière, et soit $\ell = \limsup \sqrt[n]{|a_n|} \in \R_+\cup \{+\infty\}$.
+Alors le rayon de convergence de la série est $1/\ell \in \R_+\cup \{+\infty\}$.
+\end{theoreme}
+
+\begin{prop}[Convergence des produits de Cauchy]
+Soient $\sum a_nz^n$ et $\sum b_nz^n$ deux séries entières de rayons $R>0$ et $R'>0$.
+Alors le produit de Cauchy $\sum c_nz^n$ des deux séries a un rayon de convergence $R'\geq \min(R,R')$.
+\end{prop}
+
+\begin{prop}
+Soit $\sum a_nz^n$ une série entière non nulle de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
+Soit $d$ l'indice du premier coefficient non nul de $\sum a_nz^n$.
+Alors, au voisinage de zéro, on a  $f(z)\sim a_dz^d$.
+\end{prop}
+
+\begin{prop}
+Soit $\sum a_nz^n$ une série entière de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
+Alors $f$ est dérivable au sens complexe sur $D(0,R)$ et sa dérivée complexe est la somme de la série entière $\sum (n+1)a_{n+1}z^n$ (qui est aussi de rayon $R$).
+\end{prop}
+
+\begin{theoreme}[Zéros isolés pour les séries entières, à l'origine]
+Soit $\sum a_nz^n$ une série entière de rayon strictement positif et $f$ sa somme.
+S'il existe une suite $(z_n)_{n\in \N} \in (\C^*)^\N$ convergeant vers zéro et telle que $\forall n\in\N, f(z_n)=0$, alors tous les $a_n$ sont nuls.
+\end{theoreme}
+
+\begin{theoreme}[Principe du maximum pour une série entière, en l'origine]
+Soit $\sum a_nz^n$ une série entière de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
+Si $|f|$ admet un maximum local en zéro, alors $f$ est constante.
+\end{theoreme}
+
+\begin{theoreme}[Représentation intégrale des coefficients]
+Soit $\sum a_nz^n$ une série entière de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
+Soit $r \in ]0,R[$.
+Alors, pour tout $n\in\N$, on a 
+\[a_n = \frac{1}{2\pi r^n}\int_0^{2\pi}f\left(re^{i\theta}\right)e^{-in\theta}d\theta. \]
+\end{theoreme}
+
+\begin{theoreme}[de Liouville, énoncé pour les séries entières]
+Soit $\sum a_nz^n$ une série entière de rayon $+\infty$ et $f:\C\to\C$ sa somme.
+Si $f$ est bornée, alors $f$ est constante.
+\end{theoreme}
+(Rappel de terminologie : $f$  bornée veut par définition dire $|f|$ bornée.)
+
+
+\subsection{Fonctions analytiques}
+
+\begin{prop}
+Soit $\sum_{n\geq 0}a_nz^n$ une série entière de rayon de convergence $R>0$ et $f$ sa somme sur $D(0,R)$.
+Alors $f$ est analytique sur $D(0,R)$.
+\end{prop}
+
+\begin{prop}
+Une fonction analytique sur $U$ est holomorphe sur $U$.
+\end{prop}
+
+
+\begin{theoreme}[Zéros isolés pour les fonctions analytiques]
+Soit $U\subseteq \C$ un ouvert connexe et $f$ une fonction analytique non identiquement nulle sur $U$.
+Alors les zéros de $f$ sont isolés.
+\end{theoreme}
+
+\begin{theoreme}[Zéros isolés pour les fonctions analytiques]
+Soit $U\subseteq \C$ un ouvert connexe,  $f:U\to\C$ analytique et $Z:=f^{-1}(\{0\})$ l'ensemble des zéros de $f$.
+Si $Z$ admet un point d'accumulation dans $U$, alors $f$ est identiquement nulle sur $U$.
+\end{theoreme}
+
+
+
+\section{Intégration curviligne, primitives holomorphes}
+
+
+\begin{prop}
+Soit $U$ un ouvert de $\C$, $f\in \mathcal C^0(U,\C)$,  $\gamma:[0,1]\to U$ un chemin de $U$ de classe $\mathcal C^1$ et $\gamma^{opp}$ son chemin opposé.
+Alors 
+\[  \int_{\gamma^{opp}} f(z)dz = -\int_\gamma f(z)dz.\]
+\end{prop}
+
+\begin{prop}[Invariance par reparamétrage croissant]
+Soit $U$ un ouvert de $\C$, $f\in \mathcal C^0(U,\C)$,  $\gamma:[0,1]\to U$ un chemin de $U$ de classe $\mathcal C^1$ et $\phi : [0,1]\to [01]$ une bijection croissante de classe $\mathcal C^1$.
+Alors 
+\[  \int_{\gamma\circ \phi } f(z)dz = \int_\gamma f(z)dz.\]
+\end{prop}
+
+\begin{prop}[Inégalité triangulaire]
+Soit $U$ un ouvert de $\C$, $f\in \mathcal C^0(U,\C)$ et $\gamma:[0,1]\to U$ un chemin de $U$ de classe $\mathcal C^1$.
+Alors :
+\[ \left| \int_\gamma f(z)dz\right| \leq \int_0^1 \left|f(\gamma(t))\gamma'(t)\right|dt.\]
+\end{prop}
+
+\begin{prop}[Inégalité triangulaire, forme simplifiée, majoration brutale de $|f|$]
+Soit $U$ un ouvert de $\C$, $f\in \mathcal C^0(U,\C)$ et $\gamma$ un chemin de $U$ de classe $\mathcal C^1_{pm}$.
+Alors :
+\[ \left| \int_\gamma f(z)dz\right| \leq \operatorname{long}(\gamma)\max_{z\in \supp \gamma}|f(z)|.\]
+\end{prop}
+
+\begin{proposition}
+Soit $U\subseteq \C$ un ouvert, $f:U\to\C$  et $\gamma : [0,1]\to U$ un chemin $\mathcal C^1_{pm}$ dans $U$.
+
+Si $f$ possède une primitive holomorphe $F$ sur $U$, alors  
+\[\int_\gamma f(z)dz = F(\gamma(1)) - F(\gamma(0)).\]
+\end{proposition}
+
+% Après Goursat
+%\begin{prop}
+%Soit $f$ holomorphe sur un ouvert étoilé $U$.
+%Alors $f$ possède une primitive holomorphe sur $U$.
+%\end{prop}
+
+
+
+
+\section{Théorème et formule(s) de Cauchy}
+
+\begin{theoreme}[Lemme de Goursat]
+Soit $U$ un ouvert de $\C$,  $f\in \mathcal O(U)$ et $T\subset U$ un triangle (enveloppe convexe de trois points non alignés), dont le bord est muni de son orientation canonique.
+Alors $\int_{\partial T} f(z)dz=0$.
+\end{theoreme}
+
+\begin{prop}
+Soit $U\subseteq \C*$ un ouvert étoilé et $f\in \mathcal O(U)$.
+Alors $f$ possède des primitives holomorphes sur $U$.
+\end{prop}
+
+\begin{theoreme}[Théorème intégral de Cauchy]
+Soit $U\subset \C$ un ouvert, $f\in \mathcal O(U)$, et $K\subseteq U$ un compact à bord $\mathcal C^1$ par morceaux, dont le bord est muni de son orientation canonique.
+Alors, $\int_{\partial K} f(z)dz = 0$.
+\end{theoreme}
+
+
+
+
+
+\begin{theoreme}[Formule de Cauchy]
+Soit $U\subset \C$ un ouvert, $f\in \mathcal O(U)$, et $K\subseteq U$ un compact à bord $\mathcal C^1$ par morceaux, dont le bord est muni de son orientation canonique.
+Soit $a\in K^{\circ}$.
+Alors:
+\[ f(a) = \frac{1}{2i\pi}\int_{\partial K} \frac{f(z)}{z-a}dz.\]
+\end{theoreme}
+
+
+
+\begin{theoreme}
+Les fonctions holomorphes sont analytiques.
+De plus, si $f\in \mathcal O(U)$ et $z_0 \in U$, le rayon de convergence du DSE de $f$ en $z_0$ a un rayon supérieur ou égal à $\operatorname{dist}(z_0,U^c)$.
+\end{theoreme}
+
+\begin{theoreme}
+Soit $f$ une fonction holomorphe sur $U$.
+Alors $f'$ est holomorphe sur $U$.
+\end{theoreme}
+
+\begin{theoreme}[de Morera]
+Soit $U$ un ouvert de $\C$ et $f\in \mathcal C^0(U,\C)$ telle que pour tout triangle $T\subset U$, on ait $\int_{\partial T}f(z)dz=0$.
+Alors, $f$ est holomorphe.
+% on construit des primitives locales.
+\end{theoreme}
+
+\begin{theoreme}[Formule de la moyenne]
+Soit $U\subseteq \C$ un ouvert,  $f \in \mathcal O(U)$ et $z_0\in U$.
+Pour tout $r>0$ tel que $\overline{\D(z_0,r)} \subseteq U$, on a :
+\[ f(z_0) = \frac{1}{2\pi}\int_0^{2\pi} f\left(z_0+re^{it}\right)dt\]
+\end{theoreme}
+
+
+\begin{theoreme}[Formules de Cauchy d'ordre supérieur]
+Soit $U\subseteq \C$ un ouvert et $f\in \mathcal O(U)$.
+Soit $K\subseteq U$ un compact à bords $C^1$ par morceaux et $z\in K^\circ$.
+Alors, pour tout $n\geq 0$ :
+\[ \frac{f^{(n)}(z)}{n!} = \frac{1}{2i\pi} \int_{\partial K} \frac{f(w)}{(w-z)^{n+1}}dw\]
+\end{theoreme}
+
+ 
+\begin{corollaire}[Inégalités de Cauchy pour cercles centrés]
+Soit $U\subseteq \C$ un ouvert,  $f\in \mathcal O(U)$ et $\overline{\mathbb D(z,r)}$ un disque fermé inclus dans $U$.
+Alors,  pour tout $n\geq 0$ :
+\[ \left|f^{(n)}(z)\right|\leq \frac{n!}{r^n} \max_{w\in \mathcal C(z,r)} |f(w)|\]
+\end{corollaire}
+
+ \begin{theoreme}[de Liouville]
+ Soit $f$ une fonction holomorphe sur $\C$.
+ Si $f$ est bornée, alors $f$ est constante.
+ \end{theoreme}
+ 
+
+ 
+\begin{theoreme}[Principe du maximum]
+Soit $U\subseteq \C$ un ouvert et $f \in \mathcal O(U)$.
+Si $|f|$ admet un maximum local en un point $z_0$, alors $f$ est constante sur la composante connexe de de $U$ contenant $z_0$.
+\end{theoreme}
+
+\begin{corollaire}[du principe du maximum]
+Soit $U\subseteq \C$ un ouvert,  $f \in \mathcal O(U)$ et $K\subseteq U$ un compact.
+Alors $\max_{K} |f| = \max_{\partial K} |f|$.
+\end{corollaire}
+
+\begin{theoreme}[Lemme de Schwarz]
+Soit $\D$ le disque unité, et $f :\D\to \D$ une fonction holomorphe telle que $f(0)=0$.
+\end{theoreme}
+
+
+
+
+\subsection{Étude locale des fonctions holomorphes}
+
+\begin{theoreme}[Inversion locale pour les fonctions holomorphes]
+Soit $U\subseteq \C$ un ouvert, $f\in \mathcal O(U)$ et $z_0\in U$ un point tel que $f'(z_0)\neq 0$.
+Alors il existe un ouvert $V$ contenant $z_0$ tel que $W:=f(V)$ soit ouvert et que $f|_V$ soit un biholomorphisme de $V$ sur $W$.
+\end{theoreme}
+
+\begin{prop}[Étude aux points critiques des fonctions holomorphes]
+Soit $U$ un ouvert connexe de $\C$, $f\in \mathcal O(U)$ une fonction non constante, $z_0\in U$ et $d = \min\{d\in \N^*,\: f^{(d)}(z_0)\neq 0\}$.
+Alors il existe un voisinage ouvert $V\subseteq U$ de $z_0$, un voisinage ouvert  $W$ de $0$ et un biholomorphisme $\phi : V\to W$ tel que : 
+\[ \forall z\in V, \: f(z) - f(z_0) = \phi(z)^d. \]
+\end{prop}
+
+
+\begin{theoreme}[de l'application ouverte pour les fonctions holomorphes]
+Soit $U$ un ouvert connexe et $f\in \mathcal O(U)$ non constante.
+Alors, $f$ est ouverte.
+\end{theoreme}
+
+
+
+
+
+
+
+
+
+\section{Séries de Laurent, singularités isolées, Résidus}
+
+\subsection{Séries de Laurent}
+
+
+
+\begin{theoreme}[Développement en série de Laurent des fonctions holomorphes sur une couronne]
+Une fonction holomorphe sur une couronne $A(z_0,R,R')$ est développable en série de Laurent $\sum_{n\in\Z} a_n(z-z_0)^n$ sur cette couronne et pour tout $n\in\Z$ et $r \in ]R,R'[$ , on a :
+\[a_n = \frac{1}{2\pi r^n}\int_0^{2\pi}f\left(re^{i\theta}\right)e^{-in\theta}d\theta. \]
+\end{theoreme}
+
+
+
+\subsection{Singularités isolées}
+
+
+
+\begin{proposition}
+Soit $z_0$ une singularités isolée d'une fonction holomorphe $f$.
+Soit $\sum_{n\in \Z} a_n(z-z_0)^n$ le développement en série de Laurent de $f$ sur un disque épointé $\D(z_0,\epsilon)^*$.
+Alors, $z_0$ est une singularité effaçable ssi $\forall n<0, a_n=0$.
+\end{proposition}
+
+%Idée de preuve : pour le sens difficile, si $f$ se prolonge en une fonction holomorphe $\tilde f$, alors on développe $\tilde f$ en série entière, et on invoque l'unicité des coefficients d'un développement en série de Laurent sur le disque épointé.
+
+\begin{theoreme}[Théorème d'extension de Riemann]
+Soit $z_0$ une singularité isolée d'une fonction holomorphe $f$.
+Si $|f|$ est bornée au voisinage de $z_0$, alors la singularité est effaçable, autrement dit $f$ se prolonge holomorphiquement en $z_0$.
+\end{theoreme}
+
+\begin{proposition}[Comportement au voisinage d'un pôle]
+Soit $f$ une fonction holomorphe admettant un pôle d'ordre $d$ en $z_0$.
+Au voisinage de $z_0$, on a $f(z) \sim a_{-d}z^{-d}$.
+\end{proposition}
+
+\begin{theoreme}[Casoratti-Weiestrass]
+Soit $z_0 \in U$ une singularité essentielle d'une fonction holomorphe $f \in \mathcal O(U\setminus \{z_0\})$.
+Alors, pour tout voisinage $W$ de $z_0$ contenu dans $U$, l'image par $f$ de $W\setminus\{z_0\}$ est dense dans $\C$.
+\end{theoreme}
+
+
+\begin{proposition}
+Soit $U$ un ouvert,  $Z\subset U$ un fermé constitué de points isolés et $f$ fonction holomorphe sur $U\setminus Z$.
+Alors il y a équivalence entre :
+\begin{itemize}
+\item Pour tout $z_0\in Z$, $z_0$ n'est pas une singularité essentielle de $f$.
+\item Au voisinage de tout $z_0\in Z$, $f$ s'écrit comme le quotient $g/h$ de deux fonctions holomorphes (définies sur un voisinage de $z_0$).
+\end{itemize}
+\end{proposition}
+
+
+\subsection{Théorème des résidus}
+
+
+\begin{theoreme}[des résidus]
+Soit $U\subset \C$ un ouvert, $Z\subset U$ une partie discrète, $K\subset U$ un compact à bords $\mathcal C^1$ par morceaux avec $Z\cap \partial K = \emptyset$, et $f$ une fonction holomorphe sur $U\setminus Z$.
+Alors:
+\[ \int_{\partial K} f(z)dz = 2i\pi \sum_{\alpha \in K\cap Z} \operatorname{Rés}_\alpha(f).\]
+\end{theoreme}
+
+
+
+\subsection{Principe de l'argument et théorème de Rouché}
+
+
+
+\begin{theoreme}[Principe de l'argument]
+Soit $U\subseteq \C$ un ouvert, $f$ une fonction méromorphe à zéros isolés\footnote{Hypothèse rajoutée pour éviter que $f$ soit identiquement nulle sur une composante connexe de $U$. Demander que les zéros soient isolés permet de dire que $f$ admet un diviseur.} sur $U$ et $D = \sum_a m_a$ son diviseur.
+Si $K\subset U$ est un compact à bord $\mathcal C^1$ par morceaux, dont le bord ne contient aucun zéro ni pôle de $f$, alors :
+\[ \frac{1}{2i\pi} \int_{\partial K} \frac{f'(z)}{f(z)}dz = \sum_{a \in K} m_a.\]
+\end{theoreme}
+
+%Idée de preuve : propriétés de la dérivée logarithmique.
+
+\begin{theoreme}[Théorème de Rouché]
+Soit $U\subset \C$ un ouvert, $f, g\in \mathcal O(U)$ et $K\subset U$ un compact.
+Si $|f-g| < |f|$ sur $\partial K$, alors $f$ et $g$ ont même nombre de zéros dans $K$, comptés avec multiplicités.
+\end{theoreme}
+
+%Idée de preuve : on commence par se ramener à un compact à bords $\mathcal C^1$ par morceaux, puis on applique le principe de l'argument.
+
+
+
+\begin{corollaire}[Localisation des racines des polynômes : version effective]
+Soit $P=z^n + a_{n-1}z^{n-1}+\cdots + a_1z + a_0$ un polynôme de degré $n/\geq 1$.
+Soit $R  = 2\max_{0\leq k\leq n-1} |a_k|^{\frac{1}{n-k}}$.
+Alors $P$ admet $n$ racines dans le disque $\D(0,R)$, comptées avec multiplicités.
+\end{corollaire}
+
+
+Dans toute la suite du paragraphe, $U$ est un ouvert de $\C$, $(f_n)_n$ est une suite de fonctions holomorphes convergeant uniformément sur tout compact vers une fonction $f$ holomorphe\footnote{L'holomorphie résulte automatiquement du théorème de Morera, mais nous n'avons pas vu ce théorème en cours.}.
+
+Pour simplifier l'énoncé des résultats, on suppose de plus $U$ \textbf{connexe}.
+
+\begin{lemme}
+Soit $K \subset U$ un compact. Si $f$ ne s'annule pas sur $\partial K$, alors pour $n$ grand, $f_n$ ne s'annule pas non plus sur $\partial K$ et $f$ et $f_n$ ont même nombre de zéros dans $K^\circ$, comptés avec multiplicités.
+\end{lemme}
+
+\begin{proposition}
+Si les fonctions $f_n$ ne s'annulent pas dans $U$, alors soit $f$ ne s'annule pas sur $U$, soit $f$ est identiquement nulle.
+\end{proposition}
+
+\begin{proposition}
+Si les fonctions $f_n$ sont injectives, alors soit $f$ est injective, soit $f$ est constante.
+\end{proposition}
+
+
+\end{document}
+
+
+
+
+
+
+
+

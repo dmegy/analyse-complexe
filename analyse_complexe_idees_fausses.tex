@@ -1,0 +1,397 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2cm]{geometry}% gestion des marges etc
+\usepackage[utf8]{inputenc} % caractères utf8 dans le fichier source
+\usepackage[T1]{fontenc} % encodage en sortie
+\usepackage[francais]{babel} % paramètres de langue : guillemets etc
+\usepackage{amssymb,mathtools,amsthm}
+\usepackage{stmaryrd,mathrsfs} % polices et symboles supplémentaires
+\usepackage{mdframed,fancybox,graphicx}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{preuve}{rgb}{0,0.2,0.5}
+
+\usepackage{xypic,multicol,comment,variations,enumerate,enumitem,datetime,tasks}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=[rgb]{0.7,0.2,0.2},          % color of internal links
+    citecolor=[rgb]{0.7,0.2,0.2},        % color of links to bibliography
+    filecolor=[rgb]{0.7,0.2,0.2},      % color of file links
+    urlcolor=[rgb]{0.7,0.2,0.2}           % color of external links
+}
+
+\usepackage{pgf,pgfmath,tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary[patterns]
+\tikzset{every picture/.style={execute at begin picture={
+   \shorthandoff{:;!?};}
+}}
+
+
+
+
+% - - - - - - -
+% Spécifique à ce document :
+%\usepackage{palatino, euler} % police : Palatino, et Euler pour les maths
+\usepackage{fourier} % police de caractères : Adobe Utopia + Fourier math
+\everymath{\displaystyle} % plus lisible mais casse l'homogénéité de la mise en page, tant pis la lisiblité passe en premier
+
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\P}{\mathbb{P}}
+\renewcommand{\S}{\mathbb{S}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\U}{\mathbb{U}}
+
+
+\DeclareMathOperator{\argsh}{argsh}
+\DeclareMathOperator{\argch}{argch}
+
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\pgcd}{pgcd}
+\DeclareMathOperator{\ppcm}{ppcm}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Bij}{Bij}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\Card}{Card} % cardinal
+\renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\Re}{\operatorname{Ré}}
+\newcommand{\z}{\overline{z}}
+\DeclareMathOperator{\PR}{\text{Ré}}
+\DeclareMathOperator{\PI}{\text{Im}}
+\DeclareMathOperator{\Log}{\text{Log}}
+\renewcommand{\mid}{\;\ifnum\currentgrouptype=16 \middle\fi|\;}
+\newcommand\eqdef{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily déf}}}{=}}}
+% égal par définition
+
+\delimitershortfall-1sp
+\newcommand\abs[1]{\left|#1\right|}
+
+\newcommand{\ensemble}[2]{\left \{ #1  
+    \ifx&#2&%
+       %
+    \else%
+       \, \middle | \, #2%
+    \fi%
+\right \}}
+
+\newcommand{\modulo}[1]{\:\left(\operatorname{mod}#1\right)}
+
+% Environnements : 
+
+\theoremstyle{definition}
+\newtheorem{theoreme}{Th\'eor\`eme}[section]
+\newtheorem{proposition}[theoreme]{Proposition}
+\newtheorem{prop}[theoreme]{Proposition}
+\newtheorem{corollaire}[theoreme]{Corollaire}
+\newtheorem{lemme}[theoreme]{Lemme}
+\renewenvironment{proof}{\color{preuve}\emph{Démonstration.~}}{\qed}
+\newenvironment{red}{\begin{quote}\color{preuve}\emph{Exemple de rédaction:}\\}{\end{quote}}
+
+\newtheorem{propdef}[theoreme]{Proposition et Définition}
+\newtheorem{axiomedef}[theoreme]{Axiome et Définition}
+\newtheorem{definition}[theoreme]{D\'efinition}
+\newtheorem{vocabulaire}[theoreme]{Vocabulaire}
+\newtheorem{exercice}[theoreme]{Exercice}
+
+\newtheorem{exemple}[theoreme]{Exemple}
+\newtheorem{exemples}[theoreme]{Exemples}
+\newtheorem{attention}[theoreme]{Mise en garde}
+\newtheorem{application}[theoreme]{Application}
+\newtheorem{ideeFausse}[theoreme]{Idée Fausse}
+
+
+\newtheorem{ex}{Exercice}
+
+\theoremstyle{plain}
+\newtheorem{remarque}[theoreme]{Remarque}
+\newtheorem{methode}[theoreme]{Méthode}
+
+
+
+
+%%%%%%%%%%
+% MACROS POUR REMPLACER ANSWERS
+
+%\newenvironment{exo}{\begin{ex}}{\end{ex}}
+%\excludecomment{hint} % on n'affiche pas les hints
+%\excludecomment{sol} % on n'affiche pas les solutions
+
+
+
+
+\title{Analyse complexe\\ Aide aux révisions : liste d'idées fausses}
+\author{Damien Mégy}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\bigskip
+\paragraph{AVERTISSEMENT}
+Ce document est une liste d'idées fausses en analyse complexe.\\
+
+Tous les énoncés de ce document sont {\Large FAUX}.
+
+\section{Holomorphie (et calcul diff)}
+
+\begin{ideeFausse}
+Si $f : U\to \C$ est différentiable et que $Df=0$, alors $f$ est constante.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Si $f$ holomorphe sur $U$, alors $\PR f$ est holomorphe.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Si $f$ holomorphe sur $U$, alors $|f|$ est holomorphe.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Si $f=u+iv$ admet des dérivées partielles en $z_0$ et que ces dérivées partielles satisfont $\partial_x u = \partial_y v$ et $\partial_y u = -\partial_x v$ au point $z_0$, alors $f$ est dérivable au sens complexe en $z_0$.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Soit $f : U\to \C$. Si $\PR F$ et $\PI f$ sont harmoniques, alors $f$ est holomorphe.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Soit $\Omega\subset \C$ un ouvert et $u : \Omega\to \R$ une fonction $\mathcal C^2$.
+Si $u$ est harmonique, alors il existe une fonction harmonique $v : \Omega\to \R$ telle que $f:=u+iv$ soit holomorphe sur $\Omega$.
+\end{ideeFausse}
+%
+%\begin{ideeFausse}
+%\end{ideeFausse}
+%
+%\begin{ideeFausse}
+%\end{ideeFausse}
+%
+%\begin{ideeFausse}
+%\end{ideeFausse}
+%
+%\begin{ideeFausse}
+%\end{ideeFausse}
+
+
+
+\section{Fonctions analytiques}
+
+\subsection{Séries entières}
+
+\begin{ideeFausse}
+Si $f$ est une somme de série entière sur $\D(0,R)$, alors $\PR f$ aussi.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Si deux séries entières $\sum a_nz^n$ et $\sum b_nz^n$ ont même rayon, alors $|a_n| \sim |b_n|$.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Si deux séries entières $\sum a_nz^n$ et $\sum b_nz^n$ ont  des rayons de convergence $R_a\leq R_b$, alors $b_n = O(a_n)$.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Si deux séries entières $\sum a_nz^n$ et $\sum b_nz^n$ sont égales sur une infinité de points, alors leurs coefficients sont égaux.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Si la somme d'une série entière est bornée, alors elle est constante.
+\end{ideeFausse}
+
+
+\subsection{Fonctions analytiques}
+
+\begin{ideeFausse}
+Les zéros d'une fonction analytique sont isolés.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Les zéros d'une fonction analytique non constante sont isolés.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Une fonction analytique bornée est constante.
+\end{ideeFausse}
+
+
+
+\begin{ideeFausse}
+Soit $f : \R\to \R$ développable en série entière à l'origine de rayon de convergence infini. Si $f$ est bornée, alors $f$ est constante.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Si deux fonctions analytiques $f$ et $g$ sur un ouvert connexe $U$ sont égales sur une infinité de points, alors elles sont égales.
+\end{ideeFausse}
+
+\subsection{Principe du maximum, lemme de Schwarz}
+
+\begin{ideeFausse}
+Soit $f$ une fonction holomorphe sur un ouvert $U$.
+Si $|f|$ admet un maximum local, alors $f$ est constante.
+\end{ideeFausse}
+
+
+\begin{ideeFausse}
+Soit $f$ une fonction holomorphe sur un ouvert $U$ et soit $K\subset U$ un compact.
+Alors $\min_{z\in K} |f(z)| = \min_{z\in \partial K} |f(z)|$.
+\end{ideeFausse}
+
+
+
+
+
+
+\begin{ideeFausse}
+Soit $f : \D(0,1)\to \D(0,1)$ holomorphe.
+Alors, pour tout $z\in \D(0,1)$, on a $|f(z)| \leq |z|$.
+\end{ideeFausse}
+
+
+
+%
+%\begin{ideeFausse}
+%\end{ideeFausse}
+%
+
+
+
+\section{Intégration curviligne, primitives holomorphes}
+
+
+\begin{ideeFausse}
+Le compact $\{(x,y)\in \R^2\:|\: 0\leq x \leq 1 \text{ et }1 \leq y \leq x^2\}$ est à bord $\mathcal C^1$ par morceaux.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Le compact $\{(x,y)\in \R^2\:|\: x^2+y^2\leq 1 \text{ et } xy\geq 0\}$ est à bord $\mathcal C^1$ par morceaux.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Le compact $\overline{\D(0,2)} \setminus \D(1,1)$ est à bord $\mathcal C^1$ par morceaux.
+\end{ideeFausse}
+
+
+\begin{ideeFausse}
+Toute fonction holomorphe possède des primitives holomorphes.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Toute fonction holomorphe sur un ouvert connexe possède des primitives holomorphes.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Si une fonction $f : \C^*\to \C$ ne peut pas se prolonger par continuité en l'origine, alors elle ne possède pas de primitive sur $\C^*$.
+\end{ideeFausse}
+
+
+
+\section{Théorème et formule(s) de Cauchy}
+
+\begin{ideeFausse}
+Si $f$ est holomorphe sur $U$ et $\gamma$ est un lacet de $U$ de classe $\mathcal C^1_{pm}$, alors $\int_\gamma f(z)dz=0$.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Soit $U$ un ouvert de $\C$, $\overline{\D(z_0,r)} \subset U$ un disque fermé inclus dans $U$ et $f\in /mathcal O(U)$.
+Alors, pour tout $a \in \D(z_0,r)$, la formule de la moyenne donne $f(a) = \frac{1}{2\pi}\int_0^{2\pi} f\left(z_0+re^{i\theta}\right)d\theta$.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Soit $U$ un ouvert de $\C$, $f\in \mathcal O(U)$, $K\subseteq U$ un compact à bord $\mathcal C^1_{pm}$ et $z\in K^\circ$.
+Alors, $f(z) =\frac{1}{2\pi} \int_{\partial K}\frac{f(\zeta)}{\zeta-z}d\zeta $.
+\end{ideeFausse}
+
+\subsection{Étude locale des fonctions holomorphes}
+
+%
+%\begin{ideeFausse}
+%\end{ideeFausse}
+%
+%\begin{ideeFausse}
+%\end{ideeFausse}
+%
+%
+%\begin{ideeFausse}
+%\end{ideeFausse}
+
+
+
+
+
+
+\section{Séries de Laurent, singularités isolées, Résidus}
+
+\subsection{Séries de Laurent}
+%
+%\begin{ideeFausse}
+%\end{ideeFausse}
+%
+%\begin{ideeFausse}
+%\end{ideeFausse}
+%
+%\begin{ideeFausse}
+%\end{ideeFausse}
+
+
+\subsection{Singularités isolées}
+
+\begin{ideeFausse}
+Si $f : \C^* \to \C$ est holomorphe et ne s'étend pas en une fonction holomorphe en l'origine, alors $\lim_{z\to 0} |f(z)| = +\infty$.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Si $f : \C^* \to \C$ est holomorphe et n'est pas bornée au voisinage de l'origine, alors $\lim_{z\to 0} |f(z)| = +\infty$.
+\end{ideeFausse}
+
+%\begin{ideeFausse}
+%\end{ideeFausse}
+%
+%\begin{ideeFausse}
+%\end{ideeFausse}
+
+
+\subsection{Théorème des résidus}
+
+%\begin{ideeFausse}
+%\end{ideeFausse}
+%
+%\begin{ideeFausse}
+%\end{ideeFausse}
+%
+%\begin{ideeFausse}
+%\end{ideeFausse}
+
+
+
+\subsection{Principe de l'argument et théorème de Rouché}
+%
+%\begin{ideeFausse}
+%\end{ideeFausse}
+%
+%\begin{ideeFausse}
+%\end{ideeFausse}
+%
+%\begin{ideeFausse}
+%\end{ideeFausse}
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
