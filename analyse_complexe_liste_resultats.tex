@@ -375,7 +375,7 @@ Alors,  pour tout $n\geq 0$ :
  
 \begin{theoreme}[Principe du maximum]
 Soit $U\subseteq \C$ un ouvert et $f \in \mathcal O(U)$.
-Si $|f|$ admet un maximum local en un point $z_0$, alors $f$ est constante sur la composante connexe de de $U$ contenant $z_0$.
+Si $|f|$ admet un maximum local en un point $z_0$, alors $f$ est constante sur la composante connexe  de $U$ contenant $z_0$.
 \end{theoreme}
 
 \begin{corollaire}[du principe du maximum]
@@ -385,6 +385,11 @@ Alors $\max_{K} |f| = \max_{\partial K} |f|$.
 
 \begin{theoreme}[Lemme de Schwarz]
 Soit $\D$ le disque unité, et $f :\D\to \D$ une fonction holomorphe telle que $f(0)=0$.
+Alors:
+\begin{enumerate}
+\item $\forall z\in \D, |f(z)|\leq |z|$.
+\item S'il existe $w \in \D^*$ tel que $|f(w)|= |w|$, ou bien si $|f'(0)|=1$, alors il existe $\lambda$ de module un tel que $\forall z\in \D, f(z)=\lambda z$.
+\end{enumerate}
 \end{theoreme}
 
 
