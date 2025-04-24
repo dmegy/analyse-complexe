@@ -47,7 +47,6 @@
 \newcommand{\C}{\mathbb{C}}
 \renewcommand{\H}{\mathbb{H}}
 \newcommand{\K}{\mathbb{K}}
-\renewcommand{\P}{\mathbb{P}}
 \renewcommand{\S}{\mathbb{S}}
 \newcommand{\B}{\mathbb{B}}
 \newcommand{\U}{\mathbb{U}}
@@ -117,7 +116,7 @@
 \newtheorem{remarque}[theoreme]{Remarque}
 \newtheorem{methode}[theoreme]{Méthode}
 
-
+\newcommand{\important}{$\bigstar$~}
 
 
 %%%%%%%%%%
@@ -141,12 +140,21 @@
 \paragraph{AVERTISSEMENT}
 Ce document est une liste d'idées fausses en analyse complexe.\\
 
-Tous les énoncés de ce document sont {\Large FAUX}.
+Tous les énoncés de ce document sont {\Large FAUX}. Parfois, ils n'ont même pas de sens, ou pas de sens défini en cours.
+Le symbole \og\important\fg{} orne les énoncés faux pour des raisons un peu plus subtiles ou profondes que les autres.
 
-\section{Holomorphie (et calcul diff)}
+\section{Holomorphie (et calcul diff, et nombres complexes)}
+
+\begin{ideeFausse}
+Le module de $e^z$ est $e^{|z|}$.
+\end{ideeFausse}
 
 \begin{ideeFausse}
 Si $f : U\to \C$ est différentiable et que $Df=0$, alors $f$ est constante.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+La fonction $e\mapsto e^{\PR z}$ est holomorphe sur $\C$.
 \end{ideeFausse}
 
 \begin{ideeFausse}
@@ -162,10 +170,10 @@ Si $f=u+iv$ admet des dérivées partielles en $z_0$ et que ces dérivées parti
 \end{ideeFausse}
 
 \begin{ideeFausse}
-Soit $f : U\to \C$. Si $\PR F$ et $\PI f$ sont harmoniques, alors $f$ est holomorphe.
+Soit $f : U\to \C$. Si $\PR f$ et $\PI f$ sont harmoniques, alors $f$ est holomorphe.
 \end{ideeFausse}
 
-\begin{ideeFausse}
+\begin{ideeFausse} \important
 Soit $\Omega\subset \C$ un ouvert et $u : \Omega\to \R$ une fonction $\mathcal C^2$.
 Si $u$ est harmonique, alors il existe une fonction harmonique $v : \Omega\to \R$ telle que $f:=u+iv$ soit holomorphe sur $\Omega$.
 \end{ideeFausse}
@@ -233,6 +241,12 @@ Soit $f : \R\to \R$ développable en série entière à l'origine de rayon de co
 Si deux fonctions analytiques $f$ et $g$ sur un ouvert connexe $U$ sont égales sur une infinité de points, alors elles sont égales.
 \end{ideeFausse}
 
+\begin{ideeFausse}\important
+Soit $U\subset \C$ un ouvert connexe et $f\in \mathcal O(U)$.
+Soit $(\alpha_n)_{n\in\N}$ une suite de nombre complexes convergente.
+Si tous les $\alpha_n$ sont dans $U$ et que $\forall n\in \N, f(\alpha_n)=0$, alors $f$ est nulle.
+\end{ideeFausse}
+
 \subsection{Principe du maximum, lemme de Schwarz}
 
 \begin{ideeFausse}
@@ -266,7 +280,7 @@ Alors, pour tout $z\in \D(0,1)$, on a $|f(z)| \leq |z|$.
 
 
 \section{Intégration curviligne, primitives holomorphes}
-
+(Attention, la notion de compact à bord $\mathcal C^1_{pm}$ donnée en cours est assez restrictive.)
 
 \begin{ideeFausse}
 Le compact $\{(x,y)\in \R^2\:|\: 0\leq x \leq 1 \text{ et }1 \leq y \leq x^2\}$ est à bord $\mathcal C^1$ par morceaux.
@@ -280,12 +294,26 @@ Le compact $\{(x,y)\in \R^2\:|\: x^2+y^2\leq 1 \text{ et } xy\geq 0\}$ est à bo
 Le compact $\overline{\D(0,2)} \setminus \D(1,1)$ est à bord $\mathcal C^1$ par morceaux.
 \end{ideeFausse}
 
-
 \begin{ideeFausse}
-Toute fonction holomorphe possède des primitives holomorphes.
+Soit $U$ un ouvert de $\C$, $\gamma : [0,1]\to U$ un chemin dans $U$ de classe $\mathcal C^1$ et $f \in \mathcal C^0(U,\C)$.
+Alors on a $\int_\gamma f(z)dz = \int_0^1 f(\gamma(t)) dt $.
 \end{ideeFausse}
 
 \begin{ideeFausse}
+Soit $U$ un ouvert de $\C$, $\gamma$ un chemin dans $U$ de classe $\mathcal C^1$ et $f \in \mathcal C^0(U,\C)$.
+Alors on a $\left|\int_\gamma f(z)dz \right| \leq \int_\gamma \left|f(z)\right|dz $.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Soit $U$ un ouvert de $\C$, $\gamma$ un chemin dans $U$ de classe $\mathcal C^1$ et $f \in \mathcal C^0(U,\C)$.
+Alors\footnote{La notation $|dz|$ n'a pas été définie en cours.} on a $\left|\int_\gamma f(z)dz \right| \leq \int_\gamma \left|f(z)dz \right|$.
+\end{ideeFausse}
+
+\begin{ideeFausse}\important 
+Toute fonction holomorphe possède des primitives holomorphes.
+\end{ideeFausse}
+
+\begin{ideeFausse}\important 
 Toute fonction holomorphe sur un ouvert connexe possède des primitives holomorphes.
 \end{ideeFausse}
 
@@ -297,12 +325,12 @@ Si une fonction $f : \C^*\to \C$ ne peut pas se prolonger par continuité en l'o
 
 \section{Théorème et formule(s) de Cauchy}
 
-\begin{ideeFausse}
+\begin{ideeFausse}\important 
 Si $f$ est holomorphe sur $U$ et $\gamma$ est un lacet de $U$ de classe $\mathcal C^1_{pm}$, alors $\int_\gamma f(z)dz=0$.
 \end{ideeFausse}
 
 \begin{ideeFausse}
-Soit $U$ un ouvert de $\C$, $\overline{\D(z_0,r)} \subset U$ un disque fermé inclus dans $U$ et $f\in /mathcal O(U)$.
+Soit $U$ un ouvert de $\C$, $\overline{\D(z_0,r)} \subset U$ un disque fermé inclus dans $U$ et $f\in \mathcal O(U)$.
 Alors, pour tout $a \in \D(z_0,r)$, la formule de la moyenne donne $f(a) = \frac{1}{2\pi}\int_0^{2\pi} f\left(z_0+re^{i\theta}\right)d\theta$.
 \end{ideeFausse}
 
@@ -313,13 +341,16 @@ Alors, $f(z) =\frac{1}{2\pi} \int_{\partial K}\frac{f(\zeta)}{\zeta-z}d\zeta $.
 
 \subsection{Étude locale des fonctions holomorphes}
 
-%
-%\begin{ideeFausse}
-%\end{ideeFausse}
-%
-%\begin{ideeFausse}
-%\end{ideeFausse}
-%
+
+\begin{ideeFausse}
+Soit $U\subset \C$ un ouvert, $a\in U$ et $f : U\to \C$ une fonction holomorphe non constante au voisinage de $a$.
+Alors il existe un voisinage ouvert $V$ de $a$ et un voisinage ouvert $W$ de $f(a)$ tels que $f$ réalise un biholomorphisme de $V$ sur $W$.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Une fonction holomorphe non constante est une application ouverte.
+\end{ideeFausse}
+
 %
 %\begin{ideeFausse}
 %\end{ideeFausse}
