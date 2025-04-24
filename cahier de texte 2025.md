@@ -4,11 +4,36 @@
 À venir
 -------
 
-intégrale curviligne sur le chemin opposé, invariance pae reparamétrage, intégration sur des chemins C^1 par morceaux. Sommes de Riemann.
-Longueur d'un chemin, majoration par inégalité triangulaire dans une intégrale curviligne.
+Fin de l'étude locale. Théorème de l'application ouverte. Holomorphie sous le signe somme.
 
-Primitives holomorphes. Existence d'une primitive si certaines ntégrales curviignes sont égales. Existence de primitive sur un ouvert étoilé.
-Théorème de Goursat, de Cauchy, Formule de Cauchy
+Chapitre suivant : séries de Laurent, singularités isolées.
+
+30 avril:
+--------
+Interrogation 3.
+
+
+23 avril:
+--------
+Suite TD5, revue détaillée du partiel.
+Rappel de l'interrogation du 30 avril.
+TD5 : plusieurs corrections de l'exercice 1. Exercice 10.
+
+
+22 avril
+----------
+Suite TD5, revue détaillée de l'interro2.
+
+- - - - 
+Vacances
+- - - -
+
+??
+-----
+
+Analycité des fonctions holomorphes.
+Théorème de Morera.
+Formules de Cauchy d'ordre supérieur.
 
 
 12 mars
