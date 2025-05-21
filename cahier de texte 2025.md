@@ -4,9 +4,44 @@
 À venir
 -------
 
-Fin de l'étude locale. Théorème de l'application ouverte. Holomorphie sous le signe somme.
+Théorie restante : holomorphie sous le signe somme.
+Théorème de Rouché. Convergence uniforme sur tout compact. Uniformisation
 
-Chapitre suivant : séries de Laurent, singularités isolées.
+21 mai (dernier cours)
+---
+
+
+20 mai
+---
+
+
+14 mai (4h de cours)
+---
+
+
+13 mai (4h de cours)
+---
+
+
+9 avril (vendredi)
+----
+Exos résidus. 
+
+
+7 avril
+---
+Fin de la preuve de Casorati-Weiestrass.
+Résidus, techniques de calcul des résidus. Lien entre le résidu et l'intégrale autour d'un point.
+Théorème des résidus. Preuve non rédigée.
+Exemples de calculs d'intégrales avec le théorème des résidus.
+
+
+6 avril
+---
+
+Distribution des feuilles de TD 6 et 7 : singularités isolées et résidus.
+Fin du développement en série de Laurent.
+Singularités isolées. Trois types de singularités. Théorème d'extension de Riemann. Théorème de Casorati-Weiestrass (début de la preuve).
 
 30 avril:
 --------
