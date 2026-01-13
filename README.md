@@ -17,9 +17,8 @@ Font partie du travail attendu:
 
 - Relire son cours régulièrment, en particulier avant les cours et les TD, pour profiter des séances. Arriver en TD ou en cours sans connaître son cours diminue considérablement l'efficacité de la séance. Ceux qui font ce travail apprennent et consolident en direct (et peuvent poser de vraies questions, des questions dont la réponse n'est pas "c'est dans le cours"). La différence de performance et le temps économisé sont considérables.
 - Faire plus d'exercices que deux des feuilles de TD si l'on constate que les exercices proposés n'ont pas suffit à tout acquérir correctement. Pour constater cela, il est nécessaire auparavant de faire puis revoir les TD, corrigés en classe ou pas.
-- Faire de toute façon plus d'exercices pour consolider. Personne n'a appris l'analyse réelle juste en  dérivant 5 ou 10 fonctions, ni même 20, là c'est pareil.
-- Avoir conscience de son taux de réussite aux exercices-type. Pour cela, il faut avoir des données, donc s'entraîner. Par exemple, quel est votre taux de réussite sur un exercice classique de type Cauchy-Riemann ? Pour le savoir, il faut par exemple en faire 10, compter combien on en réussit parfaitement, et en extrapoler une espérance de réussite et une variance. Si le résultat ne vous convient pas, il faut travailler plus.
-- Moins crucial mais devrait être considéré comme normal en L3 : lire ou parcourir d'autres sources (en particulier celles sur cette page, et d'autres à la BU), être au courant au moins approximativement de leur contenu, des différences avec le cours fait en classe.
+- Faire de toute façon plus d'exercices pour consolider. Personne n'a appris l'analyse réelle juste en  dérivant 5 ou 10 fonctions, ni même 20. C'est pareil pour l'analyse complexe.
+- Moins crucial mais devrait être considéré comme normal en L3 : lire ou parcourir d'autres sources (en particulier celles sur cette page, et d'autres à la BU), être au courant au moins approximativement de leur contenu, des différences avec le cours fait en classe. Selon le livre utilisé, le cours peut énormément varier (ordre des chapitres et progression logique, preuves et même énoncés).
 
 Cahier de texte
 ---
