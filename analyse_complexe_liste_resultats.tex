@@ -101,6 +101,7 @@
 \newtheorem{propdef}[theoreme]{Proposition et Définition}
 \newtheorem{axiomedef}[theoreme]{Axiome et Définition}
 \newtheorem{definition}[theoreme]{D\'efinition}
+\newtheorem{definitions}[theoreme]{D\'efinitions}
 \newtheorem{vocabulaire}[theoreme]{Vocabulaire}
 \newtheorem{exercice}[theoreme]{Exercice}
 
@@ -147,12 +148,13 @@
 
 
 
-\title{Analyse complexe 2024-2025\\ Aide aux révisions : liste de résultats}
+\title{Analyse complexe\\ Aide aux révisions : liste de résultats}
 \author{Damien Mégy}
 
 \begin{document}
 \maketitle
-\tableofcontents
+
+Ce document contient quelques uns des résultats du cours. Non exhaustif, mais peut aider à réviser.
 
 \section{Holomorphie}
 
@@ -161,7 +163,9 @@ Toute matrice $M\in M_2(\R)$ est la somme d'une matrice $\C$-linéaire et d'une 
 \end{prop}
 
 \begin{prop}
-Une matrice de similitude directe est soit nulle soit inversible, auquel cas son inverse est une similitude directe.
+Une matrice $\begin{pmatrix}
+a & -b\\b & a
+\end{pmatrix} \in M_2(\R)$ est soit nulle soit inversible, auquel cas son inverse est une similitude directe.
 \end{prop}
 
 \begin{prop}[Conditions de Cauchy-Riemann]
@@ -169,107 +173,46 @@ Une fonction $f:U\to \C$ est $\C$-dérivable en un point $z_0 \in U$ si et seule
 \end{prop}
 
 \begin{prop}
-Toutes les règles de dérivation pour les opérateurs de Wirtinger.
+Toutes les règles de dérivation pour les opérateurs de Wirtinger : somme et produit (facile), attention à la règle pour les composées !
 \end{prop}
-\section{Fonctions analytiques}
-
-\subsection{Séries formelles}
-
-\begin{prop}
-Les inversibles de $k[[t]]$ sont les éléments $\sum a_kT^k$ avec $a_0\neq 0$.
-\end{prop}
-
-\subsection{Séries entières}
-
-
-\begin{prop}
-Soit $\sum a_nz^n$ une série entière.
-Son rayon de convergence est strictement positif  ssi il existe $C>0$ tel que $a_n = O\left(C^n\right)$.
-\end{prop}
-
-\begin{theoreme}[Hadamard-Cauchy]
-Soit $\sum a_nz^n$ une série entière, et soit $\ell = \limsup \sqrt[n]{|a_n|} \in \R_+\cup \{+\infty\}$.
-Alors le rayon de convergence de la série est $1/\ell \in \R_+\cup \{+\infty\}$.
-\end{theoreme}
-
-\begin{prop}[Convergence des produits de Cauchy]
-Soient $\sum a_nz^n$ et $\sum b_nz^n$ deux séries entières de rayons $R>0$ et $R'>0$.
-Alors le produit de Cauchy $\sum c_nz^n$ des deux séries a un rayon de convergence $R'\geq \min(R,R')$.
-\end{prop}
-
-\begin{prop}
-Soit $\sum a_nz^n$ une série entière non nulle de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
-Soit $d$ l'indice du premier coefficient non nul de $\sum a_nz^n$.
-Alors, au voisinage de zéro, on a  $f(z)\sim a_dz^d$.
-\end{prop}
-
-\begin{prop}
-Soit $\sum a_nz^n$ une série entière de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
-Alors $f$ est dérivable au sens complexe sur $D(0,R)$ et sa dérivée complexe est la somme de la série entière $\sum (n+1)a_{n+1}z^n$ (qui est aussi de rayon $R$).
-\end{prop}
-
-\begin{theoreme}[Zéros isolés pour les séries entières, à l'origine]
-Soit $\sum a_nz^n$ une série entière de rayon strictement positif et $f$ sa somme.
-S'il existe une suite $(z_n)_{n\in \N} \in (\C^*)^\N$ convergeant vers zéro et telle que $\forall n\in\N, f(z_n)=0$, alors tous les $a_n$ sont nuls.
-\end{theoreme}
-
-\begin{theoreme}[Principe du maximum pour une série entière, en l'origine]
-Soit $\sum a_nz^n$ une série entière de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
-Si $|f|$ admet un maximum local en zéro, alors $f$ est constante.
-\end{theoreme}
-
-\begin{theoreme}[Représentation intégrale des coefficients]
-Soit $\sum a_nz^n$ une série entière de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
-Soit $r \in ]0,R[$.
-Alors, pour tout $n\in\N$, on a 
-\[a_n = \frac{1}{2\pi r^n}\int_0^{2\pi}f\left(re^{i\theta}\right)e^{-in\theta}d\theta. \]
-\end{theoreme}
-
-\begin{theoreme}[de Liouville, énoncé pour les séries entières]
-Soit $\sum a_nz^n$ une série entière de rayon $+\infty$ et $f:\C\to\C$ sa somme.
-Si $f$ est bornée, alors $f$ est constante.
-\end{theoreme}
-(Rappel de terminologie : $f$  bornée veut par définition dire $|f|$ bornée.)
-
-
-\subsection{Fonctions analytiques}
-
-\begin{prop}
-Soit $\sum_{n\geq 0}a_nz^n$ une série entière de rayon de convergence $R>0$ et $f$ sa somme sur $D(0,R)$.
-Alors $f$ est analytique sur $D(0,R)$.
-\end{prop}
-
-\begin{prop}
-Une fonction analytique sur $U$ est holomorphe sur $U$.
-\end{prop}
-
-
-\begin{theoreme}[Zéros isolés pour les fonctions analytiques]
-Soit $U\subseteq \C$ un ouvert connexe et $f$ une fonction analytique non identiquement nulle sur $U$.
-Alors les zéros de $f$ sont isolés.
-\end{theoreme}
-
-\begin{theoreme}[Zéros isolés pour les fonctions analytiques]
-Soit $U\subseteq \C$ un ouvert connexe,  $f:U\to\C$ analytique et $Z:=f^{-1}(\{0\})$ l'ensemble des zéros de $f$.
-Si $Z$ admet un point d'accumulation dans $U$, alors $f$ est identiquement nulle sur $U$.
-\end{theoreme}
 
 
 
 \section{Intégration curviligne, primitives holomorphes}
+\begin{definitions}
+Chemins, concaténation de chemins, chemin opposé. Chemins fermés, origine et terme d'un chemin (ou : départ/arrivée, ou autre noms, source/terme...).
+Chemins simples. 
+Lacets, lacets simples.
+Paramétrage des chemins classiques (segments, arcs de cercle). Homotopies de chemins.
 
+Intégration curviligne d'une $1$-forme $\alpha$ sur un chemin $\mathcal C^1_{pm}$. En pratique, la forme différentielle est quasiment toujours de la forme $f(z)dz$, avec $f$ continue (souvent holomorphe mais pas systématiquement).
+\end{definitions}
 
 \begin{prop}
-Soit $U$ un ouvert de $\C$, $f\in \mathcal C^0(U,\C)$,  $\gamma:[0,1]\to U$ un chemin de $U$ de classe $\mathcal C^1$ et $\gamma^{opp}$ son chemin opposé.
+Soit $U$ un ouvert de $\C$, $\alpha\in \Omega^1(U)$ une forme différentielle,  $\gamma:[0,1]\to U$ un chemin de $U$ de classe $\mathcal C^1$ et $\gamma^{opp}$ son chemin opposé.
 Alors 
-\[  \int_{\gamma^{opp}} f(z)dz = -\int_\gamma f(z)dz.\]
+\[  \int_{\gamma^{opp}} \alpha = -\int_\gamma \alpha.\]
 \end{prop}
+
+Consigne : ne \textbf{pas} reprouver ça dans les copies avec un changement de variable, appliquer directement ce résultat avec le chemin opposé, dont il est facile de donner un paramétrage.
 
 \begin{prop}[Invariance par reparamétrage croissant]
 Soit $U$ un ouvert de $\C$, $f\in \mathcal C^0(U,\C)$,  $\gamma:[0,1]\to U$ un chemin de $U$ de classe $\mathcal C^1$ et $\phi : [0,1]\to [01]$ une bijection croissante de classe $\mathcal C^1$.
 Alors 
 \[  \int_{\gamma\circ \phi } f(z)dz = \int_\gamma f(z)dz.\]
 \end{prop}
+
+\begin{prop}[Relation de Chasles]
+Soit $U$ un ouvert de $\C$, $\alpha\in \Omega^1(U)$ une forme différentielle,  $\gamma_1$ et $\gamma_2$ des chemins de $U$ de classe $\mathcal C^1$ tels que le terme de $\gamma_1$ est l'origine de $\gamma_2$. Soit $\gamma:=\gamma_1\vee \gamma_2$ la concaténation des deux chemins.
+Alors : 
+\[  \int_{\gamma} \alpha = \int_{\gamma_1} \alpha+\int_{\gamma_2} \alpha.\]
+\end{prop}
+
+Variation de ce résultat : 
+\[  \int_{\gamma_1} \alpha = \int_{\gamma} \alpha - \int_{\gamma_2} \alpha.\]
+Se prouve en utilisant $\gamma_2^{opp}$ pour \og revenir\fg.
+
+Ces résultats sont applicables directement.
 
 \begin{prop}[Inégalité triangulaire]
 Soit $U$ un ouvert de $\C$, $f\in \mathcal C^0(U,\C)$ et $\gamma:[0,1]\to U$ un chemin de $U$ de classe $\mathcal C^1$.
@@ -282,6 +225,7 @@ Soit $U$ un ouvert de $\C$, $f\in \mathcal C^0(U,\C)$ et $\gamma$ un chemin de $
 Alors :
 \[ \left| \int_\gamma f(z)dz\right| \leq \operatorname{long}(\gamma)\max_{z\in \supp \gamma}|f(z)|.\]
 \end{prop}
+Dans la plupart des cas, cette majoration brutale avec la longueur du chemin et la norme infine de $f$ sur le support du chemin suffit. Toujours essayer ceci en priorité. S'il faut quelque chose de plus subtil, revenir à la version précédente.
 
 \begin{proposition}
 Soit $U\subseteq \C$ un ouvert, $f:U\to\C$  et $\gamma : [0,1]\to U$ un chemin $\mathcal C^1_{pm}$ dans $U$.
@@ -289,6 +233,30 @@ Soit $U\subseteq \C$ un ouvert, $f:U\to\C$  et $\gamma : [0,1]\to U$ un chemin $
 Si $f$ possède une primitive holomorphe $F$ sur $U$, alors  
 \[\int_\gamma f(z)dz = F(\gamma(1)) - F(\gamma(0)).\]
 \end{proposition}
+
+
+
+IMPORTANT : une conséquence de la définition est que s'il y a des primitives, seules les extrémités du chemin comptent pour l'intégrale curviligne, pas le chemin lui-même. En particulier : 
+
+\begin{proposition}
+Soit $U\subseteq \C$ un ouvert, $f:U\to\C$  et $\gamma : [0,1]\to U$ un lacet $\mathcal C^1_{pm}$ dans $U$.
+
+Si $f$ possède une primitive holomorphe $F$ sur $U$, alors  
+\[\int_\gamma f(z)dz = 0.\]
+\end{proposition}
+
+\begin{attention}
+Toutes les fonctions, mêmes holomorphes, ne possèdent pas forcément de primitives. La fonction $f : \C^*\to \C, z\mapsto 1/z$ n'a pas de primitive sur $\C^*$.
+\end{attention}
+
+\begin{attention}
+Ce n'est pas parce que l'ouvert de définition a un trou, ou qu'une fonction n'est pas définie en un point, ou tend vers l'infini en module en ce point, ou autre considération de ce genre, que l'intégrale curviligne autour du point va être non nulle. Par exemple, pour la fonction $g : \C^*\to\C, z\mapsto 1/z^2$, on peut vérifier que $\int_{C(0,1)}g(z)dz=0$.
+\begin{itemize}
+\item Preuve 1 : on paramètre explicitement, on fait le calcul et on trouve zéro. 
+\item Preuve 2 : même si $g$ n'est pas définie, elle possède la primitive $-1/z$ sur $\C^*$, donc on peut appliquer la proposition précédente.
+\end{itemize}
+Attention à toutes les petites différences entre tous les résultats. Bien comprendre tout ceci nécessite d'avoir un minimum d'entraînement et de bien connaître les énoncés de cours.
+\end{attention}
 
 % Après Goursat
 %\begin{prop}
@@ -299,22 +267,59 @@ Si $f$ possède une primitive holomorphe $F$ sur $U$, alors
 
 
 
-\section{Théorème et formule(s) de Cauchy}
+\section{Théorème et formule(s) de Goursat, Cauchy et Morera}
 
-\begin{theoreme}[Lemme de Goursat]
-Soit $U$ un ouvert de $\C$,  $f\in \mathcal O(U)$ et $T\subset U$ un triangle (enveloppe convexe de trois points non alignés), dont le bord est muni de son orientation canonique.
+\begin{definition}
+Triangle : un triangle est l'enveloppe convexe de trois points, il est donc \og plein\fg{} au sens usuel. Dans le cours, j'ai autorisé les triangles à être aplatis.
+\end{definition}
+
+\begin{theoreme}[Théorème de Goursat]
+Soit $U$ un ouvert de $\C$,  $f\in \mathcal O(U)$ et $T\subset U$ un triangle non plat, dont le bord est muni de son orientation canonique.
 Alors $\int_{\partial T} f(z)dz=0$.
 \end{theoreme}
+
+(Remarque : si le triangle est plat, l'intégrale est bien sûr aussi nulle: c'est juste la relation de Chasles et ça ne nécessite pas l'holomorphie de $f$.)
 
 \begin{prop}
 Soit $U\subseteq \C$ un ouvert étoilé et $f\in \mathcal O(U)$.
 Alors $f$ possède des primitives holomorphes sur $U$.
 \end{prop}
 
+Si $K$ est un compact de $\C$ à bords $\mathcal C^1_{pm}$, que $U\subset \C$ est un ouvert contenant $K$, et que $f\in \mathcal C^0(U,\C)$, on note $\int_{\partial K} f(z)dz = 0$ l'intégrale curviligne de $f(z)dz$ sur l'arc canoniquement orienté $\partial K$ (le bord de $K$ est muni de son orientation canonique). Noter que le bord de $K$ peut ne pas être connexe, on somme simplement toutes les intégrales. Attention aux orientation des arcs, encore une fois.
+
 \begin{theoreme}[Théorème intégral de Cauchy]
-Soit $U\subset \C$ un ouvert, $f\in \mathcal O(U)$, et $K\subseteq U$ un compact à bord $\mathcal C^1$ par morceaux, dont le bord est muni de son orientation canonique.
+Soit $U\subset \C$ un ouvert, $f\in \mathcal O(U)$, et $K\subset \C$ un compact à bord $\mathcal C^1$ par morceaux, \textbf{inclus} dans $U$.
 Alors, $\int_{\partial K} f(z)dz = 0$.
 \end{theoreme}
+
+Preuve en approximant le compact par des compacts à bord polygonal. Pour ceux-ci, on les triangule et on applique le théorème de Goursat sur chaque triangle.
+
+
+Cas classique d'application : $K$ est un disque fermé, on intègre $f(z)dz$ sur le bord de $K$, qui est un cercle. Attention, le théorème demande que le disque en entier soit inclus dans $U$, pas juste le cercle.
+
+\begin{remarque}
+Dans cette version du théorème intégral de Cauchy, pas besoin que $U$ soit convexe, étoilé, simplement connexe ou quoi que ce soit. Il n'y a pas d'hypothèses sur l'ouvert $U$. L'ouvert $U$ est quelconque, il peut avoir des \og trous\fg{}, il peut être non connexe.
+
+Le compact $K$ aussi peut avoir des trous ou être non connexe. Son bord peut avoir plusieurs composantes connexes. C'est tout l'intérêt de cette version du théorème. Faites attention si vous travaillez sur d'autres sources, chaque détail compte.
+
+Par contre il est crucial que le compact $K$ soit bien inclus dans $U$ (et pas seulement son bord).
+\end{remarque}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -530,9 +535,88 @@ Si les fonctions $f_n$ sont injectives, alors soit $f$ est injective, soit $f$ e
 \end{proposition}
 
 
-\end{document}
+\section{Fonctions analytiques}
+
+\subsection{Séries formelles}
+
+\begin{prop}
+Les inversibles de $k[[t]]$ sont les éléments $\sum a_kT^k$ avec $a_0\neq 0$.
+\end{prop}
+
+\subsection{Séries entières}
 
 
+\begin{prop}
+Soit $\sum a_nz^n$ une série entière.
+Son rayon de convergence est strictement positif  ssi il existe $C>0$ tel que $a_n = O\left(C^n\right)$.
+\end{prop}
+
+\begin{theoreme}[Hadamard-Cauchy]
+Soit $\sum a_nz^n$ une série entière, et soit $\ell = \limsup \sqrt[n]{|a_n|} \in \R_+\cup \{+\infty\}$.
+Alors le rayon de convergence de la série est $1/\ell \in \R_+\cup \{+\infty\}$.
+\end{theoreme}
+
+\begin{prop}[Convergence des produits de Cauchy]
+Soient $\sum a_nz^n$ et $\sum b_nz^n$ deux séries entières de rayons $R>0$ et $R'>0$.
+Alors le produit de Cauchy $\sum c_nz^n$ des deux séries a un rayon de convergence $R'\geq \min(R,R')$.
+\end{prop}
+
+\begin{prop}
+Soit $\sum a_nz^n$ une série entière non nulle de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
+Soit $d$ l'indice du premier coefficient non nul de $\sum a_nz^n$.
+Alors, au voisinage de zéro, on a  $f(z)\sim a_dz^d$.
+\end{prop}
+
+\begin{prop}
+Soit $\sum a_nz^n$ une série entière de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
+Alors $f$ est dérivable au sens complexe sur $D(0,R)$ et sa dérivée complexe est la somme de la série entière $\sum (n+1)a_{n+1}z^n$ (qui est aussi de rayon $R$).
+\end{prop}
+
+\begin{theoreme}[Zéros isolés pour les séries entières, à l'origine]
+Soit $\sum a_nz^n$ une série entière de rayon strictement positif et $f$ sa somme.
+S'il existe une suite $(z_n)_{n\in \N} \in (\C^*)^\N$ convergeant vers zéro et telle que $\forall n\in\N, f(z_n)=0$, alors tous les $a_n$ sont nuls.
+\end{theoreme}
+
+\begin{theoreme}[Principe du maximum pour une série entière, en l'origine]
+Soit $\sum a_nz^n$ une série entière de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
+Si $|f|$ admet un maximum local en zéro, alors $f$ est constante.
+\end{theoreme}
+
+\begin{theoreme}[Représentation intégrale des coefficients]
+Soit $\sum a_nz^n$ une série entière de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
+Soit $r \in ]0,R[$.
+Alors, pour tout $n\in\N$, on a 
+\[a_n = \frac{1}{2\pi r^n}\int_0^{2\pi}f\left(re^{i\theta}\right)e^{-in\theta}d\theta. \]
+\end{theoreme}
+
+\begin{theoreme}[de Liouville, énoncé pour les séries entières]
+Soit $\sum a_nz^n$ une série entière de rayon $+\infty$ et $f:\C\to\C$ sa somme.
+Si $f$ est bornée, alors $f$ est constante.
+\end{theoreme}
+(Rappel de terminologie : $f$  bornée veut par définition dire $|f|$ bornée.)
+
+
+\subsection{Fonctions analytiques}
+
+\begin{prop}
+Soit $\sum_{n\geq 0}a_nz^n$ une série entière de rayon de convergence $R>0$ et $f$ sa somme sur $D(0,R)$.
+Alors $f$ est analytique sur $D(0,R)$.
+\end{prop}
+
+\begin{prop}
+Une fonction analytique sur $U$ est holomorphe sur $U$.
+\end{prop}
+
+
+\begin{theoreme}[Zéros isolés pour les fonctions analytiques]
+Soit $U\subseteq \C$ un ouvert connexe et $f$ une fonction analytique non identiquement nulle sur $U$.
+Alors les zéros de $f$ sont isolés.
+\end{theoreme}
+
+\begin{theoreme}[Zéros isolés pour les fonctions analytiques]
+Soit $U\subseteq \C$ un ouvert connexe,  $f:U\to\C$ analytique et $Z:=f^{-1}(\{0\})$ l'ensemble des zéros de $f$.
+Si $Z$ admet un point d'accumulation dans $U$, alors $f$ est identiquement nulle sur $U$.
+\end{theoreme}
 
 
 

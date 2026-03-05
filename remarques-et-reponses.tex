@@ -1,0 +1,202 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2cm]{geometry}% gestion des marges etc
+\usepackage[utf8]{inputenc} % caractères utf8 dans le fichier source
+\usepackage[T1]{fontenc} % encodage en sortie
+\usepackage[francais]{babel} % paramètres de langue : guillemets etc
+\usepackage{amssymb,mathtools,amsthm}
+\usepackage{stmaryrd,mathrsfs} % polices et symboles supplémentaires
+\usepackage{mdframed,fancybox,graphicx}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{preuve}{rgb}{0,0.2,0.5}
+
+\usepackage{xypic,multicol,comment,variations,enumerate,enumitem,datetime,tasks}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=[rgb]{0.7,0.2,0.2},          % color of internal links
+    citecolor=[rgb]{0.7,0.2,0.2},        % color of links to bibliography
+    filecolor=[rgb]{0.7,0.2,0.2},      % color of file links
+    urlcolor=[rgb]{0.7,0.2,0.2}           % color of external links
+}
+
+\usepackage{pgf,pgfmath,tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary[patterns]
+\tikzset{every picture/.style={execute at begin picture={
+   \shorthandoff{:;!?};}
+}}
+
+
+
+
+% - - - - - - -
+% Spécifique à ce document :
+%\usepackage{palatino, euler} % police : Palatino, et Euler pour les maths
+\usepackage{fourier} % police de caractères : Adobe Utopia + Fourier math
+\everymath{\displaystyle} % plus lisible mais casse l'homogénéité de la mise en page, tant pis la lisiblité passe en premier
+
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\P}{\mathbb{P}}
+\renewcommand{\S}{\mathbb{S}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\U}{\mathbb{U}}
+
+
+\DeclareMathOperator{\argsh}{argsh}
+\DeclareMathOperator{\argch}{argch}
+
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\pgcd}{pgcd}
+\DeclareMathOperator{\ppcm}{ppcm}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Bij}{Bij}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\Card}{Card} % cardinal
+\renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\Re}{\operatorname{Ré}}
+\newcommand{\z}{\overline{z}}
+\DeclareMathOperator{\PR}{\text{Ré}}
+\DeclareMathOperator{\PI}{\text{Im}}
+\DeclareMathOperator{\Log}{\text{Log}}
+\renewcommand{\mid}{\;\ifnum\currentgrouptype=16 \middle\fi|\;}
+\newcommand\eqdef{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily déf}}}{=}}}
+% égal par définition
+
+\delimitershortfall-1sp
+\newcommand\abs[1]{\left|#1\right|}
+
+\newcommand{\ensemble}[2]{\left \{ #1  
+    \ifx&#2&%
+       %
+    \else%
+       \, \middle | \, #2%
+    \fi%
+\right \}}
+
+\newcommand{\modulo}[1]{\:\left(\operatorname{mod}#1\right)}
+
+% Environnements : 
+
+\theoremstyle{definition}
+\newtheorem{theoreme}{Th\'eor\`eme}[section]
+\newtheorem{proposition}[theoreme]{Proposition}
+\newtheorem{prop}[theoreme]{Proposition}
+\newtheorem{corollaire}[theoreme]{Corollaire}
+\newtheorem{lemme}[theoreme]{Lemme}
+\renewenvironment{proof}{\color{preuve}\emph{Démonstration.~}}{\qed}
+\newenvironment{red}{\begin{quote}\color{preuve}\emph{Exemple de rédaction:}\\}{\end{quote}}
+
+\newtheorem{propdef}[theoreme]{Proposition et Définition}
+\newtheorem{axiomedef}[theoreme]{Axiome et Définition}
+\newtheorem{definition}[theoreme]{D\'efinition}
+\newtheorem{vocabulaire}[theoreme]{Vocabulaire}
+\newtheorem{exercice}[theoreme]{Exercice}
+
+\newtheorem{exemple}[theoreme]{Exemple}
+\newtheorem{exemples}[theoreme]{Exemples}
+\newtheorem{attention}[theoreme]{Mise en garde}
+\newtheorem{application}[theoreme]{Application}
+
+
+\newtheorem{ex}{Exercice}
+
+\theoremstyle{plain}
+\newtheorem{remarque}[theoreme]{Remarque}
+\newtheorem{methode}[theoreme]{Méthode}
+
+
+
+
+%%%%%%%%%%
+% MACROS POUR REMPLACER ANSWERS
+
+%\newenvironment{exo}{\begin{ex}}{\end{ex}}
+%\excludecomment{hint} % on n'affiche pas les hints
+%\excludecomment{sol} % on n'affiche pas les solutions
+
+
+
+
+% - - - - - - - - - - - - - -
+% PARAMETRAGE DU PACKAGE ANSWERS 
+% POUR LES INDICATIONS ET CORRECTIONS
+% - - - - - - - - - - - - - - 
+
+\usepackage{answers}
+\Newassociation{sol}{Soln}{solutions}
+% ira dans le fichier d'identifiant 'solutions'
+% et écrira les solutions dans un environnement 'Soln'
+\newenvironment{exo}{\begin{ex}\label{enonce.\theex} }{\end{ex} }
+
+\renewenvironment{Soln}[1]{\noindent{\bf Correction de l'exercice \ref{enonce.#1}.} }
+% - - - - - - - - - - - - - - 
+% FIN  PARAMETRAGE ANSWERS
+% - - - - - - - - - - - - - - 
+
+
+
+\title{Analyse complexe\\ Remarques sur le cours\\}
+\author{Damien Mégy}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Chapitre I : holomorphie}
+
+\section{Chapitre II : intégration curviligne, formes différentielles}
+
+À propos de l'intégration de $\frac{dz}{z}$ sur le cercle unité : on n'a certes pas une primitive sur $\C^*$, mais on a une primitive sur $\C\setminus \R_-$, qui est de mesure nulle.
+Ne peut-on pas utiliser que le lieu d'inexistence est de mesure nulle pour tout de même intégrer avec la primitive en-dehors d'un lieu négligeable et dire que le résultat est le même ?
+
+\begin{quote}
+Réponse : l'intégration curviligne, telle que définie en cours, n'est pas l'intégration d'une fonction définie sur le plan contre une mesure sur les boréliens du plan, donc on ne peut pas directement faire marcher des choses du genre \og la mesure est absolument continue par rapport à Lebesgue, cet ensemble est de mesure de Lebesgue nulle, donc cet ensemble n'a pas d'importance.\fg{}
+
+Le cadre est différent : on tire en arrière la forme différentielle à un intervalle de $\R$, et ensuite on intègre la forme différentielle (à une variable) sur cet intervalle. Et là, ça revient à intégrer une fonction contre la mesure de Lebesgue de cet intervalle de $\R$.
+ 
+Cependant il est vrai qu'il existe une primitive sur $\C^*$ à savoir $\Log_0$, et il est vrai qu'on peut utiliser ça pour rédiger le calcul de l'intégrale curviligne (fait en cours au tableau). Évidemment, le résultat final est quand même $2i\pi$.
+\end{quote}
+
+
+\section{Chapitre III : Cauchy, Goursat, Morera}
+
+\paragraph{\og Le compact $K$ est-il le disque, ou le cercle?\fg}
+Dans les énoncés de Goursat et de Cauchy, le compact n'est jamais le cercle ou le bord du triangle. Le compact est, dans ces cas-là, le triangle plein ou le triangle plein.
+
+\begin{quote}
+
+J'ai eu deux fois en TD la question suivante : pourquoi ne pourrait-on pas appliquer le théorème en prenant pour $K$ le cercle et non pas le disque, ou le bord du triangle au lieu du triangle, et dans ce cas, qu'est-ce que ça donnerait ?
+
+Ce qui rendait la question importante est le fait suivant : si l'on pouvait le faire, alors on pourrait dire que le cercle est entièrement inclus dans l'ouvert $U=\C^*$ sur lequel $1/z$ est définie et holomorphe, avoir l'impression que les hypothèses du théorème sont remplies, appliquer le théorème intégral de Cauchy à $\int_{\mathcal C} dz/z$ et avoir l'impression d'obtenir une contradiction (une intégrale nulle, alors qu'on sait qu'elle vaut $2i\pi$).
+
+La réponse est que le cercle et le triangle \og vide\fg{} sont certes des compacts de plan, on pourrait certes dire que leur frontière est quelque chose de $\mathcal C^1$ par morceaux avec une définition raisonnable, mais si l'on regarde la définition du cours, un cercle n'est PAS un compact à bords $\mathcal C^1_{pm}$ du plan : on ne peut pas trouver, pour tout point du cercle, une carte euclidienne en ce point telle que le compact soit l'\textbf{épi}graphe d'une fonction $\mathcal C^1_{pm}$ dans cette carte.\footnote{Le graphe, oui, manifestement, mais pas l'épigraphe. Le fait de demander à avoir localement un épigraphe de fonction $\mathcal C^1_{pm}$ implique que le compact est \og plein\fg.} Donc, pour ces compacts, le théorème intégral de Cauchy ne s'applique pas.
+\begin{quote}
+TL;DR : dans le théorème intégral de Cauchy, le compact $K$ est \og plein\fg{} (par exemple un disque fermé), et on intègre sur le \textbf{bord} de $K$ (par exemple un  cercle, muni de l'orientation canonique du bord).
+\end{quote}
+\end{quote}
+
+\paragraph{\og Le bord d'un  cercle est vide, de toute façon.\fg}
+Autre remarque : en TD, en discutant de ce problème, j'ai dit que de toute façon le bord du cercle était vide. Attention, si on prend \og bord\fg{} au sens de frontière ce n'est pas vrai, pour que cette phrase soit vraie il faut prendre \og bord\fg{} au sens de la théorie des \og variétés à bord\fg{}, qui est le cadre normal pour dire cette phrase que je prononce assez souvent... mais lors du premier TD je n'ai même pas remarqué le piège de terminologie.
+(On dit que le cercle est une variété sans bord. Le segment fermé $[a,b]$ est une variété à bord, son bord est de dimension zéro. Un disque fermé du plan est une variété à bord, son bord est le cercle, etc.) Cette remarque n'est pas importante. Vous recroiserez l'année prochaine des phrases comme \og le bord d'un cercle est vide\fg{} ou \og le bord d'un bord est vide\fg{} (en l'occurence, le cercle est le bord du disque).
+
+\end{document}
+
+
+
+
+
+
+
+
