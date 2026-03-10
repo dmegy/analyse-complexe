@@ -305,6 +305,92 @@ Le compact $K$ aussi peut avoir des trous ou être non connexe. Son bord peut av
 Par contre il est crucial que le compact $K$ soit bien inclus dans $U$ (et pas seulement son bord).
 \end{remarque}
 
+% fin du cours du 3 mars
+
+
+\begin{theoreme}[Formule de Cauchy]
+Soit $U\subset \C$ un ouvert, $f\in \mathcal O(U)$, et $K\subseteq U$ un compact à bord $\mathcal C^1$ par morceaux, dont le bord est muni de son orientation canonique.
+Soit $z\in K^{\circ}$.
+Alors:
+\[ f(z) = \frac{1}{2i\pi}\int_{\partial K} \frac{f(w)}{w-z}dw.\]
+\end{theoreme}
+
+
+\begin{theoreme}[Liouville]
+Soit $f$ holomorphe sur $\C$.
+Si $f$ est bornée, alors $f$ est constante.
+\end{theoreme}
+
+\begin{proof}(Esquisse)
+Soient $a, b \in \C$. Montrons  que $f(a)=f(b)$.
+Avec la formule de Cauchy et l'inégalité triangulaire, on majore $|f(a)-f(b)|$ par une quantité qui peut être rendue aussi petite que l'on veut.
+\end{proof}
+
+\begin{theoreme}[d'Alembert-Gauss]
+Soit $P \in \C[z]$ un polynôme complexe sans racines. Alors $P$ est constant.
+\end{theoreme}
+
+\begin{proof}
+Soit $f : \C\to\C, z\mapsto \frac{1}{P(z)}$, définie et holomorphe sur $\C$.
+Si $d = \deg P$ et $P(z) = \sum_{k=0}^d a_kz^k$, on a $P(z) \sim a_dz^d$ au voisinage de l'infini. En particulier, soit $P$ est constant, soit $|P|$ tend vers $+\infty$ lorsque $|z|\to +\infty$.
+
+Ceci implique que $f=1/P$ est bornée au voisinage de l'infini, donc bornée sur $\C$ tout entier. Par le théorème de Liouville, $f$ est constante, donc $P$ aussi.
+\end{proof}
+
+\begin{theoreme}[Cercle centré : Formule de la moyenne]
+Soit $U$ un ouvert de $\C$,  $f\in \mathcal O(U)$,  $z\in U$ et $r>0$ tel que $\overline{\D(z,r)} \subset U$.
+Alors:
+\[ f(z) = \frac{1}{2\pi}\int_0^{2\pi} f\left(z+re^{it}\right)dt\]
+\end{theoreme}
+
+\begin{proof}(Esquisse)
+On applique la formule de Cauchy à $f$ sur le bord du disque $\D(z,r)$, on paramètre le bord par $\gamma : [0,2\pi], t\mapsto z+re^{it}$ et on simplifie l'intégrale obtenue.
+\end{proof}
+
+
+
+\begin{theoreme}
+Soit $U\subset \C$ un ouvert et $f\in \mathcal O(U)$.
+Alors $f$ est infiniment $\C$-dérivable sur $U$. 
+De plus, pour tout $z\in U$, pour tout compact $K$ avec $z\in K^\circ \subset K \subset U$ à bord $\mathcal C^1_{pm}$, et tout $n\geq 0$, on a 
+\[ \frac{f^{(n)}(z)}{n!} = \frac{1}{2i\pi}\int_{\partial K} \frac{f(w)}{(w-z)^{n+1}}dw.\]
+\end{theoreme}
+(En particulier elle y est $\mathcal C^\infty$ mais le résultat est bien plus fort.)
+
+%\begin{theoreme}[Morera] OUBLIÉ
+%\end{theoreme}
+
+%Deuxième preuve de Liouville avec $f'=0$. OUBLIE, mettre dans la feuille de TD
+
+
+\begin{theoreme}[Inégalités de Cauchy]
+Soit $U$ un ouvert de $\C$ et $f\in \mathcal O(U)$.
+Soit $z\in U$ et $r>0$ tel que $\overline{\D(z,r)} \subset U$.
+Alors :
+\[ \abs{f^{(n)}(z)} \leq \frac{n!}{2\pi  r^n} \int_0^{2\pi} |f(z+re^{it})|dt
+\leq \frac{n!}{r^n}\max_{0\leq t\leq 2\pi} \abs{f(z+re^{it})}\]
+\end{theoreme}
+\begin{proof}
+On applique le résultat précédent avec $K = \overline{\D(z,r)}$ : on obtient
+\begin{align*}
+\frac{f^{(n)}(z)}{n!}
+= \frac{1}{2i\pi}\int_0^{2\pi} \frac{f\left(z+re^{it}\right)}{(z+re^{it}-z)^{n+1}}ire^{it}dt
+= \frac{1}{2i\pi}\int_0^{2\pi} \frac{f\left(z+re^{it}\right)}{r^{n+1}e^{(n+1)it}}ire^{it}dt
+= \frac{1}{2\pi r^n}\int_0^{2\pi} f\left(z+re^{it}\right)e^{-int}dt.
+\end{align*}
+Ensuite, on majore par inégalité triangulaire.
+\end{proof}
+
+\begin{theoreme}[Les fonctions holomorphes sont analytiques]
+Soit $U$ un ouvert de $\C$ et $f\in \mathcal O(U)$.
+Pour tout $z_0\in U$, $f$ est développable en série entière en $z_0$, autrement dit : il existe $r>0$ tq $\overline{\D(z_0,r)}\subset U$ et une suite $(a_n)_{n\in\N} \in \C^\N$ tels que
+\[ \forall z\in \D(z_0,r), f(z) = \sum_{n\geq 0}a_n(z-z_0)^n.\]
+\end{theoreme}
+
+\begin{proof}(Esquisse)
+On exhibe  une forme explicite des coefficients $a_n$ à l'aide de la formule de Cauchy.
+\end{proof}
+
 
 \end{document}
 
@@ -325,24 +411,9 @@ Par contre il est crucial que le compact $K$ soit bien inclus dans $U$ (et pas s
 
 
 
-\begin{theoreme}[Formule de Cauchy]
-Soit $U\subset \C$ un ouvert, $f\in \mathcal O(U)$, et $K\subseteq U$ un compact à bord $\mathcal C^1$ par morceaux, dont le bord est muni de son orientation canonique.
-Soit $a\in K^{\circ}$.
-Alors:
-\[ f(a) = \frac{1}{2i\pi}\int_{\partial K} \frac{f(z)}{z-a}dz.\]
-\end{theoreme}
 
 
 
-\begin{theoreme}
-Les fonctions holomorphes sont analytiques.
-De plus, si $f\in \mathcal O(U)$ et $z_0 \in U$, le rayon de convergence du DSE de $f$ en $z_0$ a un rayon supérieur ou égal à $\operatorname{dist}(z_0,U^c)$.
-\end{theoreme}
-
-\begin{theoreme}
-Soit $f$ une fonction holomorphe sur $U$.
-Alors $f'$ est holomorphe sur $U$.
-\end{theoreme}
 
 \begin{theoreme}[de Morera]
 Soit $U$ un ouvert de $\C$ et $f\in \mathcal C^0(U,\C)$ telle que pour tout triangle $T\subset U$, on ait $\int_{\partial T}f(z)dz=0$.
