@@ -1,6 +1,8 @@
 \documentclass[11pt,a4paper]{article}
 
-\usepackage[margin=2cm]{geometry}% gestion des marges etc
+\usepackage[top = 3cm, bottom = 3cm, left = 2cm, right = 7cm,marginpar=5cm,marginparsep=1cm]{geometry}% gestion des marges etc
+
+
 \usepackage[utf8]{inputenc} % caractères utf8 dans le fichier source
 \usepackage[T1]{fontenc} % encodage en sortie
 \usepackage[francais]{babel} % paramètres de langue : guillemets etc
@@ -11,6 +13,12 @@
 \definecolor{preuve}{rgb}{0,0.2,0.5}
 
 \usepackage{xypic,multicol,comment,variations,enumerate,enumitem,datetime,tasks}
+
+
+
+\usepackage{marginfix} % floats sidenotes
+\usepackage{environ,sidenotes}
+
 
 \usepackage{hyperref}
 \hypersetup{
@@ -88,35 +96,67 @@
 \newcommand{\modulo}[1]{\:\left(\operatorname{mod}#1\right)}
 
 % Environnements : 
-
+% Environnements : 
+\swapnumbers
 \theoremstyle{definition}
 \newtheorem{theoreme}{Th\'eor\`eme}[section]
 \newtheorem{proposition}[theoreme]{Proposition}
-\newtheorem{prop}[theoreme]{Proposition}
 \newtheorem{corollaire}[theoreme]{Corollaire}
 \newtheorem{lemme}[theoreme]{Lemme}
-\renewenvironment{proof}{\color{preuve}\emph{Démonstration.~}}{\qed}
+\renewenvironment{proof}{\color{preuve}\emph{Démonstration.~}}{\qed\vspace{1em}}
 \newenvironment{red}{\begin{quote}\color{preuve}\emph{Exemple de rédaction:}\\}{\end{quote}}
 
 \newtheorem{propdef}[theoreme]{Proposition et Définition}
 \newtheorem{axiomedef}[theoreme]{Axiome et Définition}
 \newtheorem{definition}[theoreme]{D\'efinition}
-\newtheorem{definitions}[theoreme]{D\'efinitions}
+\newtheorem{definitions}[theoreme]{D\'efinition}
 \newtheorem{vocabulaire}[theoreme]{Vocabulaire}
-\newtheorem{exercice}[theoreme]{Exercice}
 
 \newtheorem{exemple}[theoreme]{Exemple}
 \newtheorem{exemples}[theoreme]{Exemples}
-\newtheorem{attention}[theoreme]{Mise en garde}
-\newtheorem{application}[theoreme]{Application}
+
+\newtheorem{att}[theoreme]{Mise en garde}
 
 
-\newtheorem{ex}{Exercice}
 
 \theoremstyle{plain}
-\newtheorem{remarque}[theoreme]{Remarque}
-\newtheorem{methode}[theoreme]{Méthode}
+%\newtheorem{rmq}[theoreme]{Remarque}
+\newtheorem{exercice}[theoreme]{Exercice}% on laisse pour ne pas casser le code existant
 
+\NewEnviron{remarque}{%
+  \marginpar{\begin{mdframed}\footnotesize{\textbf{Remarque.} \BODY}\end{mdframed}}%
+}
+\NewEnviron{exo}{%
+  \marginpar{\begin{mdframed}\footnotesize{\textbf{Exercice.} \BODY}\end{mdframed}}%
+}
+\NewEnviron{methode}{%
+  \marginpar{\begin{mdframed}\footnotesize{\textbf{Méthode.} \BODY}\end{mdframed}}%
+}
+\NewEnviron{attention}{%
+  \marginpar{\begin{mdframed}\footnotesize{\textbf{Attention !} \BODY}\end{mdframed}}%
+}
+
+
+
+% 
+% sidenotes en taille footnotesize :
+% https://tex.stackexchange.com/questions/361622/changing-sidenote-size
+
+\makeatletter
+\RenewDocumentCommand\sidenotetext{ o o +m }{%      
+    \IfNoValueOrEmptyTF{#1}{%
+        \@sidenotes@placemarginal{#2}{\textsuperscript{\thesidenote}{}~\footnotesize#3}%
+        \refstepcounter{sidenote}%
+    }{%
+        \@sidenotes@placemarginal{#2}{\textsuperscript{#1}~#3}%
+    }%
+}
+\makeatother
+
+
+
+\newcommand{\oldfootnote}{\footnote}
+\renewcommand{\footnote}{\sidenote}
 
 
 
@@ -130,23 +170,6 @@
 
 
 
-% - - - - - - - - - - - - - -
-% PARAMETRAGE DU PACKAGE ANSWERS 
-% POUR LES INDICATIONS ET CORRECTIONS
-% - - - - - - - - - - - - - - 
-
-\usepackage{answers}
-\Newassociation{sol}{Soln}{solutions}
-% ira dans le fichier d'identifiant 'solutions'
-% et écrira les solutions dans un environnement 'Soln'
-\newenvironment{exo}{\begin{ex}\label{enonce.\theex} }{\end{ex} }
-
-\renewenvironment{Soln}[1]{\noindent{\bf Correction de l'exercice \ref{enonce.#1}.} }
-% - - - - - - - - - - - - - - 
-% FIN  PARAMETRAGE ANSWERS
-% - - - - - - - - - - - - - - 
-
-
 
 \title{Analyse complexe\\ Aide aux révisions : liste de résultats}
 \author{Damien Mégy}
@@ -158,23 +181,29 @@ Ce document contient quelques uns des résultats du cours. Non exhaustif, mais p
 
 \section{Holomorphie}
 
-\begin{prop}
+\begin{proposition}
 Toute matrice $M\in M_2(\R)$ est la somme d'une matrice $\C$-linéaire et d'une matrice $\C$-antilinéaire et cette décomposition est unique.
-\end{prop}
+\end{proposition}
 
-\begin{prop}
+\begin{exo}
+Écrire l'application $f:\R^2\to\R^2, (x,y)\mapsto (2x+3y,4x-5y)$ comme une application $\C\to\C$ en fonction de $z$ et $\bar z$.
+\end{exo}
+
+\begin{proposition}
 Une matrice $\begin{pmatrix}
 a & -b\\b & a
 \end{pmatrix} \in M_2(\R)$ est soit nulle soit inversible, auquel cas son inverse est une similitude directe.
-\end{prop}
+\end{proposition}
 
-\begin{prop}[Conditions de Cauchy-Riemann]
+
+
+\begin{theoreme}[Conditions de Cauchy-Riemann]
 Une fonction $f:U\to \C$ est $\C$-dérivable en un point $z_0 \in U$ si et seulement si elle est différentiable en $z_0$ et de plus, sa différentielle en $z_0$ est une similitude directe.
-\end{prop}
+\end{theoreme}
 
-\begin{prop}
+\begin{proposition}
 Toutes les règles de dérivation pour les opérateurs de Wirtinger : somme et produit (facile), attention à la règle pour les composées !
-\end{prop}
+\end{proposition}
 
 
 
@@ -188,25 +217,25 @@ Paramétrage des chemins classiques (segments, arcs de cercle). Homotopies de ch
 Intégration curviligne d'une $1$-forme $\alpha$ sur un chemin $\mathcal C^1_{pm}$. En pratique, la forme différentielle est quasiment toujours de la forme $f(z)dz$, avec $f$ continue (souvent holomorphe mais pas systématiquement).
 \end{definitions}
 
-\begin{prop}
+\begin{proposition}
 Soit $U$ un ouvert de $\C$, $\alpha\in \Omega^1(U)$ une forme différentielle,  $\gamma:[0,1]\to U$ un chemin de $U$ de classe $\mathcal C^1$ et $\gamma^{opp}$ son chemin opposé.
 Alors 
 \[  \int_{\gamma^{opp}} \alpha = -\int_\gamma \alpha.\]
-\end{prop}
+\end{proposition}
 
 Consigne : ne \textbf{pas} reprouver ça dans les copies avec un changement de variable, appliquer directement ce résultat avec le chemin opposé, dont il est facile de donner un paramétrage.
 
-\begin{prop}[Invariance par reparamétrage croissant]
+\begin{proposition}[Invariance par reparamétrage croissant]
 Soit $U$ un ouvert de $\C$, $f\in \mathcal C^0(U,\C)$,  $\gamma:[0,1]\to U$ un chemin de $U$ de classe $\mathcal C^1$ et $\phi : [0,1]\to [01]$ une bijection croissante de classe $\mathcal C^1$.
 Alors 
 \[  \int_{\gamma\circ \phi } f(z)dz = \int_\gamma f(z)dz.\]
-\end{prop}
+\end{proposition}
 
-\begin{prop}[Relation de Chasles]
+\begin{proposition}[Relation de Chasles]
 Soit $U$ un ouvert de $\C$, $\alpha\in \Omega^1(U)$ une forme différentielle,  $\gamma_1$ et $\gamma_2$ des chemins de $U$ de classe $\mathcal C^1$ tels que le terme de $\gamma_1$ est l'origine de $\gamma_2$. Soit $\gamma:=\gamma_1\vee \gamma_2$ la concaténation des deux chemins.
 Alors : 
 \[  \int_{\gamma} \alpha = \int_{\gamma_1} \alpha+\int_{\gamma_2} \alpha.\]
-\end{prop}
+\end{proposition}
 
 Variation de ce résultat : 
 \[  \int_{\gamma_1} \alpha = \int_{\gamma} \alpha - \int_{\gamma_2} \alpha.\]
@@ -214,18 +243,18 @@ Se prouve en utilisant $\gamma_2^{opp}$ pour \og revenir\fg.
 
 Ces résultats sont applicables directement.
 
-\begin{prop}[Inégalité triangulaire]
+\begin{proposition}[Inégalité triangulaire]
 Soit $U$ un ouvert de $\C$, $f\in \mathcal C^0(U,\C)$ et $\gamma:[0,1]\to U$ un chemin de $U$ de classe $\mathcal C^1$.
 Alors :
 \[ \left| \int_\gamma f(z)dz\right| \leq \int_0^1 \left|f(\gamma(t))\gamma'(t)\right|dt.\]
-\end{prop}
+\end{proposition}
 
-\begin{prop}[Inégalité triangulaire, forme simplifiée, majoration brutale de $|f|$]
+\begin{proposition}[Inégalité triangulaire, forme simplifiée, majoration brutale de $|f|$]
 Soit $U$ un ouvert de $\C$, $f\in \mathcal C^0(U,\C)$ et $\gamma$ un chemin de $U$ de classe $\mathcal C^1_{pm}$.
 Alors :
 \[ \left| \int_\gamma f(z)dz\right| \leq \operatorname{long}(\gamma)\max_{z\in \supp \gamma}|f(z)|.\]
-\end{prop}
-Dans la plupart des cas, cette majoration brutale avec la longueur du chemin et la norme infine de $f$ sur le support du chemin suffit. Toujours essayer ceci en priorité. S'il faut quelque chose de plus subtil, revenir à la version précédente.
+\end{proposition}
+Dans la plupart des cas, cette majoration brutale avec la longueur du chemin et la norme infinie de $f$ sur le support du chemin suffit. Toujours essayer ceci en priorité. S'il faut quelque chose de plus subtil, revenir à la version précédente.
 
 \begin{proposition}
 Soit $U\subseteq \C$ un ouvert, $f:U\to\C$  et $\gamma : [0,1]\to U$ un chemin $\mathcal C^1_{pm}$ dans $U$.
@@ -236,7 +265,7 @@ Si $f$ possède une primitive holomorphe $F$ sur $U$, alors
 
 
 
-IMPORTANT : une conséquence de la définition est que s'il y a des primitives, seules les extrémités du chemin comptent pour l'intégrale curviligne, pas le chemin lui-même. En particulier : 
+Une conséquence de la définition est que s'il y a des primitives, seules les extrémités du chemin comptent pour l'intégrale curviligne, pas le chemin lui-même. En particulier : 
 
 \begin{proposition}
 Soit $U\subseteq \C$ un ouvert, $f:U\to\C$  et $\gamma : [0,1]\to U$ un lacet $\mathcal C^1_{pm}$ dans $U$.
@@ -250,19 +279,20 @@ Toutes les fonctions, mêmes holomorphes, ne possèdent pas forcément de primit
 \end{attention}
 
 \begin{attention}
-Ce n'est pas parce que l'ouvert de définition a un trou, ou qu'une fonction n'est pas définie en un point, ou tend vers l'infini en module en ce point, ou autre considération de ce genre, que l'intégrale curviligne autour du point va être non nulle. Par exemple, pour la fonction $g : \C^*\to\C, z\mapsto 1/z^2$, on peut vérifier que $\int_{C(0,1)}g(z)dz=0$.
-\begin{itemize}
-\item Preuve 1 : on paramètre explicitement, on fait le calcul et on trouve zéro. 
-\item Preuve 2 : même si $g$ n'est pas définie, elle possède la primitive $-1/z$ sur $\C^*$, donc on peut appliquer la proposition précédente.
-\end{itemize}
-Attention à toutes les petites différences entre tous les résultats. Bien comprendre tout ceci nécessite d'avoir un minimum d'entraînement et de bien connaître les énoncés de cours.
+L'énoncé suivant est \textbf{FAUX} : \og Soit $f\in \mathcal O(U)$ et $\gamma$ un lacet de $U$. Alors $\int_\gamma f(z)dz = 0$\fg. Voir le document \og idées fausses\fg.
+\end{attention}
+
+\begin{attention}
+Réciproquement, ce n'est pas parce que l'ouvert de définition a un trou, ou qu'une fonction n'est pas définie en un point, ou tend vers l'infini en module en ce point, ou autre considération de ce genre, que l'intégrale curviligne autour du point va être non nulle. Par exemple, pour la fonction $g : \C^*\to\C, z\mapsto 1/z^2$, on peut vérifier que $\int_{C(0,1)}g(z)dz=0$.\par
+\textbf{Preuve 1:} on paramètre explicitement, on fait le calcul et on trouve zéro. \par
+\textbf{Preuve 2:}  même si $g$ n'est pas définie, elle possède la primitive $-1/z$ sur $\C^*$, donc l'intégrale est nulle.
 \end{attention}
 
 % Après Goursat
-%\begin{prop}
+%\begin{proposition}
 %Soit $f$ holomorphe sur un ouvert étoilé $U$.
 %Alors $f$ possède une primitive holomorphe sur $U$.
-%\end{prop}
+%\end{proposition}
 
 
 
@@ -278,15 +308,31 @@ Soit $U$ un ouvert de $\C$,  $f\in \mathcal O(U)$ et $T\subset U$ un triangle no
 Alors $\int_{\partial T} f(z)dz=0$.
 \end{theoreme}
 
-(Remarque : si le triangle est plat, l'intégrale est bien sûr aussi nulle: c'est juste la relation de Chasles et ça ne nécessite pas l'holomorphie de $f$.)
+\begin{remarque}
+Si le triangle est plat, l'intégrale est bien sûr aussi nulle: c'est juste la relation de Chasles et ça ne nécessite pas l'holomorphie de $f$.
+\end{remarque}
 
-\begin{prop}
+\begin{proposition}
 Soit $U\subseteq \C$ un ouvert étoilé et $f\in \mathcal O(U)$.
 Alors $f$ possède des primitives holomorphes sur $U$.
-\end{prop}
+\end{proposition}
 
-Si $K$ est un compact de $\C$ à bords $\mathcal C^1_{pm}$, que $U\subset \C$ est un ouvert contenant $K$, et que $f\in \mathcal C^0(U,\C)$, on note $\int_{\partial K} f(z)dz = 0$ l'intégrale curviligne de $f(z)dz$ sur l'arc canoniquement orienté $\partial K$ (le bord de $K$ est muni de son orientation canonique). Noter que le bord de $K$ peut ne pas être connexe, on somme simplement toutes les intégrales. Attention aux orientation des arcs, encore une fois.
+\begin{remarque}
+Le bord de $K$ peut tout-à-fait ne pas être connexe. Dans ce cas, on somme simplement toutes les intégrales. Attention aux orientation des arcs, encore une fois.
+\end{remarque}
+\begin{definition}
+Si $K$ est un compact de $\C$ à bords $\mathcal C^1_{pm}$, que $U\subset \C$ est un ouvert contenant $K$, et que $f\in \mathcal C^0(U,\C)$, on note $\int_{\partial K} f(z)dz = 0$ l'intégrale curviligne de $f(z)dz$ sur l'arc canoniquement orienté $\partial K$ (le bord de $K$ est muni de son orientation canonique).
+\end{definition}
 
+
+
+\begin{remarque}
+Dans cette version du théorème intégral de Cauchy, pas besoin que $U$ soit convexe, étoilé, simplement connexe ou quoi que ce soit. Il n'y a pas d'hypothèses sur l'ouvert $U$. L'ouvert $U$ est quelconque, il peut avoir des \og trous\fg{}, il peut être non connexe.
+
+Le compact $K$ aussi peut avoir des trous ou être non connexe. Son bord peut avoir plusieurs composantes connexes. C'est tout l'intérêt de cette version du théorème. Faites attention si vous travaillez sur d'autres sources, chaque détail compte.
+
+Par contre il est crucial que le compact $K$ soit bien inclus dans $U$ (et pas seulement son bord).
+\end{remarque}
 \begin{theoreme}[Théorème intégral de Cauchy]
 Soit $U\subset \C$ un ouvert, $f\in \mathcal O(U)$, et $K\subset \C$ un compact à bord $\mathcal C^1$ par morceaux, \textbf{inclus} dans $U$.
 Alors, $\int_{\partial K} f(z)dz = 0$.
@@ -297,13 +343,6 @@ Preuve en approximant le compact par des compacts à bord polygonal. Pour ceux-c
 
 Cas classique d'application : $K$ est un disque fermé, on intègre $f(z)dz$ sur le bord de $K$, qui est un cercle. Attention, le théorème demande que le disque en entier soit inclus dans $U$, pas juste le cercle.
 
-\begin{remarque}
-Dans cette version du théorème intégral de Cauchy, pas besoin que $U$ soit convexe, étoilé, simplement connexe ou quoi que ce soit. Il n'y a pas d'hypothèses sur l'ouvert $U$. L'ouvert $U$ est quelconque, il peut avoir des \og trous\fg{}, il peut être non connexe.
-
-Le compact $K$ aussi peut avoir des trous ou être non connexe. Son bord peut avoir plusieurs composantes connexes. C'est tout l'intérêt de cette version du théorème. Faites attention si vous travaillez sur d'autres sources, chaque détail compte.
-
-Par contre il est crucial que le compact $K$ soit bien inclus dans $U$ (et pas seulement son bord).
-\end{remarque}
 
 % fin du cours du 3 mars
 
@@ -337,7 +376,10 @@ Si $d = \deg P$ et $P(z) = \sum_{k=0}^d a_kz^k$, on a $P(z) \sim a_dz^d$ au vois
 Ceci implique que $f=1/P$ est bornée au voisinage de l'infini, donc bornée sur $\C$ tout entier. Par le théorème de Liouville, $f$ est constante, donc $P$ aussi.
 \end{proof}
 
-\begin{theoreme}[Cercle centré : Formule de la moyenne]
+\begin{attention}
+Dans la formule de la moyenne, l'intégrale n'est PAS $\int_{\mathcal C(z,r)} f(z)dz$. C'est la moyenne des \emph{valeurs} de $f$ sur le cercle. Il est important de bien comprendre la différence (essentiellement, $dz\neq dt$). 
+\end{attention}
+\begin{theoreme}[Formule de la moyenne (cercle centré)]
 Soit $U$ un ouvert de $\C$,  $f\in \mathcal O(U)$,  $z\in U$ et $r>0$ tel que $\overline{\D(z,r)} \subset U$.
 Alors:
 \[ f(z) = \frac{1}{2\pi}\int_0^{2\pi} f\left(z+re^{it}\right)dt\]
@@ -349,6 +391,8 @@ On applique la formule de Cauchy à $f$ sur le bord du disque $\D(z,r)$, on para
 
 
 
+
+
 \begin{theoreme}
 Soit $U\subset \C$ un ouvert et $f\in \mathcal O(U)$.
 Alors $f$ est infiniment $\C$-dérivable sur $U$. 
@@ -356,11 +400,6 @@ De plus, pour tout $z\in U$, pour tout compact $K$ avec $z\in K^\circ \subset K 
 \[ \frac{f^{(n)}(z)}{n!} = \frac{1}{2i\pi}\int_{\partial K} \frac{f(w)}{(w-z)^{n+1}}dw.\]
 \end{theoreme}
 (En particulier elle y est $\mathcal C^\infty$ mais le résultat est bien plus fort.)
-
-%\begin{theoreme}[Morera] OUBLIÉ
-%\end{theoreme}
-
-%Deuxième preuve de Liouville avec $f'=0$. OUBLIE, mettre dans la feuille de TD
 
 
 \begin{theoreme}[Inégalités de Cauchy]
@@ -392,28 +431,6 @@ On exhibe  une forme explicite des coefficients $a_n$ à l'aide de la formule de
 \end{proof}
 
 
-\end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 \begin{theoreme}[de Morera]
 Soit $U$ un ouvert de $\C$ et $f\in \mathcal C^0(U,\C)$ telle que pour tout triangle $T\subset U$, on ait $\int_{\partial T}f(z)dz=0$.
@@ -421,33 +438,31 @@ Alors, $f$ est holomorphe.
 % on construit des primitives locales.
 \end{theoreme}
 
-\begin{theoreme}[Formule de la moyenne]
-Soit $U\subseteq \C$ un ouvert,  $f \in \mathcal O(U)$ et $z_0\in U$.
-Pour tout $r>0$ tel que $\overline{\D(z_0,r)} \subseteq U$, on a :
-\[ f(z_0) = \frac{1}{2\pi}\int_0^{2\pi} f\left(z_0+re^{it}\right)dt\]
+
+ 
+
+\subsection{Étude locale des fonctions holomorphes}
+
+\begin{theoreme}[Inversion locale pour les fonctions holomorphes]
+Soit $U\subseteq \C$ un ouvert, $f\in \mathcal O(U)$ et $z_0\in U$ un point tel que $f'(z_0)\neq 0$.
+Alors il existe un ouvert $V$ contenant $z_0$ tel que $W:=f(V)$ soit ouvert et que $f|_V$ soit un biholomorphisme de $V$ sur $W$.
+\end{theoreme}
+
+\begin{proposition}[Étude aux points critiques des fonctions holomorphes]
+Soit $U$ un ouvert connexe de $\C$, $f\in \mathcal O(U)$ une fonction non constante, $z_0\in U$ et $d = \min\{d\in \N^*,\: f^{(d)}(z_0)\neq 0\}$.
+Alors il existe un voisinage ouvert $V\subseteq U$ de $z_0$, un voisinage ouvert  $W$ de $0$ et un biholomorphisme $\phi : V\to W$ tel que : 
+\[ \forall z\in V, \: f(z) - f(z_0) = \phi(z)^d. \]
+\end{proposition}
+
+
+\begin{theoreme}[de l'application ouverte pour les fonctions holomorphes]
+Soit $U$ un ouvert connexe et $f\in \mathcal O(U)$ non constante.
+Alors, $f$ est ouverte.
 \end{theoreme}
 
 
-\begin{theoreme}[Formules de Cauchy d'ordre supérieur]
-Soit $U\subseteq \C$ un ouvert et $f\in \mathcal O(U)$.
-Soit $K\subseteq U$ un compact à bords $C^1$ par morceaux et $z\in K^\circ$.
-Alors, pour tout $n\geq 0$ :
-\[ \frac{f^{(n)}(z)}{n!} = \frac{1}{2i\pi} \int_{\partial K} \frac{f(w)}{(w-z)^{n+1}}dw\]
-\end{theoreme}
 
- 
-\begin{corollaire}[Inégalités de Cauchy pour cercles centrés]
-Soit $U\subseteq \C$ un ouvert,  $f\in \mathcal O(U)$ et $\overline{\mathbb D(z,r)}$ un disque fermé inclus dans $U$.
-Alors,  pour tout $n\geq 0$ :
-\[ \left|f^{(n)}(z)\right|\leq \frac{n!}{r^n} \max_{w\in \mathcal C(z,r)} |f(w)|\]
-\end{corollaire}
-
- \begin{theoreme}[de Liouville]
- Soit $f$ une fonction holomorphe sur $\C$.
- Si $f$ est bornée, alors $f$ est constante.
- \end{theoreme}
- 
-
+\subsection{Principe du maximum, Schwarz, biholomorphismes du disque}
  
 \begin{theoreme}[Principe du maximum]
 Soit $U\subseteq \C$ un ouvert et $f \in \mathcal O(U)$.
@@ -459,6 +474,10 @@ Soit $U\subseteq \C$ un ouvert,  $f \in \mathcal O(U)$ et $K\subseteq U$ un comp
 Alors $\max_{K} |f| = \max_{\partial K} |f|$.
 \end{corollaire}
 
+\begin{remarque}
+Dans le CM, l'énoncé du principe du maximum a été groupé avec son corollaire avec un énoncé en deux points.
+\end{remarque}
+
 \begin{theoreme}[Lemme de Schwarz]
 Soit $\D$ le disque unité, et $f :\D\to \D$ une fonction holomorphe telle que $f(0)=0$.
 Alors:
@@ -468,31 +487,23 @@ Alors:
 \end{enumerate}
 \end{theoreme}
 
+\begin{remarque}
+Le \og ou bien\fg{} n'a pas été fait en CM, mais il a été laissé dans un exercice du TD.
+\end{remarque}
 
-
-
-\subsection{Étude locale des fonctions holomorphes}
-
-\begin{theoreme}[Inversion locale pour les fonctions holomorphes]
-Soit $U\subseteq \C$ un ouvert, $f\in \mathcal O(U)$ et $z_0\in U$ un point tel que $f'(z_0)\neq 0$.
-Alors il existe un ouvert $V$ contenant $z_0$ tel que $W:=f(V)$ soit ouvert et que $f|_V$ soit un biholomorphisme de $V$ sur $W$.
-\end{theoreme}
-
-\begin{prop}[Étude aux points critiques des fonctions holomorphes]
-Soit $U$ un ouvert connexe de $\C$, $f\in \mathcal O(U)$ une fonction non constante, $z_0\in U$ et $d = \min\{d\in \N^*,\: f^{(d)}(z_0)\neq 0\}$.
-Alors il existe un voisinage ouvert $V\subseteq U$ de $z_0$, un voisinage ouvert  $W$ de $0$ et un biholomorphisme $\phi : V\to W$ tel que : 
-\[ \forall z\in V, \: f(z) - f(z_0) = \phi(z)^d. \]
-\end{prop}
-
-
-\begin{theoreme}[de l'application ouverte pour les fonctions holomorphes]
-Soit $U$ un ouvert connexe et $f\in \mathcal O(U)$ non constante.
-Alors, $f$ est ouverte.
+\begin{theoreme}[Biholomorphismes du disque]
+Les biholomorphismes du disque sont de la forme
+\[ z\mapsto e^{i\theta}\frac{z-a}{1-\bar a z},\]
+avec $a\in\D$ et $\theta\in\R$.
 \end{theoreme}
 
 
 
+\begin{remarque}
+On sait déjà que le disque est biholomorphe au demi-plan, au quart de plan, à tout secteur angulaire ouvert distinct du plan entier. Le disque n'est pas biholomorphe à $\C$, c'est une conséquence de Liouville.
+\end{remarque}
 
+Question : pensez-vous que le disque est biholomorphe au demi-disque (ouvert)?
 
 
 
@@ -500,9 +511,31 @@ Alors, $f$ est ouverte.
 
 \section{Séries de Laurent, singularités isolées, Résidus}
 
+\subsection{Rappels de séries entières}
+
+\begin{proposition}
+Soit $\sum a_nz^n$ une série entière.
+Son rayon de convergence est strictement positif  ssi il existe $C>0$ tel que $a_n = O\left(C^n\right)$.
+\end{proposition}
+
+\begin{theoreme}[Hadamard-Cauchy]
+Soit $\sum a_nz^n$ une série entière, et soit $\ell = \limsup \sqrt[n]{|a_n|} \in \R_+\cup \{+\infty\}$.
+Alors le rayon de convergence de la série est $1/\ell \in \R_+\cup \{+\infty\}$.
+\end{theoreme}
+
+\begin{theoreme}[Représentation intégrale des coefficients]
+Soit $\sum a_nz^n$ une série entière de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
+Soit $r \in ]0,R[$.
+Alors, pour tout $n\in\N$, on a 
+\[a_n = \frac{1}{2\pi r^n}\int_0^{2\pi}f\left(re^{i\theta}\right)e^{-in\theta}d\theta. \]
+\end{theoreme}
+
+
+ (C'est juste la formule de Cauchy d'ordre $n$, pour des disques centrés en zéro).
+
 \subsection{Séries de Laurent}
 
-
+Définition, couronne de convergence, dérivée.
 
 \begin{theoreme}[Développement en série de Laurent des fonctions holomorphes sur une couronne]
 Une fonction holomorphe sur une couronne $A(z_0,R,R')$ est développable en série de Laurent $\sum_{n\in\Z} a_n(z-z_0)^n$ sur cette couronne et pour tout $n\in\Z$ et $r \in ]R,R'[$ , on a :
@@ -559,6 +592,9 @@ Alors:
 \end{theoreme}
 
 
+\end{document}
+
+
 
 \subsection{Principe de l'argument et théorème de Rouché}
 
@@ -570,14 +606,14 @@ Si $K\subset U$ est un compact à bord $\mathcal C^1$ par morceaux, dont le bord
 \[ \frac{1}{2i\pi} \int_{\partial K} \frac{f'(z)}{f(z)}dz = \sum_{a_j \in K} m_j.\]
 \end{theoreme}
 
-%Idée de preuve : propriétés de la dérivée logarithmique.
+Idée de preuve : propriétés de la dérivée logarithmique.
 
 \begin{theoreme}[Théorème de Rouché]
 Soit $U\subset \C$ un ouvert, $f, g\in \mathcal O(U)$ et $K\subset U$ un compact.
 Si $|f-g| < |f|$ sur $\partial K$, alors $f$ et $g$ ont même nombre de zéros dans $K$, comptés avec multiplicités.
 \end{theoreme}
 
-%Idée de preuve : on commence par se ramener à un compact à bords $\mathcal C^1$ par morceaux, puis on applique le principe de l'argument.
+Idée de preuve : on commence par se ramener à un compact à bords $\mathcal C^1$ par morceaux, puis on applique le principe de l'argument.
 
 
 
@@ -606,42 +642,40 @@ Si les fonctions $f_n$ sont injectives, alors soit $f$ est injective, soit $f$ e
 \end{proposition}
 
 
+
+
+
+
+
+
+
 \section{Fonctions analytiques}
 
 \subsection{Séries formelles}
 
-\begin{prop}
+\begin{proposition}
 Les inversibles de $k[[t]]$ sont les éléments $\sum a_kT^k$ avec $a_0\neq 0$.
-\end{prop}
+\end{proposition}
 
 \subsection{Séries entières}
 
 
-\begin{prop}
-Soit $\sum a_nz^n$ une série entière.
-Son rayon de convergence est strictement positif  ssi il existe $C>0$ tel que $a_n = O\left(C^n\right)$.
-\end{prop}
 
-\begin{theoreme}[Hadamard-Cauchy]
-Soit $\sum a_nz^n$ une série entière, et soit $\ell = \limsup \sqrt[n]{|a_n|} \in \R_+\cup \{+\infty\}$.
-Alors le rayon de convergence de la série est $1/\ell \in \R_+\cup \{+\infty\}$.
-\end{theoreme}
-
-\begin{prop}[Convergence des produits de Cauchy]
+\begin{proposition}[Convergence des produits de Cauchy]
 Soient $\sum a_nz^n$ et $\sum b_nz^n$ deux séries entières de rayons $R>0$ et $R'>0$.
 Alors le produit de Cauchy $\sum c_nz^n$ des deux séries a un rayon de convergence $R'\geq \min(R,R')$.
-\end{prop}
+\end{proposition}
 
-\begin{prop}
+\begin{proposition}
 Soit $\sum a_nz^n$ une série entière non nulle de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
 Soit $d$ l'indice du premier coefficient non nul de $\sum a_nz^n$.
 Alors, au voisinage de zéro, on a  $f(z)\sim a_dz^d$.
-\end{prop}
+\end{proposition}
 
-\begin{prop}
+\begin{proposition}
 Soit $\sum a_nz^n$ une série entière de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
 Alors $f$ est dérivable au sens complexe sur $D(0,R)$ et sa dérivée complexe est la somme de la série entière $\sum (n+1)a_{n+1}z^n$ (qui est aussi de rayon $R$).
-\end{prop}
+\end{proposition}
 
 \begin{theoreme}[Zéros isolés pour les séries entières, à l'origine]
 Soit $\sum a_nz^n$ une série entière de rayon strictement positif et $f$ sa somme.
@@ -653,12 +687,7 @@ Soit $\sum a_nz^n$ une série entière de rayon $R>0$ et $f$ sa somme sur le dis
 Si $|f|$ admet un maximum local en zéro, alors $f$ est constante.
 \end{theoreme}
 
-\begin{theoreme}[Représentation intégrale des coefficients]
-Soit $\sum a_nz^n$ une série entière de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
-Soit $r \in ]0,R[$.
-Alors, pour tout $n\in\N$, on a 
-\[a_n = \frac{1}{2\pi r^n}\int_0^{2\pi}f\left(re^{i\theta}\right)e^{-in\theta}d\theta. \]
-\end{theoreme}
+
 
 \begin{theoreme}[de Liouville, énoncé pour les séries entières]
 Soit $\sum a_nz^n$ une série entière de rayon $+\infty$ et $f:\C\to\C$ sa somme.
@@ -669,14 +698,14 @@ Si $f$ est bornée, alors $f$ est constante.
 
 \subsection{Fonctions analytiques}
 
-\begin{prop}
+\begin{proposition}
 Soit $\sum_{n\geq 0}a_nz^n$ une série entière de rayon de convergence $R>0$ et $f$ sa somme sur $D(0,R)$.
 Alors $f$ est analytique sur $D(0,R)$.
-\end{prop}
+\end{proposition}
 
-\begin{prop}
+\begin{proposition}
 Une fonction analytique sur $U$ est holomorphe sur $U$.
-\end{prop}
+\end{proposition}
 
 
 \begin{theoreme}[Zéros isolés pour les fonctions analytiques]
