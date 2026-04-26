@@ -4,27 +4,6 @@
 Page du cours d'analyse complexe à Nancy
 Année : printemps 2026
 
-Avertissement : lacunes, méthodes de travail
----
-Ceci est un retour d'expérience des années passées, sans filtre. Il est là pour vous aider à anticiper et pour que certaines lacunes ne soient pas "découvertes" le jour du partiel.
-
-Il y aura certainement des faiblesses (assez importantes) sur:
-- factorisation, simplification de calculs. [Factorisation](https://dojomath.fr/?section=Theme&id=facto1)
-- décomposition _élémentaires_ en éléments simples: par exemple savoir rapidement si $\frac{1}{z(z-1)} = \frac{1}{z} - \frac{1}{z-1}$ ou pas, savoir décomposer de tête ou en une ligne $\frac{1}{(z-2)(z+3)}$. On parle ici uniquement de petits calculs rapides, pas de théorie générale.
-- calculs élémentaires de nombres complexes, par exemple savoir si $e^{i\pi/6}-e^{-i\pi/6}$ est égal à $\sqrt{3}$, ou $i\sqrt{3}$, ou $1/2$, $i$, ou encore autre chose. Si vous ne "voyez" pas instantanément (tout de suite, sur cet exemple précis, en visualisant un dessin, pas en essayant de calculer sous forme algébrique de tête), vous manquez de pratique. Si vous ne simplifiez pas une telle expression, le calcul sera considéré comme inachevé. (Statistiquement, une non-simplification provoquera quasi-systématiquement une erreur un peu plus loin, même dans les très bonnes copies.)
-
-Font partie du travail attendu:
-
-- Relire son cours régulièrment, en particulier avant les cours et les TD, pour profiter des séances. Arriver en TD ou en cours sans connaître son cours diminue considérablement l'efficacité de la séance. Ceux qui font ce travail apprennent et consolident en direct (et peuvent poser de vraies questions, des questions dont la réponse n'est pas "c'est dans le cours"). La différence de performance et le temps économisé sont considérables.
-- Faire plus d'exercices que deux des feuilles de TD si l'on constate que les exercices proposés n'ont pas suffit à tout acquérir correctement. Pour constater cela, il est nécessaire auparavant de faire puis revoir les TD, corrigés en classe ou pas.
-- Faire de toute façon plus d'exercices pour consolider. Personne n'a appris l'analyse réelle juste en  dérivant 5 ou 10 fonctions, ni même 20. C'est pareil pour l'analyse complexe.
-- Moins crucial mais devrait être considéré comme normal en L3 : lire ou parcourir d'autres sources (en particulier celles sur cette page, et d'autres à la BU), être au courant au moins approximativement de leur contenu, des différences avec le cours fait en classe. Selon le livre utilisé, le cours peut énormément varier (ordre des chapitres et progression logique, preuves et même énoncés).
-
-Cahier de texte
----
-Le déroulement des séances est consigné dans le fichier [cahier de texte 2025.md](https://github.com/dmegy/analyse-complexe/blob/main/cahier%20de%20texte%202025.md)
-
-
 Évaluations et calendrier
 ----------
 
