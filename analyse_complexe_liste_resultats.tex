@@ -74,6 +74,8 @@
 \DeclareMathOperator{\Card}{Card} % cardinal
 \renewcommand{\Im}{\operatorname{Im}}
 \renewcommand{\Re}{\operatorname{Ré}}
+%\renewcommand{\long}{\operatorname{long}}
+
 \newcommand{\z}{\overline{z}}
 \DeclareMathOperator{\PR}{\text{Ré}}
 \DeclareMathOperator{\PI}{\text{Im}}
@@ -81,6 +83,8 @@
 \renewcommand{\mid}{\;\ifnum\currentgrouptype=16 \middle\fi|\;}
 \newcommand\eqdef{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily déf}}}{=}}}
 % égal par définition
+
+\newcommand{\cvgto}[1]{\xrightarrow[#1]{}}
 
 \delimitershortfall-1sp
 \newcommand\abs[1]{\left|#1\right|}
@@ -181,6 +185,21 @@ Ce document contient quelques uns des résultats du cours. Non exhaustif, mais p
 
 \section{Holomorphie}
 
+\subsection{Rappels et compléments sur les fonctions d'un ouvert de $\C$ dans $\C$}
+
+Développements limités.
+
+\subsection{Dérivabilité au sens complexe}
+
+Définition. Reformulation avec un DL d'ordre un en $z$. Holomorphie sur un ouvert.
+
+Règles de dérivation : sommes, produits, composées.
+Les polynômes en $z$, fractions rationnelles en $z$, sont $\C$-dérivables sur leur domaine de définition.
+
+Les séries entières en $z$ sont holomorphes sur leur disque ouvert de convergence.
+
+\subsection{Dérivabilité complexe et calcul différentiel}
+
 \begin{proposition}
 Toute matrice $M\in M_2(\R)$ est la somme d'une matrice $\C$-linéaire et d'une matrice $\C$-antilinéaire et cette décomposition est unique.
 \end{proposition}
@@ -197,9 +216,15 @@ a & -b\\b & a
 
 
 
-\begin{theoreme}[Conditions de Cauchy-Riemann]
-Une fonction $f:U\to \C$ est $\C$-dérivable en un point $z_0 \in U$ si et seulement si elle est différentiable en $z_0$ et de plus, sa différentielle en $z_0$ est une similitude directe.
+\begin{theoreme}
+Une fonction $f:U\to \C$ est $\C$-dérivable en un point $z_0 \in U$ si et seulement si les deux conditions suivantes sont vérifiées :
+\begin{enumerate}
+\item elle est différentiable en $z_0$,
+\item sa différentielle en $z_0$ est une similitude directe.
+\end{enumerate}
 \end{theoreme}
+
+La deuxième condition est équivalente aux conditions de Cauchy-Riemann : $\begin{cases}\partial_x u = \partial_y v \\ \partial_x v = -\partial_y u\end{cases}$.
 
 \begin{proposition}
 Toutes les règles de dérivation pour les opérateurs de Wirtinger : somme et produit (facile), attention à la règle pour les composées !
@@ -208,12 +233,42 @@ Toutes les règles de dérivation pour les opérateurs de Wirtinger : somme et p
 
 
 \section{Intégration curviligne, primitives holomorphes}
+\subsection{Chemins}
+\begin{remarque}
+Si $a \neq b \in\C$, la façon la plus simple de paramétrer le segment $[a,b]$ est le paramétrage à vitesse constante de $a$ à $b$ donné par $\gamma : [0,1]\to \C, t\mapsto a(1-t)+bt = a + t(b-a)$.
+La première écriture est la forme barycentrique, la seconde fait apparaître le point de départ et le vecteur vitesse.
+\end{remarque}
+
 \begin{definitions}
-Chemins, concaténation de chemins, chemin opposé. Chemins fermés, origine et terme d'un chemin (ou : départ/arrivée, ou autre noms, source/terme...).
+Chemins, concaténation (notée $\gamma_1\star \gamma_2$ ou $\gamma_1\vee \gamma_2$), chemin opposé $\gamma^{op}$. Chemins fermés, origine et terme d'un chemin (ou : départ/arrivée, ou autre noms, source/terme...).
 Chemins simples. 
 Lacets, lacets simples.
-Paramétrage des chemins classiques (segments, arcs de cercle). Homotopies de chemins.
+Paramétrage des chemins classiques (segments, arcs de cercle). Homotopie entre deux chemins.
+\end{definitions}
 
+\begin{attention}
+La longueur d'un chemin $\gamma$ n'est pas nécessairement la longueur de son image, même lorsque ce concept a un sens préexistant. La longueur de $\gamma : [0,1]\to\C, t\mapsto e^{4i\pi t}$ est $4\pi$, pas $2\pi$.
+\end{attention}
+
+\begin{definition}
+Soit $\gamma \in \mathcal C^1([a,b],\C)$.
+Sa longueur est $\operatorname{long}(\gamma) := \int_a^b |\gamma'(t)|dt$.
+
+Extension au cas d'un chemin $\mathcal C^1_{pm}$ en sommant chaque tronçon $\mathcal C^1$.
+\end{definition}
+
+\begin{remarque}
+On peut définir la longueur de certains chemins moins réguliers. (Voir exercice de la feuille de TD.)
+Il existe des chemins continus dont l'image a une dimension de Hausdorff $>1$ (voire de dimension deux, comme les courbes de Peano), donc ces chemins sont à considérer comme étant de longueur \og infinie\fg.
+\end{remarque}
+
+\subsection{Intégration des $1$-formes sur des chemins}
+
+\begin{remarque}
+Pour l'instant, on donne la définition de l'intégrale d'une $1$-forme le long d'un chemin uniquement dans le cas où le chemin est $\mathcal C^1_{pm}$. Il y a des façons d'intégrer des $1$-formes sur des chemins moins réguliers (fin du semestre ou année prochaine).
+\end{remarque}
+
+\begin{definitions}
 Intégration curviligne d'une $1$-forme $\alpha$ sur un chemin $\mathcal C^1_{pm}$. En pratique, la forme différentielle est quasiment toujours de la forme $f(z)dz$, avec $f$ continue (souvent holomorphe mais pas systématiquement).
 \end{definitions}
 
@@ -232,16 +287,14 @@ Alors
 \end{proposition}
 
 \begin{proposition}[Relation de Chasles]
-Soit $U$ un ouvert de $\C$, $\alpha\in \Omega^1(U)$ une forme différentielle,  $\gamma_1$ et $\gamma_2$ des chemins de $U$ de classe $\mathcal C^1$ tels que le terme de $\gamma_1$ est l'origine de $\gamma_2$. Soit $\gamma:=\gamma_1\vee \gamma_2$ la concaténation des deux chemins.
+Soit $U$ un ouvert de $\C$, $\alpha\in \Omega^1(U)$ une forme différentielle,  $\gamma_1$ et $\gamma_2$ des chemins de $U$ de classe $\mathcal C^1$ tels que le terme de $\gamma_1$ est l'origine de $\gamma_2$.
 Alors : 
-\[  \int_{\gamma} \alpha = \int_{\gamma_1} \alpha+\int_{\gamma_2} \alpha.\]
+\[  \int_{\gamma_1\vee \gamma_2} \alpha = \int_{\gamma_1} \alpha+\int_{\gamma_2} \alpha.\]
 \end{proposition}
 
-Variation de ce résultat : 
-\[  \int_{\gamma_1} \alpha = \int_{\gamma} \alpha - \int_{\gamma_2} \alpha.\]
-Se prouve en utilisant $\gamma_2^{opp}$ pour \og revenir\fg.
+(Variation: $\int_{\gamma_1} \alpha = \int_{\gamma} \alpha - \int_{\gamma_2} \alpha$.
+Se prouve en utilisant $\gamma_2^{op}$ pour \og revenir\fg.)
 
-Ces résultats sont applicables directement.
 
 \begin{proposition}[Inégalité triangulaire]
 Soit $U$ un ouvert de $\C$, $f\in \mathcal C^0(U,\C)$ et $\gamma:[0,1]\to U$ un chemin de $U$ de classe $\mathcal C^1$.
@@ -251,10 +304,10 @@ Alors :
 
 \begin{proposition}[Inégalité triangulaire, forme simplifiée, majoration brutale de $|f|$]
 Soit $U$ un ouvert de $\C$, $f\in \mathcal C^0(U,\C)$ et $\gamma$ un chemin de $U$ de classe $\mathcal C^1_{pm}$.
-Alors :
+Alors : 
 \[ \left| \int_\gamma f(z)dz\right| \leq \operatorname{long}(\gamma)\max_{z\in \supp \gamma}|f(z)|.\]
 \end{proposition}
-Dans la plupart des cas, cette majoration brutale avec la longueur du chemin et la norme infinie de $f$ sur le support du chemin suffit. Toujours essayer ceci en priorité. S'il faut quelque chose de plus subtil, revenir à la version précédente.
+Dans la plupart des cas, cette majoration brutale avec la longueur du chemin et la norme sup de $f$ sur le support du chemin suffit. Toujours essayer ceci en priorité. S'il faut quelque chose de plus subtil, revenir à la version précédente.
 
 \begin{proposition}
 Soit $U\subseteq \C$ un ouvert, $f:U\to\C$  et $\gamma : [0,1]\to U$ un chemin $\mathcal C^1_{pm}$ dans $U$.
@@ -279,7 +332,7 @@ Toutes les fonctions, mêmes holomorphes, ne possèdent pas forcément de primit
 \end{attention}
 
 \begin{attention}
-L'énoncé suivant est \textbf{FAUX} : \og Soit $f\in \mathcal O(U)$ et $\gamma$ un lacet de $U$. Alors $\int_\gamma f(z)dz = 0$\fg. Voir le document \og idées fausses\fg.
+L'énoncé suivant est \textbf{\textcolor{red}{FAUX}} : \og Soit $f\in \mathcal O(U)$ et $\gamma$ un lacet de $U$. Alors $\int_\gamma f(z)dz = 0$\fg.
 \end{attention}
 
 \begin{attention}
@@ -307,6 +360,8 @@ Triangle : un triangle est l'enveloppe convexe de trois points, il est donc \og 
 Soit $U$ un ouvert de $\C$,  $f\in \mathcal O(U)$ et $T\subset U$ un triangle non plat, dont le bord est muni de son orientation canonique.
 Alors $\int_{\partial T} f(z)dz=0$.
 \end{theoreme}
+
+\paragraph{ATTENTION} C'est une erreur courante que de croire que Goursat est une conséquence simple de la relation de Chasles. D'une part, Chasles ne dit pas ça (il faudrait \og repasser au même endroit\fg), d'autre part le résultat est faux pour des fonctions non holomorphes en général, et enfin, la preuve est difficile et bien postérieure à Cauchy et Riemann.
 
 \begin{remarque}
 Si le triangle est plat, l'intégrale est bien sûr aussi nulle: c'est juste la relation de Chasles et ça ne nécessite pas l'holomorphie de $f$.
@@ -435,9 +490,10 @@ On exhibe  une forme explicite des coefficients $a_n$ à l'aide de la formule de
 \begin{theoreme}[de Morera]
 Soit $U$ un ouvert de $\C$ et $f\in \mathcal C^0(U,\C)$ telle que pour tout triangle $T\subset U$, on ait $\int_{\partial T}f(z)dz=0$.
 Alors, $f$ est holomorphe.
-% on construit des primitives locales.
 \end{theoreme}
 
+\begin{proof}(Esquisse) On construit des primitives locales et on utilise le théorème assurant que la dérivée d'une fonction holomorphe est holomorphe.
+\end{proof}
 
  
 
@@ -449,10 +505,15 @@ Alors il existe un ouvert $V$ contenant $z_0$ tel que $W:=f(V)$ soit ouvert et q
 \end{theoreme}
 
 \begin{proposition}[Étude aux points critiques des fonctions holomorphes]
-Soit $U$ un ouvert connexe de $\C$, $f\in \mathcal O(U)$ une fonction non constante, $z_0\in U$ et $d = \min\{d\in \N^*,\: f^{(d)}(z_0)\neq 0\}$.
-Alors il existe un voisinage ouvert $V\subseteq U$ de $z_0$, un voisinage ouvert  $W$ de $0$ et un biholomorphisme $\phi : V\to W$ tel que : 
-\[ \forall z\in V, \: f(z) - f(z_0) = \phi(z)^d. \]
+Soit $U$ un ouvert connexe de $\C$ contenant zéro, $f\in \mathcal O(U)$ une fonction non constante telle que $f(0)=0$ et $d = \min\{d\in \N^*,\: f^{(d)}(0)\neq 0\}$.
+Alors il existe un voisinage ouvert $V\subseteq U$ de $0$, un voisinage ouvert  $W$ de $0$ et un biholomorphisme $\phi : V\to W$ tel que : 
+\[ \forall z\in V, \: f(z) = \phi(z)^d. \]
+De plus on peut supposer que $W$ est un disque centré en zéro.
 \end{proposition}
+
+\textbf{ATTENTION} la preuve était à cheval sur deux séances et on m'a fait remarquer que dans la transition des séances, j'ai sauté un bout de preuve sans m'en apercevoir. L'application $\phi$ a été construite  comme $\phi(z) := zh(z)$  où $h$ est une détermination de racine $d$-ème d'une certaine fonction non nulle en l'origine. 
+
+Mais je n'ai pas montré que $\phi$ était un biholomorphisme local en l'origine. Ceci découle du théorème de l'inversion locale, car si $\phi(z) = zh(z)$ avec $h(0)\neq 0$, alors $\phi'(0) = h(0 \neq 0$ et on applique l'inversion locale à $\phi$ :   c'est un biholomorphisme local en l'origine.
 
 
 \begin{theoreme}[de l'application ouverte pour les fonctions holomorphes]
@@ -531,58 +592,147 @@ Alors, pour tout $n\in\N$, on a
 \end{theoreme}
 
 
- (C'est juste la formule de Cauchy d'ordre $n$, pour des disques centrés en zéro).
+(C'est juste la formule de Cauchy d'ordre $n$ en l'origine, pour des disques centrés en l'origine.  En effet, $a_n = f^{(n)}(0)/n!$.)
 
 \subsection{Séries de Laurent}
 
-Définition, couronne de convergence, dérivée.
+Définition, couronne ouverte de convergence, convergence normale sur tout compact inclus dans la couronne ouverte de convergence, dérivée terme à terme.
+
+Partie régulière (indices positifs), partie principale (indices négatifs).
 
 \begin{theoreme}[Développement en série de Laurent des fonctions holomorphes sur une couronne]
-Une fonction holomorphe sur une couronne $A(z_0,R,R')$ est développable en série de Laurent $\sum_{n\in\Z} a_n(z-z_0)^n$ sur cette couronne et pour tout $n\in\Z$ et $r \in ]R,R'[$ , on a :
+Une fonction holomorphe sur une couronne $C(z_0,R,R')$ est développable en série de Laurent $\sum_{n\in\Z} a_n(z-z_0)^n$ sur cette couronne et pour tout $n\in\Z$ et $r \in ]R,R'[$ , on a :
 \[a_n = \frac{1}{2\pi r^n}\int_0^{2\pi}f\left(re^{i\theta}\right)e^{-in\theta}d\theta. \]
 \end{theoreme}
 
+En particulier les coefficients d'un développement en série de Laurent sont uniques.
 
+\begin{remarque}
+Cas particulier : si $f(z)=\sum_{n\geq 0} a_nz^n$ est la somme d'une série entière  sur le disque ouvert $\D(0,\epsilon)$, alors elle est holomorphe sur ce disque privé de son centre et on peut la développer en série de Laurent sur la couronne $\D(0,\epsilon)\setminus \{0\} = C(0,0,\epsilon)$. Sur cette couronne, le DSL est $f(z) = \sum_{n\in\Z} b_nz^n$. Mais par unicité du développement en série de Laurent, on en déduit que $n<0 \implies b_n=0$ et que $n\geq 0 \implies b_n=a_n$.
+\end{remarque}
 
 \subsection{Singularités isolées}
 
+\begin{definition}
+Soit $U\subset \C$ et $z_0\in \C\setminus U$. On dit que $z_0$ est une singularité isolée de $f$ s'il existe $\epsilon>0$ tel que $\D(z_0,\epsilon) \subset U\cup \{z_0\}$.
+\end{definition}
+
+Les singularités sont réparties en trois qui s'excluent mutuellement :
+\begin{attention}
+En CM, j'ai initialement oublié de rajouter la condition \og non vide\fg{} pour les pôles, j'ai corrigé un peu plus tard mais vérifiez que vous avez noté et appris la bonne définition.
+\end{attention}
+
+\begin{definition}[Classification des singularités isolées]
+Soit $z_0$ une singularité de $f\in \mathcal O(U)$. Soit $\sum a_nz^n$ le développement de $f$ en série de Laurent au voisinage de $z_0$ et soit  $E := \{n<0, a_n\neq 0\}$ l'ensemble des indices strictement négatifs correspondant à un coefficient non nul de la série. Alors, on a dit que $z_0$ est :
+\begin{itemize}
+\item une \textbf{singularité effaçable} si $E$ est vide;
+\item un \textbf{pôle} si $E$ est fini \underline{non vide}; dans ce cas en notant $k=\min\{n, n\in E\}$, on dit que le pôle est d'ordre $-k$;
+\item une \textbf{singularité essentielle} si $E$ est infini.
+\end{itemize}
+\end{definition}
+
+Un pôle d'ordre un est dit simple, d'ordre deux est dit double etc.
+
+\begin{attention}
+La fonction $\frac{e^z-1}{z(z-1)(z+1)^2}$ a un pôle simple en $1$, un pôle double en $-1$ et une singularité effaçable en l'origine.
+\end{attention}
+
+\begin{exemples}
+\begin{enumerate}
+\item Les fonctions $f : \C^*\to \C, z\mapsto z+2$ et $g:\C^*\to\C, z\mapsto \sin(z)/z$ ont une singularité effaçable en zéro. 
+\item La fonction $f : \C\setminus\{2,-1\}\to \C, z\mapsto \frac{e^z}{(z-2)(z+1)^3}$ a un pôle simple en $2$ et triple en $-1$.
+\item La fonction $f : \C^*\to \C, z\mapsto \exp(1/z)$ a une singularité essentielle en l'origine.
+\end{enumerate}
+\end{exemples}
 
 
-\begin{proposition}
-Soit $z_0$ une singularités isolée d'une fonction holomorphe $f$.
-Soit $\sum_{n\in \Z} a_n(z-z_0)^n$ le développement en série de Laurent de $f$ sur un disque épointé $\D(z_0,\epsilon)^*$.
-Alors, $z_0$ est une singularité effaçable ssi $\forall n<0, a_n=0$.
-\end{proposition}
+\paragraph{Étude des singularités effaçables}
 
-%Idée de preuve : pour le sens difficile, si $f$ se prolonge en une fonction holomorphe $\tilde f$, alors on développe $\tilde f$ en série entière, et on invoque l'unicité des coefficients d'un développement en série de Laurent sur le disque épointé.
+
+Une singularité $z_0$ d'une fonction holomorphe $f$ est effaçable ssi $f$ se prolonge holomorphiquement en $z_0$. En effet, un DSL centré en $z_0$ qui est régulier (avec partie principale nulle, c'est-à-dire dont tous les coefs d'indice négatif sont nuls) peut en effet être vu comme un  développement en série entière au point $z_0$, et inversement. On a en fait un résultat beaucoup plus fort :
 
 \begin{theoreme}[Théorème d'extension de Riemann]
 Soit $z_0$ une singularité isolée d'une fonction holomorphe $f$.
-Si $|f|$ est bornée au voisinage de $z_0$, alors la singularité est effaçable, autrement dit $f$ se prolonge holomorphiquement en $z_0$.
+Si $f$ est bornée au voisinage de $z_0$, alors la singularité est effaçable, autrement dit $f$ se prolonge holomorphiquement en $z_0$.
 \end{theoreme}
 
-\begin{proposition}[Comportement au voisinage d'un pôle]
+\begin{remarque}
+Il existe des fonctions holomorphes sur $\C^*$ qui tendent vers zéro \textbf{radialement} en l'origine, et qui ne s'étendent pas en l'origine.
+ Voir TD.
+\end{remarque}
+
+\begin{proof} (Esquisse) 
+Développer en série de Laurent autour de $z_0$, écrire la forme intégrale des coefficients $a_n$, montrer que $n<0\implies a_n=0$ en faisant tendre le rayon vers zéro.
+\end{proof}
+
+
+\paragraph{Étude des pôles}
+
+
+\begin{proposition}
 Soit $f$ une fonction holomorphe admettant un pôle d'ordre $d$ en $z_0$.
-Au voisinage de $z_0$, on a $f(z) \sim a_{-d}z^{-d}$.
+En notant $f(z) = \sum_{k\geq -d} a_n (z-z_0)^{k}$, on a au voisinage de $z_0$ l'équivalent suivant : $f(z) \sim a_{-d}(z-z_0)^{-d}$.
 \end{proposition}
 
-\begin{theoreme}[Casoratti-Weiestrass]
+
+
+\begin{remarque}
+En particulier, si $d>0$ et si  $z_0$ est (effaçable ou) un pôle d'ordre $\leq d$, on a $f = O((z-z_0)^{-d})$ au voisinage de $z_0$.
+On utilise souvent la négation de cette assertion pour conclure qu'une singularité est un pôle d'ordre $>d$ ou bien est essentielle.
+\end{remarque}
+
+
+\begin{corollaire}
+Soit $z_0$ une singularité isolée d'une fonction holomorphe $f$.
+Alors $z_0$ est un pôle de $f$ ssi $|f|\cvgto{z\to z_0} +\infty$.
+\end{corollaire}
+
+
+
+\begin{proof}
+Sur un disque épointé $\D(z_0,\epsilon)^*$, on a : 
+\[
+f(z) = (z-z_0)^{-d} \sum_{k\geq 0} a_{k-d} (z-z_0)^k = (z-z_0)^{-d} g(z).
+\]
+La fonction $g$ possède un DSL régulier sur $\D(z_0,\epsilon)^*$ et $g(z)\cvgto{z\to z_0} a_{-d}$.
+\end{proof}
+
+
+
+\noindent\rule{\textwidth}{1pt}
+\marginpar{$\leftarrow$ Fin du dernier cours, suite pour info}
+
+\paragraph{Étude des singularités essentielles}
+
+
+\begin{attention}
+Il est déconseillé de penser aux singularités essentielles comme des \og pôles de degré infini\fg, car cette vision  peut laisser penser que $|f|$ tend (exponentiellement vite) vers l'infini au point. Cette assertion ne correspond pas à la réalité, qui est bien plus compliquée.
+\end{attention}
+
+\begin{theoreme}[Casorati-Weiestrass]
 Soit $z_0 \in U$ une singularité essentielle d'une fonction holomorphe $f \in \mathcal O(U\setminus \{z_0\})$.
 Alors, pour tout voisinage $W$ de $z_0$ contenu dans $U$, l'image par $f$ de $W\setminus\{z_0\}$ est dense dans $\C$.
 \end{theoreme}
 
 
-\begin{proposition}
-Soit $U$ un ouvert,  $Z\subset U$ un fermé constitué de points isolés et $f$ fonction holomorphe sur $U\setminus Z$.
-Alors il y a équivalence entre :
-\begin{itemize}
-\item Pour tout $z_0\in Z$, $z_0$ n'est pas une singularité essentielle de $f$.
-\item Au voisinage de tout $z_0\in Z$, $f$ s'écrit comme le quotient $g/h$ de deux fonctions holomorphes (définies sur un voisinage de $z_0$).
-\end{itemize}
-\end{proposition}
+\paragraph{Fonctions méromorphes}
+
+
+
+Définition / terminologie : on dit que $f$ est méromorphe sur $U$ s'il existe un ensemble discret $Z\subset U$ tel que $f$ soit holomorphe sur $U\setminus Z$ avec des singularités effaçables ou des pôles aux points de $Z$. (Pas de singularités essentielles). Une fonction méromorphe sur $U$ peut donc être vue comme une fonction continue de $U$ dans $\hat \C$, holomorphe sauf en un ensemble discret de points de $U$.
+\begin{remarque}
+Il est possible de définir la notion de fonction holomorphe non pas seulement à valeurs dans $\C$, mais dans $\hat C$ (ou d'autres surfaces de Riemann, ou variétés complexes).
+Avec ce formalisme, une fonction méromorphe est une fonction holomorphe à valeurs dans la sphère de Riemann.
+\end{remarque}
+
+
 
 
 \subsection{Théorème des résidus}
+
+Définition du résidu d'une $1$-forme holomorphe, résidu d'une fonction $f$  par abus de langage.
+
+Caractérisation par le développement en série de Laurent. Exemples.
 
 
 \begin{theoreme}[des résidus]
@@ -592,13 +742,8 @@ Alors:
 \end{theoreme}
 
 
-\end{document}
-
-
 
 \subsection{Principe de l'argument et théorème de Rouché}
-
-
 
 \begin{theoreme}[Principe de l'argument]
 Soit $U\subseteq \C$ un ouvert, $f$ une fonction méromorphe à zéros isolés\footnote{Hypothèse rajoutée pour éviter que $f$ soit identiquement nulle sur une composante connexe de $U$. Demander que les zéros soient isolés permet de dire que $f$ admet un diviseur.} sur $U$ et $D = \sum_{j} m_j[a_j]$ son diviseur.
@@ -614,6 +759,10 @@ Si $|f-g| < |f|$ sur $\partial K$, alors $f$ et $g$ ont même nombre de zéros d
 \end{theoreme}
 
 Idée de preuve : on commence par se ramener à un compact à bords $\mathcal C^1$ par morceaux, puis on applique le principe de l'argument.
+
+
+\end{document}
+
 
 
 
@@ -642,81 +791,6 @@ Si les fonctions $f_n$ sont injectives, alors soit $f$ est injective, soit $f$ e
 \end{proposition}
 
 
-
-
-
-
-
-
-
-\section{Fonctions analytiques}
-
-\subsection{Séries formelles}
-
-\begin{proposition}
-Les inversibles de $k[[t]]$ sont les éléments $\sum a_kT^k$ avec $a_0\neq 0$.
-\end{proposition}
-
-\subsection{Séries entières}
-
-
-
-\begin{proposition}[Convergence des produits de Cauchy]
-Soient $\sum a_nz^n$ et $\sum b_nz^n$ deux séries entières de rayons $R>0$ et $R'>0$.
-Alors le produit de Cauchy $\sum c_nz^n$ des deux séries a un rayon de convergence $R'\geq \min(R,R')$.
-\end{proposition}
-
-\begin{proposition}
-Soit $\sum a_nz^n$ une série entière non nulle de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
-Soit $d$ l'indice du premier coefficient non nul de $\sum a_nz^n$.
-Alors, au voisinage de zéro, on a  $f(z)\sim a_dz^d$.
-\end{proposition}
-
-\begin{proposition}
-Soit $\sum a_nz^n$ une série entière de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
-Alors $f$ est dérivable au sens complexe sur $D(0,R)$ et sa dérivée complexe est la somme de la série entière $\sum (n+1)a_{n+1}z^n$ (qui est aussi de rayon $R$).
-\end{proposition}
-
-\begin{theoreme}[Zéros isolés pour les séries entières, à l'origine]
-Soit $\sum a_nz^n$ une série entière de rayon strictement positif et $f$ sa somme.
-S'il existe une suite $(z_n)_{n\in \N} \in (\C^*)^\N$ convergeant vers zéro et telle que $\forall n\in\N, f(z_n)=0$, alors tous les $a_n$ sont nuls.
-\end{theoreme}
-
-\begin{theoreme}[Principe du maximum pour une série entière, en l'origine]
-Soit $\sum a_nz^n$ une série entière de rayon $R>0$ et $f$ sa somme sur le disque $D(0,R)$.
-Si $|f|$ admet un maximum local en zéro, alors $f$ est constante.
-\end{theoreme}
-
-
-
-\begin{theoreme}[de Liouville, énoncé pour les séries entières]
-Soit $\sum a_nz^n$ une série entière de rayon $+\infty$ et $f:\C\to\C$ sa somme.
-Si $f$ est bornée, alors $f$ est constante.
-\end{theoreme}
-(Rappel de terminologie : $f$  bornée veut par définition dire $|f|$ bornée.)
-
-
-\subsection{Fonctions analytiques}
-
-\begin{proposition}
-Soit $\sum_{n\geq 0}a_nz^n$ une série entière de rayon de convergence $R>0$ et $f$ sa somme sur $D(0,R)$.
-Alors $f$ est analytique sur $D(0,R)$.
-\end{proposition}
-
-\begin{proposition}
-Une fonction analytique sur $U$ est holomorphe sur $U$.
-\end{proposition}
-
-
-\begin{theoreme}[Zéros isolés pour les fonctions analytiques]
-Soit $U\subseteq \C$ un ouvert connexe et $f$ une fonction analytique non identiquement nulle sur $U$.
-Alors les zéros de $f$ sont isolés.
-\end{theoreme}
-
-\begin{theoreme}[Zéros isolés pour les fonctions analytiques]
-Soit $U\subseteq \C$ un ouvert connexe,  $f:U\to\C$ analytique et $Z:=f^{-1}(\{0\})$ l'ensemble des zéros de $f$.
-Si $Z$ admet un point d'accumulation dans $U$, alors $f$ est identiquement nulle sur $U$.
-\end{theoreme}
 
 
 
