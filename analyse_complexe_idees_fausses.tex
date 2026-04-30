@@ -134,16 +134,17 @@ Ce document est une liste d'idées fausses en analyse complexe.\\
 Tous les énoncés de ce document sont {\Large FAUX}. Parfois, ils n'ont même pas de sens, ou pas de sens défini en cours.
 Le symbole \og\important\fg{} orne les énoncés faux pour des raisons un peu plus subtiles ou profondes que les autres.
 
-\section{Holomorphie (et calcul diff, et nombres complexes, et topo)}
+\section{Rappels (analyse, topo, nombres complexes, calculs diff etc)}
 
-% convergences d'intégrales
+
 
 \begin{ideeFausse}
-SOit $f : X\to Y$ continue. L'image d'un fermé est fermée. L'image d'un ouvert est ouverte. L'image réciproque d'un compact est compacte.
+Soit $f$ une fonction continue et intégrable sur $\R_+$.
+Alors $f(x) \xrightarrow[x\to +\infty]{} 0$.
 \end{ideeFausse}
 
 \begin{ideeFausse}
-Une fonction $f : U\to \C$ harmonique (i.e. de laplacien nul) est holomorphe.
+Soit $f : X\to Y$ continue. L'image d'un fermé est fermée. L'image d'un ouvert est ouverte. L'image réciproque d'un compact est compacte.
 \end{ideeFausse}
 
 \begin{ideeFausse}
@@ -151,8 +152,55 @@ Le module de $e^z$ est $e^{|z|}$.
 \end{ideeFausse}
 
 \begin{ideeFausse}
+Le module de $e^{iRe^{i\theta}}$ est $1$.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+$e^{-Re^{i\theta}}\to 0$ lorsque $R\to +\infty$.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+$\abs{\frac{1}{z^2+1}} \leq \frac{1}{1+|z|^2}$.
+\end{ideeFausse}
+
+
+
+\begin{ideeFausse}
 Si $f : U\to \C$ est différentiable et que $Df=0$, alors $f$ est constante.
 \end{ideeFausse}
+
+
+\begin{ideeFausse} \important
+Soit $\gamma \in \mathcal C^1([0,1],\C)$ un chemin.
+Alors il existe $\tau\in[0,1]$ tq $\gamma(1) - \gamma(0) = \gamma'(\tau)$. 
+\end{ideeFausse}
+
+Attention aux satanées intégrales (semi)convergentes:
+
+\begin{ideeFausse}
+Soient $f$ et $g$ des fonctions continues par morceaux sur $\R_+$.
+Si $|f|\leq |g|$ au voisinage de $+\infty$ et $\int_0^{+\infty} g$ est convergente, alors $\int_0^{+\infty} f$ est convergente.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Soient $f$ et $g$ des fonctions continues par morceaux sur $\R_+$.
+Si $f=o(g)$ au voisinage de $+\infty$ et $\int_0^{+\infty} g$ est convergente, alors $\int_0^{+\infty} f$ est convergente.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Soient $f$ et $g$ des fonctions continues par morceaux sur $\R_+$.
+Si $f\sim g$ au voisinage de $+\infty$ et $\int_0^{+\infty} g$ est convergente, alors $\int_0^{+\infty} f$ est convergente.
+\end{ideeFausse}
+
+Si vous écrivez \og convergente\fg{} au lieu de \og absolument convergente\fg{} ou \og intégrable\fg, les arguments deviennent en général incorrects.
+
+\section{Holomorphie}
+
+
+\begin{ideeFausse}
+Une fonction $f : U\to \C$ harmonique (i.e. de laplacien nul) est holomorphe.
+\end{ideeFausse}
+
 
 \begin{ideeFausse}
 La fonction $e\mapsto e^{\PR z}$ est holomorphe sur $\C$.
@@ -179,16 +227,15 @@ Soit $\Omega\subset \C$ un ouvert et $u : \Omega\to \R$ une fonction $\mathcal C
 Si $u$ est harmonique, alors il existe une fonction harmonique $v : \Omega\to \R$ telle que $f:=u+iv$ soit holomorphe sur $\Omega$.
 \end{ideeFausse}
 
+
 \begin{ideeFausse} \important
-Soit $\gamma \in \mathcal C^1([0,1],\C)$ un chemin.
-Alors il existe $\tau\in[0,1]$ tq $\gamma(1) - \gamma(0) = \gamma'(\tau)$. 
+Soit $U\subset \C$ un ouvert. L'anneau $\mathcal (U)$ est intègre.
 \end{ideeFausse}
 
+\begin{ideeFausse} \important
+Soit $U\subset \C$ un ouvert connexe. L'anneau $\mathcal (U)$ est factoriel.
+\end{ideeFausse}
 
-
-%\begin{ideeFausse}
-%\end{ideeFausse}
-%
 %\begin{ideeFausse}
 %\end{ideeFausse}
 %
@@ -367,19 +414,25 @@ Une fonction holomorphe non constante est une application ouverte.
 
 \section{Séries de Laurent, singularités isolées, Résidus}
 
-\subsection{Séries de Laurent}
-%
-%\begin{ideeFausse}
-%\end{ideeFausse}
-%
-%\begin{ideeFausse}
-%\end{ideeFausse}
-%
+
 %\begin{ideeFausse}
 %\end{ideeFausse}
 
 
-\subsection{Singularités isolées}
+\subsection{Séries de Laurent et singularités isolées}
+
+
+
+%\begin{ideeFausse}
+%\end{ideeFausse}
+
+%\begin{ideeFausse}
+%\end{ideeFausse}
+
+
+\begin{ideeFausse}
+$z\mapsto \frac{1}{e^{1/z}-1}$ a une singularité essentielle à l'origine.
+\end{ideeFausse}
 
 \begin{ideeFausse}
 Si $f : \C^* \to \C$ est holomorphe et ne s'étend pas en une fonction holomorphe en l'origine, alors $\lim_{z\to 0} |f(z)| = +\infty$.
@@ -389,17 +442,40 @@ Si $f : \C^* \to \C$ est holomorphe et ne s'étend pas en une fonction holomorph
 Si $f : \C^* \to \C$ est holomorphe et n'est pas bornée au voisinage de l'origine, alors $\lim_{z\to 0} |f(z)| = +\infty$.
 \end{ideeFausse}
 
-%\begin{ideeFausse}
-%\end{ideeFausse}
+\begin{ideeFausse}
+Une singularité isolée $z_0$ de $f$ est un pôle ssi $\exists k\in \N$ tel que $z_0$ est effaçable pour $z^kf(z)$.
+\end{ideeFausse}
 %
-%\begin{ideeFausse}
-%\end{ideeFausse}
 
-
-\subsection{Théorème des résidus}
+\begin{ideeFausse} 
+Si $z_0$ est une singularité essentielle de $f$, alors pour tout $k\in\N$, $\frac{1}{(z-z_0)^k} = o(f)$ au voisinage de $z_0$. (\og Tout pôle est négligeable devant une singularité essentielle.\fg)
+\end{ideeFausse}
 
 \begin{ideeFausse}
-Si le résidu en une singularité est nul, alors la singularité est effaçable.
+Une fonction holomorphe sur $\C^*$ est méromorphe sur $\C$.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Une fonction méromorphe a un nombre fini de pôles.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+La composée de deux fonctions méromorphes est méromorphe.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Les fonctions méromorphes sur un ouvert $U$ forment un corps pour les lois usuelles.
+\end{ideeFausse}
+
+
+\subsection{Résidus}
+
+\begin{ideeFausse}
+Si le résidu en une singularité isolée est nul, alors la singularité est effaçable.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Si le résidu en une singularité isolée est nul, alors la singularité n'est pas essentielle.
 \end{ideeFausse}
 %
 %\begin{ideeFausse}
