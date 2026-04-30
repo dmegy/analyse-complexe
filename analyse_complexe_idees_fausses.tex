@@ -134,6 +134,10 @@ Ce document est une liste d'idées fausses en analyse complexe.\\
 Tous les énoncés de ce document sont {\Large FAUX}. Parfois, ils n'ont même pas de sens, ou pas de sens défini en cours.
 Le symbole \og\important\fg{} orne les énoncés faux pour des raisons un peu plus subtiles ou profondes que les autres.
 
+\begin{mdframed}[linewidth=2pt]
+Si vous trouvez ce qui vous semble être une affirmation \emph{correcte} dans ce document, vérifiez avec vos camarades puis contactez-moi pour que je puisse l'enlever  de toute urgence.
+\end{mdframed}
+
 \section{Rappels (analyse, topo, nombres complexes, calculs diff etc)}
 
 
@@ -175,7 +179,6 @@ Soit $\gamma \in \mathcal C^1([0,1],\C)$ un chemin.
 Alors il existe $\tau\in[0,1]$ tq $\gamma(1) - \gamma(0) = \gamma'(\tau)$. 
 \end{ideeFausse}
 
-Attention aux satanées intégrales (semi)convergentes:
 
 \begin{ideeFausse}
 Soient $f$ et $g$ des fonctions continues par morceaux sur $\R_+$.
@@ -192,7 +195,6 @@ Soient $f$ et $g$ des fonctions continues par morceaux sur $\R_+$.
 Si $f\sim g$ au voisinage de $+\infty$ et $\int_0^{+\infty} g$ est convergente, alors $\int_0^{+\infty} f$ est convergente.
 \end{ideeFausse}
 
-Si vous écrivez \og convergente\fg{} au lieu de \og absolument convergente\fg{} ou \og intégrable\fg, les arguments deviennent en général incorrects.
 
 \section{Holomorphie}
 
@@ -229,12 +231,12 @@ Si $u$ est harmonique, alors il existe une fonction harmonique $v : \Omega\to \R
 
 
 \begin{ideeFausse} \important
-Soit $U\subset \C$ un ouvert. L'anneau $\mathcal (U)$ est intègre.
+Soit $U\subset \C$ un ouvert. L'anneau $\mathcal O(U)$ est intègre.
 \end{ideeFausse}
 
-\begin{ideeFausse} \important
-Soit $U\subset \C$ un ouvert connexe. L'anneau $\mathcal (U)$ est factoriel.
-\end{ideeFausse}
+%\begin{ideeFausse} \important
+%Soit $U\subset \C$ un ouvert connexe. L'anneau $\mathcal O (U)$ est factoriel.
+%\end{ideeFausse}
 
 %\begin{ideeFausse}
 %\end{ideeFausse}
@@ -332,19 +334,19 @@ Alors, pour tout $z\in \D(0,1)$, on a $|f(z)| \leq |z|$.
 
 
 \section{Intégration curviligne, primitives holomorphes}
-(Attention, la notion de compact à bord $\mathcal C^1_{pm}$ donnée en cours est assez restrictive.)
+%(Attention, la notion de compact à bord $\mathcal C^1_{pm}$ donnée en cours est assez restrictive.) % enlevé, inutile de faire stresser avec ça
 
-\begin{ideeFausse}
-Le compact $\{(x,y)\in \R^2\:|\: 0\leq x \leq 1 \text{ et }1 \leq y \leq x^2\}$ est à bord $\mathcal C^1$ par morceaux.
-\end{ideeFausse}
+%\begin{ideeFausse}
+%Le compact $\{(x,y)\in \R^2\:|\: 0\leq x \leq 1 \text{ et }1 \leq y \leq x^2\}$ est à bord $\mathcal C^1$ par morceaux.
+%\end{ideeFausse}
 
-\begin{ideeFausse}
-Le compact $\{(x,y)\in \R^2\:|\: x^2+y^2\leq 1 \text{ et } xy\geq 0\}$ est à bord $\mathcal C^1$ par morceaux.
-\end{ideeFausse}
+%\begin{ideeFausse}
+%Le compact $\{(x,y)\in \R^2\:|\: x^2+y^2\leq 1 \text{ et } xy\geq 0\}$ est à bord $\mathcal C^1$ par morceaux.
+%\end{ideeFausse}
 
-\begin{ideeFausse}
-Le compact $\overline{\D(0,2)} \setminus \D(1,1)$ est à bord $\mathcal C^1$ par morceaux.
-\end{ideeFausse}
+%\begin{ideeFausse}
+%Le compact $\overline{\D(0,2)} \setminus \D(1,1)$ est à bord $\mathcal C^1$ par morceaux.
+%\end{ideeFausse}
 
 \begin{ideeFausse}
 Soit $U$ un ouvert de $\C$, $\gamma : [0,1]\to U$ un chemin dans $U$ de classe $\mathcal C^1$ et $f \in \mathcal C^0(U,\C)$.
