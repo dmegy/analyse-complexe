@@ -1,5 +1,7 @@
 **/.DS_Store
-.DS_Store
+
+## aucun fichier tex pour la suite :
+*.tex
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

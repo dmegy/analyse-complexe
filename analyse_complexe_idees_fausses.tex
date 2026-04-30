@@ -20,13 +20,13 @@
     filecolor=[rgb]{0.7,0.2,0.2},      % color of file links
     urlcolor=[rgb]{0.7,0.2,0.2}           % color of external links
 }
-
-\usepackage{pgf,pgfmath,tikz}
-\usetikzlibrary{arrows}
-\usetikzlibrary[patterns]
-\tikzset{every picture/.style={execute at begin picture={
-   \shorthandoff{:;!?};}
-}}
+%
+%\usepackage{pgf,pgfmath,tikz}
+%\usetikzlibrary{arrows}
+%\usetikzlibrary[patterns]
+%\tikzset{every picture/.style={execute at begin picture={
+%   \shorthandoff{:;!?};}
+%}}
 
 
 
@@ -134,7 +134,17 @@ Ce document est une liste d'idées fausses en analyse complexe.\\
 Tous les énoncés de ce document sont {\Large FAUX}. Parfois, ils n'ont même pas de sens, ou pas de sens défini en cours.
 Le symbole \og\important\fg{} orne les énoncés faux pour des raisons un peu plus subtiles ou profondes que les autres.
 
-\section{Holomorphie (et calcul diff, et nombres complexes)}
+\section{Holomorphie (et calcul diff, et nombres complexes, et topo)}
+
+% convergences d'intégrales
+
+\begin{ideeFausse}
+SOit $f : X\to Y$ continue. L'image d'un fermé est fermée. L'image d'un ouvert est ouverte. L'image réciproque d'un compact est compacte.
+\end{ideeFausse}
+
+\begin{ideeFausse}
+Une fonction $f : U\to \C$ harmonique (i.e. de laplacien nul) est holomorphe.
+\end{ideeFausse}
 
 \begin{ideeFausse}
 Le module de $e^z$ est $e^{|z|}$.
@@ -168,10 +178,14 @@ Soit $f : U\to \C$. Si $\PR f$ et $\PI f$ sont harmoniques, alors $f$ est holomo
 Soit $\Omega\subset \C$ un ouvert et $u : \Omega\to \R$ une fonction $\mathcal C^2$.
 Si $u$ est harmonique, alors il existe une fonction harmonique $v : \Omega\to \R$ telle que $f:=u+iv$ soit holomorphe sur $\Omega$.
 \end{ideeFausse}
-%
-%\begin{ideeFausse}
-%\end{ideeFausse}
-%
+
+\begin{ideeFausse} \important
+Soit $\gamma \in \mathcal C^1([0,1],\C)$ un chemin.
+Alors il existe $\tau\in[0,1]$ tq $\gamma(1) - \gamma(0) = \gamma'(\tau)$. 
+\end{ideeFausse}
+
+
+
 %\begin{ideeFausse}
 %\end{ideeFausse}
 %
