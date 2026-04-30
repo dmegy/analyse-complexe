@@ -574,6 +574,9 @@ Question : pensez-vous que le disque est biholomorphe au demi-disque (ouvert)?
 
 \subsection{Rappels de séries entières}
 
+Une série entière converge normalement dans tout compact inclus dans le disque ouvert de convergence.
+Une somme de série entière est infiniment $\C$-dérivable dans le disque ouvert de convergence. Les dérivées successives sont obtenues en dérivant terme à terme.
+
 \begin{proposition}
 Soit $\sum a_nz^n$ une série entière.
 Son rayon de convergence est strictement positif  ssi il existe $C>0$ tel que $a_n = O\left(C^n\right)$.
@@ -591,14 +594,19 @@ Alors, pour tout $n\in\N$, on a
 \[a_n = \frac{1}{2\pi r^n}\int_0^{2\pi}f\left(re^{i\theta}\right)e^{-in\theta}d\theta. \]
 \end{theoreme}
 
+\begin{remarque}
+Qu'obtient-on si on prend $n<0$ et que l'on calcule $\frac{1}{2\pi r^n}\int_0^{2\pi}f\left(re^{i\theta}\right)e^{-in\theta}d\theta$ ? Pourquoi ?
+\end{remarque}
 
-(C'est juste la formule de Cauchy d'ordre $n$ en l'origine, pour des disques centrés en l'origine.  En effet, $a_n = f^{(n)}(0)/n!$.)
+C'est juste la formule de Cauchy d'ordre $n$ en l'origine, pour des disques centrés en l'origine.  En effet, $a_n = f^{(n)}(0)/n!$.
+Noter la ressemblance avec les coefficients \og $c_n$\fg{} d'une série de Fourier (de quelle fonction?), à la différence principale qu'il n'y a que $n\geq 0$ ici.
+Les indices négatifs arrivent tout de suite.
 
 \subsection{Séries de Laurent}
 
 Définition, couronne ouverte de convergence, convergence normale sur tout compact inclus dans la couronne ouverte de convergence, dérivée terme à terme.
 
-Partie régulière (indices positifs), partie principale (indices négatifs).
+Partie régulière (indices positifs), partie principale (indices strictement négatifs).
 
 \begin{theoreme}[Développement en série de Laurent des fonctions holomorphes sur une couronne]
 Une fonction holomorphe sur une couronne $C(z_0,R,R')$ est développable en série de Laurent $\sum_{n\in\Z} a_n(z-z_0)^n$ sur cette couronne et pour tout $n\in\Z$ et $r \in ]R,R'[$ , on a :
@@ -651,18 +659,29 @@ La fonction $\frac{e^z-1}{z(z-1)(z+1)^2}$ a un pôle simple en $1$, un pôle dou
 
 Une singularité $z_0$ d'une fonction holomorphe $f$ est effaçable ssi $f$ se prolonge holomorphiquement en $z_0$. En effet, un DSL centré en $z_0$ qui est régulier (avec partie principale nulle, c'est-à-dire dont tous les coefs d'indice négatif sont nuls) peut en effet être vu comme un  développement en série entière au point $z_0$, et inversement. On a en fait un résultat beaucoup plus fort :
 
+
+
 \begin{theoreme}[Théorème d'extension de Riemann]
 Soit $z_0$ une singularité isolée d'une fonction holomorphe $f$.
 Si $f$ est bornée au voisinage de $z_0$, alors la singularité est effaçable, autrement dit $f$ se prolonge holomorphiquement en $z_0$.
 \end{theoreme}
+
+\begin{mdframed}[linewidth=3pt]
+\textcolor{red}{ATTENTION ce théorème est passé à la trappe dans le cours donné en amphi, je l'ai oublié lors de la séance avant les vacances, et j'ai oublié que je devais le remettre lors de la séance de rentrée.
+Il a été énoncé et démontré dans tous les groupes de TD le jour même ou le jour suivant, mais il faut le rajouter au cours.
+}
+\end{mdframed}
 
 \begin{remarque}
 Il existe des fonctions holomorphes sur $\C^*$ qui tendent vers zéro \textbf{radialement} en l'origine, et qui ne s'étendent pas en l'origine.
  Voir TD.
 \end{remarque}
 
-\begin{proof} (Esquisse) 
-Développer en série de Laurent autour de $z_0$, écrire la forme intégrale des coefficients $a_n$, montrer que $n<0\implies a_n=0$ en faisant tendre le rayon vers zéro.
+\begin{proof}
+Écrivons le développement en série de Laurent de $f$ au voisinage (épointé) de $z_0$ : $f(z) = \sum_{n\in\Z} a_n(z-z_0)^n$. On va montrer que $n<0\implies a_n=0$.
+Pour $r>0$ assez petit, on a $a_n = \frac{1}{2\pi r^n} \int_0^{2\pi} f(re^{it}) e^{-int} dt$, donc, si $|f|\leq M$ au voisinage de $z_0$, on obtient 
+$|a_n| \leq \frac{M}{r^n}$.
+Si $n<0$, le majorant tend vers zéro lorsque $r\to 0$, ce qui montre que $a_n=0$.
 \end{proof}
 
 
@@ -698,9 +717,43 @@ La fonction $g$ possède un DSL régulier sur $\D(z_0,\epsilon)^*$ et $g(z)\cvgt
 \end{proof}
 
 
+\paragraph{Terminologie sur les pôles : fonctions méromorphes}
 
-\noindent\rule{\textwidth}{1pt}
-\marginpar{$\leftarrow$ Fin du dernier cours, suite pour info}
+\begin{remarque}
+Une fonction méromorphe sur $U$ peut donc être vue comme une fonction continue de $U$ dans $\hat \C$, holomorphe sauf en un ensemble discret de points de $U$.
+\end{remarque}
+
+Définition / terminologie : on dit que $f$ est méromorphe sur $U$ s'il existe un ensemble discret $Z\subset U$ tel que $f$ soit holomorphe sur $U\setminus Z$ avec des singularités effaçables ou des pôles aux points de $Z$. (Pas de singularités essentielles).
+
+
+\begin{remarque}
+Il est possible de définir la notion de fonction holomorphe non pas seulement à valeurs dans $\C$, mais dans $\hat \C$ (ou d'autres surfaces de Riemann, ou variétés complexes).
+La définition est : soit $f : U\to \hat \C$ une fonction continue, et $z_0\in U$. On dit que $f$ est holomorphe au voisinage de $z_0$ si $f(z_0)\neq \infty$ et $f$ est holomorphe dans un voisinage de $z_0$, ou bien $f(z_0)=\infty$ et $1/f$ (prolongée par $0$ en $z_0$) est holomorphe au voisinage de $z_0$. 
+
+Avec ce formalisme, une fonction méromorphe est une fonction holomorphe à valeurs dans la sphère de Riemann. (Exo : prouver ceci.)
+\end{remarque}
+
+
+
+\begin{quote}
+La phrase \og $z\mapsto 1/z$ est méromorphe sur $\C$\fg{} est correcte.
+\end{quote}
+
+\begin{exemples}
+\begin{enumerate}
+\item $z\mapsto \frac{1-\cos(z)}{z^2(z+2)^5}$ est méromorphe sur $\C$. (Un seul pôle.)
+\item $z\mapsto \frac{1}{sin(z)}$ est méromorphe sur $\C$. (Infinité de pôles)
+\item $z\mapsto \frac{1}{e^z-1}$ est méromorphe sur $\C$. (Infinité de pôles)
+\item $z\mapsto e^{1/z}$ est holomorphe sur $\C^*$, mais n'est pas une fonction méromorphe sur $\C$.
+\item $z\mapsto \Log_0 z$ est holomorphe sur $\C\setminus \R_-$, mais n'est pas une fonction méromorphe sur $\C$.
+\end{enumerate}
+\end{exemples}
+
+Attention : j'ai mentionné en cours qu'une fonction méromorphe sur $U$ était en fait un quotient \textbf{global} de deux fonctions holomorphes sur $U$.
+
+Ceci n'est pas la définition, et ne découle pas facilement de la définition (ni de la définition alternative, qui demande une représentation \textbf{locale} comme quotient. L'énoncé assurant un quotient global est un théorème difficile, que l'on ne démontrera pas. Ça utilise les produits eulériens / la factorisation de Weierstrass. Juste pour la culture gé, donc. Ne pas écraser mes exos avec ceci svp.
+
+
 
 \paragraph{Étude des singularités essentielles}
 
@@ -709,24 +762,27 @@ La fonction $g$ possède un DSL régulier sur $\D(z_0,\epsilon)^*$ et $g(z)\cvgt
 Il est déconseillé de penser aux singularités essentielles comme des \og pôles de degré infini\fg, car cette vision  peut laisser penser que $|f|$ tend (exponentiellement vite) vers l'infini au point. Cette assertion ne correspond pas à la réalité, qui est bien plus compliquée.
 \end{attention}
 
-\begin{theoreme}[Casorati-Weiestrass]
+\begin{theoreme}[Casorati-Weierstrass]
 Soit $z_0 \in U$ une singularité essentielle d'une fonction holomorphe $f \in \mathcal O(U\setminus \{z_0\})$.
 Alors, pour tout voisinage $W$ de $z_0$ contenu dans $U$, l'image par $f$ de $W\setminus\{z_0\}$ est dense dans $\C$.
 \end{theoreme}
 
-
-\paragraph{Fonctions méromorphes}
-
-
-
-Définition / terminologie : on dit que $f$ est méromorphe sur $U$ s'il existe un ensemble discret $Z\subset U$ tel que $f$ soit holomorphe sur $U\setminus Z$ avec des singularités effaçables ou des pôles aux points de $Z$. (Pas de singularités essentielles). Une fonction méromorphe sur $U$ peut donc être vue comme une fonction continue de $U$ dans $\hat \C$, holomorphe sauf en un ensemble discret de points de $U$.
 \begin{remarque}
-Il est possible de définir la notion de fonction holomorphe non pas seulement à valeurs dans $\C$, mais dans $\hat C$ (ou d'autres surfaces de Riemann, ou variétés complexes).
-Avec ce formalisme, une fonction méromorphe est une fonction holomorphe à valeurs dans la sphère de Riemann.
+La réciproque de Casorati-Weierstrass est bien sûr vraie : si l'image de tout voisinage est dense, la fonction n'est manifestement ni prolongeable par continuité, ni tend vers l'infini.
 \end{remarque}
 
+Remarque importante / conseil : il est difficile de visualiser exactement le comportement d'une singularité essentielle, puisque justement la fonction fait vraiment n'importe quoi au voisinage de la singularité.
+Il faut plutôt réfléchir en termes de conditions \textbf{suffisantes} pour affirmer des choses.
+Prenons par exemple la fonction $z\mapsto cos(1/z)$, définie et holomorphe sur $\C^*$. 
+\begin{itemize}
+\item La fonction a une singularité isolée en $0$. Mais si $z$ est réel, elle reste bornée, donc ça ne peut pas être un pôle.
+\item Sa singularité en l'origine ne peut pas être effaçable sinon la fonction serait prolongeable par continuité. Mais rien que pour $z$ réel, on sait que la fonction n'est pas prolongeable continûment en zéro (elle oscille à l'origine).
+\item Donc la singularité est essentielle.
+\end{itemize}
 
+Note: on peut aussi faire remarquer que si $z=it$ est imaginaire pur avec $t>0$, alors $\cos(1/z) = \cosh(1/t)\sim_{t\to 0} e^{1/t}/2$. Par croissance comparée,  il n'existe pas de $k\in\N$ tel que $e^{1/t}/2 = O(1/t^k)$ lorsque $t\to 0, t\in\R_0^*$, ce qui devrait être le cas si l'origine était un pôle ou une singularité effaçable. Donc la singularité est essentielle.
 
+Dans les exemples ci-dessus, on est donc en mesure de conclure sur la nature de la singularité, sans avoir eu à comprendre en détail ce que faisait $\cos(1/z)$ en l'origine.
 
 \subsection{Théorème des résidus}
 
@@ -736,12 +792,31 @@ Caractérisation par le développement en série de Laurent. Exemples.
 
 
 \begin{theoreme}[des résidus]
-Soit $U\subset \C$ un ouvert, $Z\subset U$ une partie discrète, $K\subset U$ un compact à bords $\mathcal C^1$ par morceaux avec $Z\cap \partial K = \emptyset$, et $f$ une fonction holomorphe sur $U\setminus Z$.
+Soit $U\subset \C$ un ouvert, $S\subset U$ une partie discrète, $K\subset U$ un compact à bords $\mathcal C^1$ par morceaux avec $S\cap \partial K = \emptyset$, et $f$ une fonction holomorphe sur $U\setminus S$.
 Alors:
-\[ \int_{\partial K} f(z)dz = 2i\pi \sum_{\alpha \in K\cap Z} \operatorname{Rés}_\alpha(f).\]
+\[ \int_{\partial K} f(z)dz = 2i\pi \sum_{\alpha \in K\cap S} \operatorname{Rés}_\alpha(f).\]
 \end{theoreme}
 
+\begin{remarque}
+Dans le théorème, $f$ peut avoir des singularités essentielles.
+Cela dit en pratique, on l'applique presque toujours sur des fonctions qui sont méromorphes.
+\end{remarque}
 
+Méthodes de calcul pour les résidus, en particulier pour un quotient dont le dénominateur n'a que de zéros simples.
+
+Méthode générale dans le cas d'un pôle de degré $d$ (y compris simple) en $z_0$ : on introduit la fonction $g = z\mapsto (z-z_0)^df(z)$. La multiplication par $(z-z_0)^d$ a pour effet \og d'effacer le pôle-\fg : la fonction $g$ a une singularité effaçable en $z_0$, elle se prolonge holomorphiquement en une fonction $\tilde g$ définie sur un voisinage de $z_0$. Le résidu de $f$ en $z_0$ est alors $\tilde g^{(d)}(z_0)/d!$. Par exemple, pour un pôle simple, le résidu sera $\tilde g(z_0)$, pour un pôle double, $\tilde g'(z_0)$, pour un pôle triple $\tilde g''(z_0)/2!$ etc.
+
+Calcul via les résidus de $\int_\R \frac{dx}{1+x^2}$ et $\int_\R \frac{dx}{1+x^4}$,  pour illustrer.
+
+\begin{remarque}
+Dans certains cas particuliers, on dispose d'une expression pour $g$ qui a un sens  au point $z_0$. Par exemple si $f(z)=\frac{1}{(z-1)(z+2)}$ et que l'on cherche le résidu en $z_0=1$, alors $g(z) = 1/(z+2)$, cette expression est définie en $1$, donc on peut juste évaluer l'expression en $1$ pour obtenir le résidu. Ce n'est pas le cas en général, par exemple pour $f(z)=sinh(z)/sin^2(z)$, on a un pôle simple en $z_0=0$, on posera donc $g(z)=zf(z) = z \sinh(z)/sin^2(z)$, mais on ne peut pas évaluer directement en zéro, il faut prendre la limite en zéro. (Le résidu en zéro est donc $1$.)
+\end{remarque}
+
+\noindent\rule{\textwidth}{1pt}
+\begin{center}
+Fin du dernier cours
+\end{center}
+\noindent\rule{\textwidth}{1pt}
 
 \subsection{Principe de l'argument et théorème de Rouché}
 
