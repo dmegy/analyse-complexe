@@ -1,3 +1,9 @@
+Parce qu'il faut bien rigoler un petit peu, une petite retranscription d'une session (avril 2025, test du fichier d'idées fausses sur différentes IA) :
+
+----
+
+
+
 Tu as raison de me challenger ! **Je me suis trompé** : **$\mathcal{M}(U)$ n'est PAS un corps** en général.
 
 ---
