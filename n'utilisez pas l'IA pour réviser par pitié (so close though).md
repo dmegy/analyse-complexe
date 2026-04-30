@@ -1,4 +1,4 @@
-Parce qu'il faut bien rigoler un petit peu, une petite retranscription d'une session (avril 2025, test du fichier d'idées fausses sur différentes IA) :
+Parce qu'il faut bien rigoler un petit peu, une petite retranscription d'une session (avril 2026, test du fichier d'idées fausses sur différents chatbots) :
 
 ----
 
